@@ -1,0 +1,3 @@
+super_brave_gdpr_homepage:
+    path:     /
+    defaults: { _controller: SuperBraveGdprBundle:Default:index }
