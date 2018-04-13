@@ -1,0 +1,18 @@
+{
+  "name"       : "superbrave/gdpr-bundle",
+  "type"       : "symfony-bundle",
+  "description": "A Symfony bundle for using entity annotations according to GDPR requirements and anonymizing data",
+  "keywords"   : [
+    "annotations",
+    "GDPR",
+    "anonymizing"
+  ],
+  "licence"    : "MIT License",
+  "require"    : {
+    "php"            : ">=5.6.0",
+    "symfony/symfony": "^3.0.0"
+  },
+  "autoload"   : {
+    "psr-4": {"SuperBrave\\GdprBundle\\": ""}
+  }
+}
