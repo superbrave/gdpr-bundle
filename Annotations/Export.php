@@ -9,7 +9,7 @@ namespace SuperBrave\GdprBundle\Annotations;
  * @Annotation()
  * @Annotation\Target({"PROPERTY"})
  */
-class Portable
+class Export
 {
     /**
      * Use given name instead of column name in the exported data.
