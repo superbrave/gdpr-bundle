@@ -1,5 +1,7 @@
 <?php
 
+namespace SuperBrave\GdprBundle\Annotations\GDPR;
+
 /**
  * Annotation to flag an entity field to be exported
  * to conform with the GDPR right of portability.
