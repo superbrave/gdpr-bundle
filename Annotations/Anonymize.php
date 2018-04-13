@@ -1,6 +1,6 @@
 <?php
 
-namespace SuperBrave\GdprBundle\Annotations\GDPR;
+namespace SuperBrave\GdprBundle\Annotations;
 
 use Doctrine\Common\Annotations\Annotation;
 use Doctrine\Common\Annotations\AnnotationException;
