@@ -2,6 +2,7 @@
 
 namespace SuperBrave\GdprBundle\Tests\Annotation;
 
+use PHPUnit_Framework_TestCase;
 use ReflectionClass;
 use SuperBrave\GdprBundle\Annotation\AnnotationReader;
 use SuperBrave\GdprBundle\Annotation\Export;
@@ -12,7 +13,7 @@ use SuperBrave\GdprBundle\Tests\AnnotatedMock;
  *
  * @author Niels Nijens <nn@superbrave.nl>
  */
-class AnnotationReaderTest extends \PHPUnit_Framework_TestCase
+class AnnotationReaderTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @var AnnotationReader
