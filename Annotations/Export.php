@@ -18,6 +18,12 @@ namespace SuperBrave\GdprBundle\Annotations;
  * Annotation to flag an entity field to be exported
  * to conform with the GDPR right of portability.
  *
+ * @category Bundle
+ * @package  Gdpr
+ * @author   Superbrave <info@superbrave.nl>
+ * @license  https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
+ * @link     https://www.superbrave.nl/
+ *
  * @Annotation()
  * @Annotation\Target({"PROPERTY"})
  */
