@@ -10,7 +10,8 @@
   "licence"    : "MIT License",
   "require"    : {
     "php"            : ">=5.6.0",
-    "symfony/symfony": "^3.0.0"
+    "symfony/symfony": "^3.0.0",
+    "doctrine/common": "ˆ2.7"
   },
   "autoload"   : {
     "psr-4": {"SuperBrave\\GdprBundle\\": ""}
