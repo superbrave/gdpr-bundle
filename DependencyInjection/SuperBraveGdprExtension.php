@@ -33,6 +33,10 @@ class SuperBraveGdprExtension extends Extension
     /**
      * Loads a specific configuration.
      *
+     * @param array            $configs   An array of configuration items to process
+     * @param ContainerBuilder $container A DI container that provides an API to easily describe services
+     *
+     * @return void
      * @throws \InvalidArgumentException When provided tag is not defined in this extension
      */
     public function load(array $configs, ContainerBuilder $container)
