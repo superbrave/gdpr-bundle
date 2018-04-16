@@ -1,4 +1,16 @@
 <?php
+/**
+ * This file loads and manages the GDPR bundle
+ *
+ * Minimal required PHP version is 5.6
+ *
+ * @category  Bundle
+ * @package   Gdpr
+ * @author    Superbrave <info@superbrave.nl>
+ * @copyright 2018 Superbrave <info@superbrave.nl>
+ * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
+ * @link      https://www.superbrave.nl/
+ */
 
 namespace SuperBrave\GdprBundle\DependencyInjection;
 
@@ -10,7 +22,11 @@ use Symfony\Component\DependencyInjection\Loader;
 /**
  * This is the class that loads and manages your bundle configuration.
  *
- * @link http://symfony.com/doc/current/cookbook/bundles/extension.html
+ * @category Bundle
+ * @package  Gdpr
+ * @author   Superbrave <info@superbrave.nl>
+ * @license  https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
+ * @link     http://symfony.com/doc/current/cookbook/bundles/extension.html
  */
 class SuperBraveGdprExtension extends Extension
 {
