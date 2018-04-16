@@ -1,6 +1,7 @@
 #common ignores
 .idea/*
 /nbproject
+/vendor
 
 # Cache and logs (Symfony2)
 /app/cache/*
@@ -33,10 +34,6 @@
 # Assets and user uploads
 /web/bundles/
 /web/uploads/
-
-# PHPUnit
-/app/phpunit.xml
-/phpunit.xml
 
 # Build data
 /build/
