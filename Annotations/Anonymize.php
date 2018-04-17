@@ -21,12 +21,6 @@ use Doctrine\Common\Annotations\AnnotationException;
  * Annotation to flag an entity field to be anonymized
  * to conform with the GDPR right to be forgotten
  *
- * @category Bundle
- * @package  Gdpr
- * @author   Superbrave <info@superbrave.nl>
- * @license  https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
- * @link     https://www.superbrave.nl/
- *
  * @Annotation()
  * @Annotation\Target({"PROPERTY"})
  */
