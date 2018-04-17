@@ -1,4 +1,14 @@
 <?php
+/**
+ * This file is part of the GDPR bundle.
+ *
+ * @category  Bundle
+ * @package   Gdpr
+ * @author    SuperBrave <info@superbrave.nl>
+ * @copyright 2018 SuperBrave <info@superbrave.nl>
+ * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
+ * @link      https://www.superbrave.nl/
+ */
 
 namespace SuperBrave\GdprBundle\Tests;
 
@@ -6,13 +16,15 @@ use Doctrine\Common\Collections\ArrayCollection;
 use SuperBrave\GdprBundle\Annotation as GDPR;
 
 /**
- * AnnotatedMock.
+ * Class used to test the @see GDPR\AnnotationReader.
  *
  * @author Niels Nijens <nn@superbrave.nl>
  */
 class AnnotatedMock
 {
     /**
+     * The foo property.
+     *
      * @GDPR\Export()
      *
      * @var string
@@ -20,6 +32,8 @@ class AnnotatedMock
     private $foo = 'bar';
 
     /**
+     * The baz property.
+     *
      * @GDPR\Export()
      *
      * @var int
@@ -27,6 +41,8 @@ class AnnotatedMock
     private $baz = 1;
 
     /**
+     * The qux property.
+     *
      * @GDPR\Export()
      *
      * @var array
@@ -34,6 +50,8 @@ class AnnotatedMock
     private $qux = array();
 
     /**
+     * The quux property.
+     *
      * @GDPR\Export()
      *
      * @var ArrayCollection
@@ -43,7 +61,7 @@ class AnnotatedMock
     /**
      * Constructs a new AnnotatedMock instance.
      *
-     * @param AnnotatedMock|null $annotatedMock
+     * @param AnnotatedMock|null $annotatedMock An AnnotatedMock instance
      */
     public function __construct(AnnotatedMock $annotatedMock = null)
     {
@@ -51,6 +69,8 @@ class AnnotatedMock
     }
 
     /**
+     * Returns the value of the foo property.
+     *
      * @return string
      */
     public function getFoo()
@@ -59,6 +79,8 @@ class AnnotatedMock
     }
 
     /**
+     * Returns the value of the baz property.
+     *
      * @return int
      */
     public function getBaz()
@@ -67,6 +89,8 @@ class AnnotatedMock
     }
 
     /**
+     * Returns the value of the qux property.
+     *
      * @return array
      */
     public function getQux()
@@ -75,6 +99,8 @@ class AnnotatedMock
     }
 
     /**
+     * Returns the value of the quux property.
+     *
      * @return ArrayCollection
      */
     public function getQuux()

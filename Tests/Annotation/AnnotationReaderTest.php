@@ -1,4 +1,14 @@
 <?php
+/**
+ * This file is part of the GDPR bundle.
+ *
+ * @category  Bundle
+ * @package   Gdpr
+ * @author    SuperBrave <info@superbrave.nl>
+ * @copyright 2018 SuperBrave <info@superbrave.nl>
+ * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
+ * @link      https://www.superbrave.nl/
+ */
 
 namespace SuperBrave\GdprBundle\Tests\Annotation;
 
@@ -16,6 +26,8 @@ use SuperBrave\GdprBundle\Tests\AnnotatedMock;
 class AnnotationReaderTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * The AnnotationReader instance being tested.
+     *
      * @var AnnotationReader
      */
     private $annotationReader;
@@ -27,7 +39,9 @@ class AnnotationReaderTest extends PHPUnit_Framework_TestCase
     {
         $this->annotationReader = new AnnotationReader();
 
-        // Ensure the Export annotation class is autoloaded.
+        // Ensure the Export annotation class is autoloaded, because the \Doctrine\Common\Annotations\DocParser
+        // used in the AnnotationReader does not use the existing classloaders.
+        // Only the AnnotationRegistry classloader.
         class_exists(Export::class);
     }
 
