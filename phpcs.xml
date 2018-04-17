@@ -25,7 +25,14 @@
     </rule>
 
     <!-- PEAR checks are mostly because this standard is very strict in docblocks -->
-    <rule ref="PEAR.Commenting"/>
+    <rule ref="PEAR.Commenting">
+        <!-- These tags are already defined per file. Since we only have one class per file, this is a bit excessive -->
+        <exclude name="PEAR.Commenting.ClassComment.MissingCategoryTag"/>
+        <exclude name="PEAR.Commenting.ClassComment.MissingPackageTag"/>
+        <exclude name="PEAR.Commenting.ClassComment.MissingAuthorTag"/>
+        <exclude name="PEAR.Commenting.ClassComment.MissingLicenseTag"/>
+        <exclude name="PEAR.Commenting.ClassComment.MissingLinkTag"/>
+    </rule>
 
     <!-- PSR2 checks are used (and recommended) for usage with the Symfony framework, PSR1 is implied. -->
     <rule ref="PSR2"/>
