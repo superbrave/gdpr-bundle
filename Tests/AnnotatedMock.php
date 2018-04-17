@@ -59,6 +59,13 @@ class AnnotatedMock
     private $quux;
 
     /**
+     * The property that is not annotated with the Export annotation.
+     *
+     * @var null
+     */
+    private $notAnnotatedProperty = null;
+
+    /**
      * Constructs a new AnnotatedMock instance.
      *
      * @param AnnotatedMock|null $annotatedMock An AnnotatedMock instance
@@ -106,5 +113,15 @@ class AnnotatedMock
     public function getQuux()
     {
         return $this->quux;
+    }
+
+    /**
+     * Returns the value of the notAnnotatedProperty property.
+     *
+     * @return null
+     */
+    public function getNotAnnotatedProperty()
+    {
+        return $this->notAnnotatedProperty;
     }
 }
