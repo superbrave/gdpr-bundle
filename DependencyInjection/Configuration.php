@@ -20,11 +20,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 /**
  * This is the class that validates and merges configuration from your app/config files.
  *
- * @category Bundle
- * @package  Gdpr
- * @author   Superbrave <info@superbrave.nl>
- * @license  https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
- * @link     http://symfony.com/doc/current/cookbook/bundles/configuration.html
+ * @link http://symfony.com/doc/current/cookbook/bundles/configuration.html
  */
 class Configuration implements ConfigurationInterface
 {

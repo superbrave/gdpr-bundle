@@ -22,11 +22,7 @@ use Symfony\Component\DependencyInjection\Loader;
 /**
  * This is the class that loads and manages your bundle configuration.
  *
- * @category Bundle
- * @package  Gdpr
- * @author   Superbrave <info@superbrave.nl>
- * @license  https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
- * @link     http://symfony.com/doc/current/cookbook/bundles/extension.html
+ * @link http://symfony.com/doc/current/cookbook/bundles/extension.html
  */
 class SuperBraveGdprExtension extends Extension
 {
