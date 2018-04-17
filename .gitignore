@@ -1,7 +1,8 @@
 #common ignores
 .idea/*
 /nbproject
-/vendor
+/vendor/
+.php_cs.cache
 
 # Cache and logs (Symfony2)
 /app/cache/*
