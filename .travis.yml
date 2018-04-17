@@ -16,4 +16,4 @@ before_script:
 
 script:
   - bin/phpunit --log-junit build/logs/phpunit.xml
-  - bin/phpcs --report-full --report-junit=build/logs/phpcs.xml
+  - bin/php-cs-fixer fix --dry-run -v
