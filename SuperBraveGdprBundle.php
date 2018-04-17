@@ -18,12 +18,6 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
  * Class SuperBraveGdprBundle
- *
- * @category Bundle
- * @package  Gdpr
- * @author   Superbrave <info@superbrave.nl>
- * @license  https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
- * @link     https://www.superbrave.nl/
  */
 class SuperBraveGdprBundle extends Bundle
 {
