@@ -118,7 +118,14 @@ class AnnotationNormalizer implements NormalizerInterface, SerializerAwareInterf
      */
     private function getPropertyValue($object, $propertyName)
     {
-        $propertyData = $this->propertyAccessor->getValue($object, $propertyName);
+        try {
+            $propertyData = $this->propertyAccessor->getValue($object, $propertyName);
+        } catch (NoSuchPropertyException $exception) {
+            $reflectionProperty = new ReflectionProperty($object, $propertyName);
+            $reflectionProperty->setAccessible(true);
+
+            $propertyData = $reflectionProperty->getValue($object);
+        }
 
         return $propertyData;
     }

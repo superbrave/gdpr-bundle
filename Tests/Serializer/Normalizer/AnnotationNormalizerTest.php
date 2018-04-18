@@ -158,6 +158,7 @@ class AnnotationNormalizerTest extends \PHPUnit_Framework_TestCase
                 'baz' => 1,
                 'qux' => array(),
                 'quuxs' => new ArrayCollection(),
+                'annotatedPropertyWithoutMethod' => true,
             ),
             $normalizer->normalize($annotatedMock)
         );

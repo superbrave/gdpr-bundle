@@ -59,6 +59,15 @@ class AnnotatedMock
     private $quux;
 
     /**
+     * The property that is annotated with the Export annotation, but without getter method.
+     *
+     * @GDPR\Export()
+     *
+     * @var bool
+     */
+    private $annotatedPropertyWithoutMethod = true;
+
+    /**
      * The property that is not annotated with the Export annotation.
      *
      * @var null
