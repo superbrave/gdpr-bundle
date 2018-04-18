@@ -15,6 +15,8 @@
 namespace SuperBrave\GdprBundle\Annotation;
 
 use Doctrine\Common\Annotations\Annotation;
+use Doctrine\Common\Annotations\Annotation\Attribute;
+use Doctrine\Common\Annotations\Annotation\Attributes;
 use Doctrine\Common\Annotations\AnnotationException;
 
 /**
@@ -23,6 +25,10 @@ use Doctrine\Common\Annotations\AnnotationException;
  *
  * @Annotation()
  * @Annotation\Target({"PROPERTY"})
+ * @Attributes({
+ *    @Attribute("type", required=true, type="string"),
+ *    @Attribute("value", required=false, type="string")
+ * })
  */
 class Anonymize
 {
