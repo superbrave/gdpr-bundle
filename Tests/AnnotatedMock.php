@@ -52,7 +52,7 @@ class AnnotatedMock
     /**
      * The quux property.
      *
-     * @GDPR\Export(fieldName="quuxs")
+     * @GDPR\Export(alias="quuxs")
      *
      * @var ArrayCollection
      */

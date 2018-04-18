@@ -26,9 +26,9 @@ use Doctrine\Common\Annotations\Annotation;
 class Export
 {
     /**
-     * Use given name instead of column name in the exported data.
+     * The alias is used as name/key for the exported value instead of property name.
      *
      * @var string
      */
-    public $fieldName;
+    public $alias;
 }

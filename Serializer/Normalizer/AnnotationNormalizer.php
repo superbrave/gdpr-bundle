@@ -98,8 +98,8 @@ class AnnotationNormalizer implements NormalizerInterface, SerializerAwareInterf
 
         foreach ($propertyAnnotations as $propertyName => $propertyAnnotation) {
             $propertyValue = $this->getPropertyValue($object, $propertyName);
-            if (property_exists($propertyAnnotation, 'fieldName') && isset($propertyAnnotation->fieldName)) {
-                $propertyName = $propertyAnnotation->fieldName;
+            if (property_exists($propertyAnnotation, 'alias') && isset($propertyAnnotation->alias)) {
+                $propertyName = $propertyAnnotation->alias;
             }
 
             $normalizedData[$propertyName] = $propertyValue;
