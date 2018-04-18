@@ -25,7 +25,8 @@ class AnnotationReader extends DoctrineAnnotationReader
     /**
      * Returns a list of annotation instances for the properties having the specified annotation.
      *
-     * @param ReflectionClass $class
+     * @param ReflectionClass $class          The ReflectionClass of the class from which
+     *                                        the class annotations should be read
      * @param string          $annotationName The FQCN of the annotation class
      *
      * @return object[]

@@ -34,6 +34,8 @@ class AnnotationReaderTest extends PHPUnit_Framework_TestCase
 
     /**
      * Creates a new AnnotationReader instance for testing.
+     *
+     * @return void
      */
     public function setUp()
     {
@@ -47,6 +49,8 @@ class AnnotationReaderTest extends PHPUnit_Framework_TestCase
 
     /**
      * Tests if AnnotationReader::getPropertiesWithAnnotation returns a keyed array with the annotation instances.
+     *
+     * @return void
      */
     public function testGetPropertiesWithAnnotation()
     {
