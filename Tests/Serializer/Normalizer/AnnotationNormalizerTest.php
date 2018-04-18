@@ -123,7 +123,7 @@ class AnnotationNormalizerTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function testSupportsNormalizationReturnsFalseWhenAnnotationReaderReturnsAnnotations()
+    public function testSupportsNormalizationReturnsTrueWhenAnnotationReaderReturnsAnnotations()
     {
         $this->annotationReaderMock->expects($this->once())
             ->method('getPropertiesWithAnnotation')
