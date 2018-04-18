@@ -26,8 +26,8 @@ use Doctrine\Common\Annotations\AnnotationException;
  * @Annotation()
  * @Annotation\Target({"PROPERTY"})
  * @Attributes({
- *    @Attribute("type", required=true, type="string"),
- *    @Attribute("value", required=false, type="string")
+ *    @Attribute("type",               required=true, type="string"),
+ *    @Attribute("value",              required=false, type="string")
  * })
  */
 class Anonymize
@@ -50,6 +50,7 @@ class Anonymize
 
     /**
      * Anonymize an IP field by setting the last bytes to 0
+     *
      * @see https://support.google.com/analytics/answer/2763052
      *
      * Supports string fields only
@@ -95,6 +96,7 @@ class Anonymize
      * If this type is 'Fixed' then a value has to be passed in as second argument
      *
      * @param array $arguments Array of arguments passed into the annotation
+     *
      * @throws \Exception
      * @throws AnnotationException
      */
