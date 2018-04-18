@@ -43,8 +43,10 @@ class Anonymize
     const TYPE_TRUNCATE = 'truncate';
 
     /**
-     * Anonymize an IP field by filling in 127.0.0.1
-     * If this is a string field, INET_ATON will be used instead.
+     * Anonymize an IP field by setting the last bytes to 0
+     * @see https://support.google.com/analytics/answer/2763052
+     *
+     * Supports string fields only
      */
     const TYPE_IP = 'ip';
 
@@ -55,7 +57,7 @@ class Anonymize
     const TYPE_FIXED = 'fixed';
 
     /**
-     * Anonymize an email to "<primaryKey>@example.com"
+     * Anonymize an email to "<primaryKey>@localhost"
      */
     const TYPE_EMAIL = 'email';
 
@@ -63,11 +65,11 @@ class Anonymize
      * The type used to specify what kind of anonymizer should be used for the field
      *
      * @Annotation\Enum({
-     *     Anonymize::TYPE_STRING
-     *     Anonymize::TYPE_IP
-     *     Anonymize::TYPE_FIXED
-     *     Anonymize::TYPE_EMAIL
-     *     Anonymize::TYPE_CONCAT
+     *     Anonymize::TYPE_STRING,
+     *     Anonymize::TYPE_IP,
+     *     Anonymize::TYPE_FIXED,
+     *     Anonymize::TYPE_EMAIL,
+     *     Anonymize::TYPE_CONCAT,
      *     Anonymize::TYPE_TRUNCATE
      * })
      *
@@ -87,6 +89,8 @@ class Anonymize
      * If this type is 'Fixed' then a value has to be passed in as second argument
      *
      * @param array $arguments Array of arguments passed into the annotation
+     * @throws \Exception
+     * @throws AnnotationException
      */
     public function __construct(array $arguments)
     {
