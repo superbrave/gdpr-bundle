@@ -4,3 +4,14 @@ services:
 
     super_brave_gdpr.annotation.reader:
         class: SuperBrave\GdprBundle\Annotation\AnnotationReader
+
+    super_brave_gdpr.anonymizer_manager:
+        class: SuperBrave\GdprBundle\Anonymizer\AnonymizerManager
+        public: true
+        arguments:
+            - []
+
+    super_brave_gdpr.no_anonymizer:
+        class: SuperBrave\GdprBundle\Anonymizer\NoAnonymizer
+        tags:
+            { name: super_brave_gdpr.anonymizer }
