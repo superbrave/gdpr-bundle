@@ -52,7 +52,7 @@ class AnnotatedMock
     /**
      * The quux property.
      *
-     * @GDPR\Export()
+     * @GDPR\Export(fieldName="quuxs")
      *
      * @var ArrayCollection
      */
@@ -72,7 +72,12 @@ class AnnotatedMock
      */
     public function __construct(AnnotatedMock $annotatedMock = null)
     {
-        $this->quux = new ArrayCollection(array($annotatedMock));
+        $elements = array();
+        if ($annotatedMock instanceof AnnotatedMock) {
+            $elements[] = $annotatedMock;
+        }
+
+        $this->quux = new ArrayCollection($elements);
     }
 
     /**
