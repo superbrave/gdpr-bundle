@@ -1,4 +1,6 @@
 services:
-#    super_brave_gdpr.example:
-#        class: SuperBrave\GdprBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    _defaults:
+        public: false
+
+    super_brave_gdpr.annotation.reader:
+        class: SuperBrave\GdprBundle\Annotation\AnnotationReader
