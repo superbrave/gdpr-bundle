@@ -9,7 +9,8 @@
   ],
   "licence"    : "MIT License",
   "require"    : {
-    "php"            : ">=5.6.0",
+    "php": ">=5.6.0",
+    "doctrine/annotations": "^1.4",
     "symfony/framework-bundle": "^3.0.0"
   },
   "require-dev": {
@@ -23,6 +24,7 @@
     "bin-dir"    : "bin",
     "platform"   : {
       "php": "5.6.0"
-    }
+    },
+    "sort-packages": true
   }
 }
