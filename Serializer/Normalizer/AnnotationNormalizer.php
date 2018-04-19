@@ -18,18 +18,14 @@ use SuperBrave\GdprBundle\Annotation\AnnotationReader;
 use Symfony\Component\PropertyAccess\Exception\NoSuchPropertyException;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\Serializer\SerializerAwareInterface;
-use Symfony\Component\Serializer\SerializerAwareTrait;
 
 /**
  * Normalizes object data based on the specified property annotation.
  *
  * @author Niels Nijens <nn@superbrave.nl>
  */
-class AnnotationNormalizer implements NormalizerInterface, SerializerAwareInterface
+class AnnotationNormalizer implements NormalizerInterface
 {
-    use SerializerAwareTrait;
-
     /**
      * The AnnotationReader instance.
      *
