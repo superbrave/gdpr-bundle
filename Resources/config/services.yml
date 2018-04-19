@@ -5,13 +5,11 @@ services:
     super_brave_gdpr.annotation.reader:
         class: SuperBrave\GdprBundle\Annotation\AnnotationReader
 
-    super_brave_gdpr.anonymizer_manager:
-        class: SuperBrave\GdprBundle\Anonymizer\AnonymizerManager
+    super_brave_gdpr.anonymizer_collection:
+        class: SuperBrave\GdprBundle\Anonymizer\AnonymizerCollection
         public: true
-        arguments:
-            - []
 
-    super_brave_gdpr.no_anonymizer:
-        class: SuperBrave\GdprBundle\Anonymizer\NoAnonymizer
+    super_brave_gdpr.fixed_value_anonymizer:
+        class: SuperBrave\GdprBundle\Anonymizer\FixedValueAnonymizer
         tags:
-            { name: super_brave_gdpr.anonymizer }
+            - { name: super_brave_gdpr.anonymizer, type: fixedValue }

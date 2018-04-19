@@ -3,11 +3,11 @@
 namespace SuperBrave\GdprBundle\Anonymizer;
 
 /**
- * Class NoAnonymizer
+ * Class FixedValueAnonymizer
  *
  * @package SuperBrave\GdprBundle\Anonymizer
  */
-class NoAnonymizer implements AnonymizerInterface
+class FixedValueAnonymizer implements AnonymizerInterface
 {
 
 }
