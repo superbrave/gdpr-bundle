@@ -19,8 +19,8 @@ namespace SuperBrave\GdprBundle\Anonymizer;
  */
 class FixedValueAnonymizer implements AnonymizerInterface
 {
-    public function anonymize($propertyValue, $annotationValue)
+    public function anonymize($propertyValue, array $options = [])
     {
-        return $annotationValue;
+        return $options['annotationValue'];
     }
 }

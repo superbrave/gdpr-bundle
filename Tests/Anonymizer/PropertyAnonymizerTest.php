@@ -79,7 +79,7 @@ class PropertyAnonymizerTest extends TestCase
         $anonymizerMock
             ->expects($this->once())
             ->method('anonymize')
-            ->with($this->annotatedMock->getFoo(), 'testvalue')
+            ->with($this->annotatedMock->getFoo())
             ->willReturn('anonymizedValue');
 
         $this->propertyAnonymizer->anonymizeField(

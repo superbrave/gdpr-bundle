@@ -29,9 +29,11 @@ class FixedValueAnonymizerTest extends PHPUnit_Framework_TestCase
     {
         $anonymizer = new FixedValueAnonymizer();
 
-        $propertyValue = '';
-        $annotationValue = [];
+        $propertyValue = 'foobar';
+        $annotationValue = 'testvalue';
 
-        $this->assertEquals($annotationValue, $anonymizer->anonymize($propertyValue, $annotationValue));
+        $this->assertEquals($annotationValue, $anonymizer->anonymize($propertyValue, array(
+            'annotationValue' => $annotationValue
+        )));
     }
 }
