@@ -13,9 +13,8 @@
 namespace SuperBrave\GdprBundle\Serializer\Normalizer;
 
 use ReflectionClass;
-use ReflectionProperty;
 use SuperBrave\GdprBundle\Annotation\AnnotationReader;
-use Symfony\Component\PropertyAccess\Exception\NoSuchPropertyException;
+use SuperBrave\GdprBundle\Manipulator\PropertyManipulator;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
@@ -45,23 +44,23 @@ class AnnotationNormalizer implements NormalizerInterface
      *
      * @var PropertyAccessorInterface
      */
-    private $propertyAccessor;
+    private $propertyManipulator;
 
     /**
      * Constructs a new AnnotationNormalizer instance.
      *
-     * @param AnnotationReader          $annotationReader The AnnotationReader instance
-     * @param string                    $annotationName   The FQCN of the annotation class
-     * @param PropertyAccessorInterface $propertyAccessor The property accessor instance
+     * @param AnnotationReader    $annotationReader    The AnnotationReader instance
+     * @param string              $annotationName      The FQCN of the annotation class
+     * @param PropertyManipulator $propertyManipulator The property accessor instance
      */
     public function __construct(
         AnnotationReader $annotationReader,
         $annotationName,
-        PropertyAccessorInterface $propertyAccessor
+        PropertyManipulator $propertyManipulator
     ) {
         $this->annotationReader = $annotationReader;
         $this->annotationName = $annotationName;
-        $this->propertyAccessor = $propertyAccessor;
+        $this->propertyManipulator = $propertyManipulator;
     }
 
     /**
@@ -104,7 +103,7 @@ class AnnotationNormalizer implements NormalizerInterface
         );
 
         foreach ($propertyAnnotations as $propertyName => $propertyAnnotation) {
-            $propertyValue = $this->getPropertyValue($object, $propertyName);
+            $propertyValue = $this->propertyManipulator->getPropertyValue($object, $propertyName);
             if (property_exists($propertyAnnotation, 'alias') && isset($propertyAnnotation->alias)) {
                 $propertyName = $propertyAnnotation->alias;
             }
@@ -113,27 +112,5 @@ class AnnotationNormalizer implements NormalizerInterface
         }
 
         return $normalizedData;
-    }
-
-    /**
-     * Returns the value of specified property through the getter of the object.
-     *
-     * @param object $object       The object being normalized
-     * @param string $propertyName The property name where the value gotten from
-     *
-     * @return mixed
-     */
-    private function getPropertyValue($object, $propertyName)
-    {
-        try {
-            $propertyData = $this->propertyAccessor->getValue($object, $propertyName);
-        } catch (NoSuchPropertyException $exception) {
-            $reflectionProperty = new ReflectionProperty($object, $propertyName);
-            $reflectionProperty->setAccessible(true);
-
-            $propertyData = $reflectionProperty->getValue($object);
-        }
-
-        return $propertyData;
     }
 }

@@ -13,9 +13,11 @@
 namespace SuperBrave\GdprBundle\Tests\Serializer\Normalizer;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use PHPUnit_Framework_MockObject_MockObject;
 use ReflectionClass;
 use SuperBrave\GdprBundle\Annotation\AnnotationReader;
 use SuperBrave\GdprBundle\Annotation\Export;
+use SuperBrave\GdprBundle\Manipulator\PropertyManipulator;
 use SuperBrave\GdprBundle\Serializer\Normalizer\AnnotationNormalizer;
 use SuperBrave\GdprBundle\Tests\AnnotatedMock;
 use Symfony\Component\PropertyAccess\PropertyAccess;
@@ -49,7 +51,7 @@ class AnnotationNormalizerTest extends \PHPUnit_Framework_TestCase
      *
      * @var PHPUnit_Framework_MockObject_MockObject
      */
-    private $propertyAccessorMock;
+    private $propertyManipulatorMock;
 
     /**
      * Creates a new AnnotationNormalizer instance for testing.
@@ -62,13 +64,14 @@ class AnnotationNormalizerTest extends \PHPUnit_Framework_TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->propertyAccessorMock = $this->getMockBuilder(PropertyAccessorInterface::class)
+        $this->propertyManipulatorMock = $this->getMockBuilder(PropertyManipulator::class)
+            ->disableOriginalConstructor()
             ->getMock();
 
         $this->normalizer = new AnnotationNormalizer(
             $this->annotationReaderMock,
             Export::class,
-            $this->propertyAccessorMock
+            $this->propertyManipulatorMock
         );
     }
 
@@ -81,7 +84,7 @@ class AnnotationNormalizerTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertAttributeSame($this->annotationReaderMock, 'annotationReader', $this->normalizer);
         $this->assertAttributeSame(Export::class, 'annotationName', $this->normalizer);
-        $this->assertAttributeSame($this->propertyAccessorMock, 'propertyAccessor', $this->normalizer);
+        $this->assertAttributeSame($this->propertyManipulatorMock, 'propertyManipulator', $this->normalizer);
     }
 
     /**
@@ -146,9 +149,11 @@ class AnnotationNormalizerTest extends \PHPUnit_Framework_TestCase
     public function testNormalize()
     {
         $annotationReader = new AnnotationReader();
-        $propertyAccessor = PropertyAccess::createPropertyAccessor();
+        $propertyManipulator = new PropertyManipulator(
+            PropertyAccess::createPropertyAccessor()
+        );
 
-        $normalizer = new AnnotationNormalizer($annotationReader, Export::class, $propertyAccessor);
+        $normalizer = new AnnotationNormalizer($annotationReader, Export::class, $propertyManipulator);
 
         $annotatedMock = new AnnotatedMock();
 
@@ -173,9 +178,11 @@ class AnnotationNormalizerTest extends \PHPUnit_Framework_TestCase
     public function testNormalizeThroughSerializer()
     {
         $annotationReader = new AnnotationReader();
-        $propertyAccessor = PropertyAccess::createPropertyAccessor();
+        $propertyManipulator = new PropertyManipulator(
+            PropertyAccess::createPropertyAccessor()
+        );
 
-        $normalizer = new AnnotationNormalizer($annotationReader, Export::class, $propertyAccessor);
+        $normalizer = new AnnotationNormalizer($annotationReader, Export::class, $propertyManipulator);
         $encoder = new XmlEncoder('mock');
 
         $serializer = new Serializer(
