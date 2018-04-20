@@ -14,6 +14,7 @@ services:
 
     super_brave_gdpr.exporter.serializer:
         class: Symfony\Component\Serializer\Serializer
+        factory: ["SuperBrave\\GdprBundle\\DependencyInjection\\ObjectFactory", "createSerializer"]
         arguments:
             - !tagged "super_brave_gdpr.serializer.normalizer"
             - !tagged "super_brave_gdpr.serializer.encoder"
