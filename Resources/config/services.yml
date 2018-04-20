@@ -15,7 +15,7 @@ services:
     super_brave_gdpr.exporter.serializer:
         class: Symfony\Component\Serializer\Serializer
         arguments:
-            - ["@super_brave_gdpr.exporter.serializer.normalizer.annotation"]
+            - ["@super_brave_gdpr.exporter.serializer.normalizer.export_annotation"]
             - [
                 "@super_brave_gdpr.exporter.serializer.encoder.xml",
                 "@super_brave_gdpr.exporter.serializer.encoder.json"
