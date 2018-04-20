@@ -9,5 +9,10 @@ namespace SuperBrave\GdprBundle\Anonymizer;
  */
 interface AnonymizerInterface
 {
-
+    /**
+     * @param mixed $propertyValue
+     * @param mixed $annotationValue
+     * @return mixed
+     */
+    public function anonymize($propertyValue, $annotationValue);
 }
