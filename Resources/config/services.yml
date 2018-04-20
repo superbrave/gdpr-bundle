@@ -36,3 +36,12 @@ services:
 
     super_brave_gdpr.exporter.property_accessor:
         class: Symfony\Component\PropertyAccess\PropertyAccessor
+        
+    super_brave_gdpr.anonymizer_collection:
+        class: SuperBrave\GdprBundle\Anonymizer\AnonymizerCollection
+        public: true
+
+    super_brave_gdpr.fixed_value_anonymizer:
+        class: SuperBrave\GdprBundle\Anonymizer\FixedValueAnonymizer
+        tags:
+            - { name: super_brave_gdpr.anonymizer, type: fixedValue }
