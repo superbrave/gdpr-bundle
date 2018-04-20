@@ -16,13 +16,6 @@ class AnonymizerCollection
      */
     private $anonymizers = array();
 
-    public function __construct($strategies)
-    {
-        foreach ($strategies as $strategy) {
-            var_dump($strategy);
-        }
-    }
-
     /**
      * @param string $type
      * @param AnonymizerInterface $anonymizer
@@ -30,8 +23,9 @@ class AnonymizerCollection
     public function addAnonymizer($type, $anonymizer)
     {
         if (array_key_exists($type, $this->anonymizers)) {
-            throw new LogicException(sprintf('You moron! %s already exists!', $type));
+            throw new LogicException(sprintf('Anonymizer %s already exists.', $type));
         }
+
         $this->anonymizers[$type] = $anonymizer;
     }
 
@@ -41,6 +35,10 @@ class AnonymizerCollection
      */
     public function getAnonymizer($type)
     {
+        if (!array_key_exists($type, $this->anonymizers)) {
+            throw new LogicException(sprintf('Anonymizer %s is not registered.', $type));
+        }
+
         return $this->anonymizers[$type];
     }
 }
