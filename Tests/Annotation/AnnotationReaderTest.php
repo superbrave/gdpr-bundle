@@ -60,9 +60,9 @@ class AnnotationReaderTest extends PHPUnit_Framework_TestCase
         );
 
         $this->assertInternalType('array', $result);
-        $this->assertCount(4, $result);
+        $this->assertCount(5, $result);
         $this->assertSame(
-            array('foo', 'baz', 'qux', 'quux'),
+            array('foo', 'baz', 'qux', 'quux', 'annotatedPropertyWithoutMethod'),
             array_keys($result)
         );
         $this->assertInstanceOf(Export::class, current($result));

@@ -52,11 +52,20 @@ class AnnotatedMock
     /**
      * The quux property.
      *
-     * @GDPR\Export()
+     * @GDPR\Export(alias="quuxs")
      *
      * @var ArrayCollection
      */
     private $quux;
+
+    /**
+     * The property that is annotated with the Export annotation, but without getter method.
+     *
+     * @GDPR\Export()
+     *
+     * @var bool
+     */
+    private $annotatedPropertyWithoutMethod = true;
 
     /**
      * The property that is not annotated with the Export annotation.
@@ -72,7 +81,12 @@ class AnnotatedMock
      */
     public function __construct(AnnotatedMock $annotatedMock = null)
     {
-        $this->quux = new ArrayCollection(array($annotatedMock));
+        $elements = array();
+        if ($annotatedMock instanceof AnnotatedMock) {
+            $elements[] = $annotatedMock;
+        }
+
+        $this->quux = new ArrayCollection($elements);
     }
 
     /**
