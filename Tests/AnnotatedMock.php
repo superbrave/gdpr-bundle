@@ -14,13 +14,14 @@ namespace SuperBrave\GdprBundle\Tests;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use SuperBrave\GdprBundle\Annotation as GDPR;
+use SuperBrave\GdprBundle\Export\ObjectExportInterface;
 
 /**
  * Class used to test the @see GDPR\AnnotationReader.
  *
  * @author Niels Nijens <nn@superbrave.nl>
  */
-class AnnotatedMock
+class AnnotatedMock implements ObjectExportInterface
 {
     /**
      * The foo property.

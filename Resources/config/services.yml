@@ -5,6 +5,13 @@ services:
     super_brave_gdpr.annotation.reader:
         class: SuperBrave\GdprBundle\Annotation\AnnotationReader
 
+    super_brave_gdpr.exporter:
+        class: SuperBrave\GdprBundle\Export\Exporter
+        arguments:
+            - "@super_brave_gdpr.exporter.serializer"
+            - "xml"
+        public: true
+
     super_brave_gdpr.exporter.serializer:
         class: Symfony\Component\Serializer\Serializer
         arguments:
