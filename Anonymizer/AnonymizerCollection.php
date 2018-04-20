@@ -1,4 +1,14 @@
 <?php
+/**
+ * This file is part of the GDPR bundle.
+ *
+ * @category  Bundle
+ * @package   Gdpr
+ * @author    SuperBrave <info@superbrave.nl>
+ * @copyright 2018 SuperBrave <info@superbrave.nl>
+ * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
+ * @link      https://www.superbrave.nl/
+ */
 
 namespace SuperBrave\GdprBundle\Anonymizer;
 
@@ -14,10 +24,10 @@ class AnonymizerCollection
     /**
      * @var AnonymizerInterface[]
      */
-    private $anonymizers = array();
+    private $anonymizers = [];
 
     /**
-     * @param string $type
+     * @param string              $type
      * @param AnonymizerInterface $anonymizer
      */
     public function addAnonymizer($type, $anonymizer)

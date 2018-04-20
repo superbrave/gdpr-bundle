@@ -1,4 +1,14 @@
 <?php
+/**
+ * This file is part of the GDPR bundle.
+ *
+ * @category  Bundle
+ * @package   Gdpr
+ * @author    SuperBrave <info@superbrave.nl>
+ * @copyright 2018 SuperBrave <info@superbrave.nl>
+ * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
+ * @link      https://www.superbrave.nl/
+ */
 
 namespace SuperBrave\GdprBundle\Tests\Anonymizer;
 
@@ -11,9 +21,14 @@ use SuperBrave\GdprBundle\Anonymizer\AnonymizerInterface;
 use SuperBrave\GdprBundle\Anonymizer\PropertyAnonymizer;
 use SuperBrave\GdprBundle\Tests\AnnotatedMock;
 
+/**
+ * Test the behaviour of the PropertyAnonymizer
+ */
 class PropertyAnonymizerTest extends TestCase
 {
     /**
+     * Mock to test Annotations
+     *
      * @var AnnotatedMock
      */
     private $annotatedMock;
@@ -45,6 +60,9 @@ class PropertyAnonymizerTest extends TestCase
         $this->reflectionClass = new ReflectionClass(AnnotatedMock::class);
     }
 
+    /**
+     * #TODO Proper name and docblock
+     */
     public function testSomething()
     {
         $reflectionProperty = $this->reflectionClass->getProperty('foo');
