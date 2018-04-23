@@ -61,9 +61,9 @@ class PropertyAnonymizerTest extends TestCase
     }
 
     /**
-     * #TODO Proper name and docblock
+     * Test that the property anonymizer correctly utilizes the anonymizercollection to anonymize a property
      */
-    public function testSomething()
+    public function testPropertyAnonymizerUsesAnonymizerCollection()
     {
         $reflectionProperty = $this->reflectionClass->getProperty('foo');
         $annotation = new Anonymize(['type' => 'testtype', 'value' => 'testvalue']);
