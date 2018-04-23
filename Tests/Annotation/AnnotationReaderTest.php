@@ -17,6 +17,7 @@ use ReflectionClass;
 use SuperBrave\GdprBundle\Annotation\AnnotationReader;
 use SuperBrave\GdprBundle\Annotation\Export;
 use SuperBrave\GdprBundle\Tests\AnnotatedMock;
+use SuperBrave\GdprBundle\Tests\ExtendedAnnotedMock;
 
 /**
  * AnnotationReaderTest.
@@ -63,6 +64,28 @@ class AnnotationReaderTest extends PHPUnit_Framework_TestCase
         $this->assertCount(5, $result);
         $this->assertSame(
             array('foo', 'baz', 'qux', 'quux', 'annotatedPropertyWithoutMethod'),
+            array_keys($result)
+        );
+        $this->assertInstanceOf(Export::class, current($result));
+    }
+
+    /**
+     * Tests if AnnotationReader::getPropertiesWithAnnotation returns a keyed array with the annotation instances
+     * of both the class and the parent class.
+     *
+     * @return void
+     */
+    public function testGetPropertiesWithAnnotationForExtendedClass()
+    {
+        $result = $this->annotationReader->getPropertiesWithAnnotation(
+            new ReflectionClass(ExtendedAnnotedMock::class),
+            Export::class
+        );
+
+        $this->assertInternalType('array', $result);
+        $this->assertCount(6, $result);
+        $this->assertSame(
+            array('extendedProperty', 'foo', 'baz', 'qux', 'quux', 'annotatedPropertyWithoutMethod'),
             array_keys($result)
         );
         $this->assertInstanceOf(Export::class, current($result));
