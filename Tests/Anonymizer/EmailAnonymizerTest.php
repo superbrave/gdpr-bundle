@@ -12,7 +12,7 @@
 
 namespace SuperBrave\GdprBundle\Tests\Anonymizer;
 
-use SuperBrave\GdprBundle\Anonymizer\EmailAnonymizer;
+use SuperBrave\GdprBundle\Anonymize\EmailAnonymizer;
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 use Symfony\Component\OptionsResolver\Exception\MissingOptionsException;
 

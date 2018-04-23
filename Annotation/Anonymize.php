@@ -104,7 +104,9 @@ class Anonymize
     public function __construct(array $arguments)
     {
         $this->type = $arguments['type'];
-        $this->value = $arguments['value'];
+        if (array_key_exists('value', $arguments)) {
+            $this->value = $arguments['value'];
+        }
 
         if (self::TYPE_FIXED === $this->type && null === $this->value) {
             throw new AnnotationException("'fixed' type requires 'value' property to be set.");

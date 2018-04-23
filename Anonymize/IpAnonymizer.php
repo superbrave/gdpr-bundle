@@ -10,7 +10,7 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace SuperBrave\GdprBundle\Anonymizer;
+namespace SuperBrave\GdprBundle\Anonymize;
 
 use InvalidArgumentException;
 

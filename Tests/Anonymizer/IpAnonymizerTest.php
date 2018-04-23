@@ -14,7 +14,7 @@ namespace SuperBrave\GdprBundle\Tests\Anonymizer;
 
 
 use PHPUnit\Framework\TestCase;
-use SuperBrave\GdprBundle\Anonymizer\IpAnonymizer;
+use SuperBrave\GdprBundle\Anonymize\IpAnonymizer;
 
 class IpAnonymizerTest extends TestCase
 {
