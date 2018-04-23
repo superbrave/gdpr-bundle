@@ -14,16 +14,33 @@ namespace SuperBrave\GdprBundle\Tests\Anonymizer;
 
 use PHPUnit_Framework_TestCase;
 use SuperBrave\GdprBundle\Anonymizer\FixedValueAnonymizer;
+use Symfony\Component\OptionsResolver\Exception\MissingOptionsException;
 
 /**
- * tests the behaviour of the FixedValueAnonynizer
+ * Tests the behaviour of the FixedValueAnonynizer
  */
 class FixedValueAnonymizerTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * The "annotationValue" option is required for this anonymier to work
+     *
+     * @return void
+     */
+    public function testAnnotationValueIsARequiredOption()
+    {
+        $this->expectException(MissingOptionsException::class);
+        $this->expectExceptionMessage('The required option "annotationValue" is missing');
+
+        $anonymizer = new FixedValueAnonymizer();
+        $anonymizer->anonymize('johndoe');
+    }
+
+    /**
      * Tests the anonymization with a fixed value
      *
      * The returned value hould be the same as the provided one
+     *
+     * @return void
      */
     public function testAnonymize()
     {

@@ -12,6 +12,8 @@
 
 namespace SuperBrave\GdprBundle\Anonymizer;
 
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
 /**
  * Class FixedValueAnonymizer
  *
@@ -21,6 +23,15 @@ class FixedValueAnonymizer implements AnonymizerInterface
 {
     public function anonymize($propertyValue, array $options = [])
     {
+        $resolver = new OptionsResolver();
+        $this->configureOptions($resolver);
+        $options = $resolver->resolve($options);
+
         return $options['annotationValue'];
+    }
+
+    private function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setRequired(['annotationValue']);
     }
 }
