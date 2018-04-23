@@ -16,6 +16,11 @@ use ReflectionProperty;
 use SuperBrave\GdprBundle\Annotation\Anonymize;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 
+/**
+ * Class PropertyAnonymizer
+ *
+ * @package SuperBrave\GdprBundle\Anonymizer
+ */
 class PropertyAnonymizer
 {
     /**
@@ -28,6 +33,14 @@ class PropertyAnonymizer
         $this->anonymizerCollection = $anonymizerCollection;
     }
 
+    /**
+     * Anonymize the property the annotation is on.
+     * Takes into account the type specified in the annotation
+     *
+     * @param $object
+     * @param ReflectionProperty $property
+     * @param Anonymize $annotation
+     */
     public function anonymizeField($object, ReflectionProperty $property, Anonymize $annotation)
     {
         $anonymizer = $this->anonymizerCollection->getAnonymizer($annotation->type);

@@ -55,6 +55,9 @@ class EmailAnonymizerTest extends \PHPUnit_Framework_TestCase
         ]);
     }
 
+    /**
+     * The ID option HAS to be of type integer
+     */
     public function testIdOptionshasToBeAnInteger()
     {
         $this->expectException(InvalidOptionsException::class);
@@ -62,11 +65,14 @@ class EmailAnonymizerTest extends \PHPUnit_Framework_TestCase
 
         $anonymizer = new EmailAnonymizer();
         $anonymizer->anonymize('johndoe@appleseed.com', [
-            'id' => 'invalid',
+            'id' => 'not an integer',
             'fieldName' => 'email',
         ]);
     }
 
+    /**
+     * The fieldName option HAS to be of type string
+     */
     public function testFieldOptionshasToBeAnString()
     {
         $this->expectException(InvalidOptionsException::class);
