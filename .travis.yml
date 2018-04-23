@@ -17,3 +17,8 @@ before_script:
 script:
   - bin/phpunit --log-junit build/logs/phpunit.xml
   - bin/phpcs --report-full --report-junit=build/logs/phpcs.xml
+
+branches:
+    only:
+        - master
+        - /^\d+\.\d+(\.\d+)?(-\S*)?$/
