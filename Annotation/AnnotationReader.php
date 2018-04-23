@@ -43,6 +43,14 @@ class AnnotationReader extends DoctrineAnnotationReader
             }
         }
 
+        $parentClass = $class->getParentClass();
+        if ($parentClass instanceof ReflectionClass) {
+            $annotatedProperties = array_merge(
+                $annotatedProperties,
+                $this->getPropertiesWithAnnotation($parentClass, $annotationName)
+            );
+        }
+
         return $annotatedProperties;
     }
 }
