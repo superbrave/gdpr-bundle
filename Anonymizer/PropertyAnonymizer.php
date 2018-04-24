@@ -14,6 +14,7 @@ namespace SuperBrave\GdprBundle\Anonymizer;
 
 use ReflectionProperty;
 use SuperBrave\GdprBundle\Annotation\Anonymize;
+use SuperBrave\GdprBundle\Manipulator\PropertyManipulator;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 
 /**
@@ -24,12 +25,18 @@ use Symfony\Component\PropertyAccess\PropertyAccessor;
 class PropertyAnonymizer
 {
     /**
+     * @var PropertyManipulator
+     */
+    private $propertyManipulator;
+
+    /**
      * @var AnonymizerCollection
      */
     private $anonymizerCollection;
 
-    public function __construct(AnonymizerCollection $anonymizerCollection)
+    public function __construct(PropertyManipulator $propertyManipulator, AnonymizerCollection $anonymizerCollection)
     {
+        $this->propertyManipulator = $propertyManipulator;
         $this->anonymizerCollection = $anonymizerCollection;
     }
 
@@ -38,22 +45,20 @@ class PropertyAnonymizer
      * Takes into account the type specified in the annotation
      *
      * @param $object
-     * @param ReflectionProperty $property
+     * @param string $property
      * @param Anonymize $annotation
      */
-    public function anonymizeField($object, ReflectionProperty $property, Anonymize $annotation)
+    public function anonymizeField($object, $property, Anonymize $annotation)
     {
         $anonymizer = $this->anonymizerCollection->getAnonymizer($annotation->type);
 
-        $property->setAccessible(true);
-
-        $propertyValue = $property->getValue($object);
+        $propertyValue = $this->propertyManipulator->getPropertyValue($object, $property);
 
         $newPropertyValue = $anonymizer->anonymize($propertyValue, array(
             'annotationValue' => $annotation->value,
             'object' => $object,
         ));
 
-        $property->setValue($object, $newPropertyValue);
+        $this->propertyManipulator->setPropertyValue($object, $property, $newPropertyValue);
     }
 }

@@ -19,6 +19,7 @@ use SuperBrave\GdprBundle\Annotation\Anonymize;
 use SuperBrave\GdprBundle\Anonymizer\AnonymizerCollection;
 use SuperBrave\GdprBundle\Anonymizer\AnonymizerInterface;
 use SuperBrave\GdprBundle\Anonymizer\PropertyAnonymizer;
+use SuperBrave\GdprBundle\Manipulator\PropertyManipulator;
 use SuperBrave\GdprBundle\Tests\AnnotatedMock;
 
 /**
@@ -27,11 +28,9 @@ use SuperBrave\GdprBundle\Tests\AnnotatedMock;
 class PropertyAnonymizerTest extends TestCase
 {
     /**
-     * Mock to test Annotations
-     *
-     * @var AnnotatedMock
+     * @var PHPUnit_Framework_MockObject_MockObject
      */
-    private $annotatedMock;
+    private $propertyManipulatorMock;
 
     /**
      * @var PHPUnit_Framework_MockObject_MockObject
@@ -50,46 +49,62 @@ class PropertyAnonymizerTest extends TestCase
 
     public function setUp()
     {
-        $this->annotatedMock = new AnnotatedMock();
-
         $this->anonymizerCollection = $this->getMockBuilder(AnonymizerCollection::class)
             ->getMock();
 
-        $this->propertyAnonymizer = new PropertyAnonymizer($this->anonymizerCollection);
+        $this->propertyManipulatorMock = $this->getMockBuilder(PropertyManipulator::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $this->propertyAnonymizer = new PropertyAnonymizer($this->propertyManipulatorMock, $this->anonymizerCollection);
 
         $this->reflectionClass = new ReflectionClass(AnnotatedMock::class);
     }
 
     /**
-     * Test that the property anonymizer correctly utilizes the anonymizercollection to anonymize a property
+     * Test that the property anonymizer correctly utilizes its dependencies to do its job
      */
-    public function testPropertyAnonymizerUsesAnonymizerCollection()
+    public function testPropertyAnonymizerUsesDependencies()
     {
-        $reflectionProperty = $this->reflectionClass->getProperty('foo');
         $annotation = new Anonymize();
-        $annotation->type = 'testtype';
-        $annotation->value = 'testvalue';
+        $annotation->type = 'testType';
+        $annotation->value = 'testValue';
 
         $anonymizerMock = $this->getMockBuilder(AnonymizerInterface::class)->getMock();
 
+        $theObject = new \StdClass();
+
+        //first it uses the collection to find an anonymizer
         $this->anonymizerCollection
             ->expects($this->once())
             ->method('getAnonymizer')
-            ->with('testtype')
+            ->with('testType')
             ->willReturn($anonymizerMock);
 
+        //then it uses the manipulator to get the property's value
+        $this->propertyManipulatorMock
+            ->expects($this->once())
+            ->method('getPropertyValue')
+            ->with($theObject, 'testProperty')
+            ->willReturn('testValue');
+
+        //after that the anonymizer is used to anonymize the value
         $anonymizerMock
             ->expects($this->once())
             ->method('anonymize')
-            ->with($this->annotatedMock->getFoo())
+            ->with('testValue')
             ->willReturn('anonymizedValue');
 
+        //and last the anonymized value should be handed back to the manipulator to update the object
+        $this->propertyManipulatorMock
+            ->expects($this->once())
+            ->method('setPropertyValue')
+            ->with($theObject, 'testProperty', 'anonymizedValue');
+
         $this->propertyAnonymizer->anonymizeField(
-            $this->annotatedMock,
-            $reflectionProperty,
+            $theObject,
+            'testProperty',
             $annotation
         );
-
-        $this->assertEquals('anonymizedValue', $this->annotatedMock->getFoo());
     }
 }
