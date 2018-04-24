@@ -33,7 +33,7 @@ class DateTimeAnonymizerTest extends TestCase
     }
 
     /**
-     * Returns a list of testcases for the testDateTimeObject test
+     * Returns a list of test cases for the testDateTimeObject test
      *
      * @return array
      */
@@ -49,6 +49,7 @@ class DateTimeAnonymizerTest extends TestCase
             'timestamp1' => [strtotime("1983-08-11"), strtotime("1983-01-01")],
             'timestamp2' => [strtotime("2016-04-27"), strtotime("2016-01-01")],
             'timestamp3' => [strtotime("2018-05-25 13:37:00"), strtotime("2018-01-01 00:00:00")],
+            'timestamp4' => [strtotime("1945-05-05"), strtotime("1945-01-01")],
 
             // Strings
             'stringdate1' => ["1983-08-11", "1983-01-01"],
