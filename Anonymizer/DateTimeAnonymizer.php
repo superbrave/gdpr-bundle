@@ -26,7 +26,7 @@ class DateTimeAnonymizer implements AnonymizerInterface
      * @param \DateTime|int|string $propertyValue  The value that has to be converted
      * @param array                $options        Options to help the anonymizer do its job
      *
-     * @return string The Anonymized string
+     * @return \DateTime|int|string The anonymized result
      *
      * @throws \Exception When the $propertyValue is invalid, an exception will be thrown
      */
@@ -72,7 +72,7 @@ class DateTimeAnonymizer implements AnonymizerInterface
     /**
      * Anonymize a DateTime string by setting day and month to 1, hours, minutes and seconds to 0.
      *
-     * @param string $dateTime The date/time as string
+     * @param string $dateTime The date/time as string in format "yyyy-mm-dd hh:ii:ss" or "yyyy-mm-dd"
      *
      * @return string|boolean False on failure
      */
@@ -88,7 +88,7 @@ class DateTimeAnonymizer implements AnonymizerInterface
             $matches[2] = $matches[4] = '01';                // month, day
             $matches[6] = $matches[8] = $matches[10] = '00'; // hours, minutes, seconds
 
-            // Glues the parts together again; seperators will be unmodified
+            // Glues the parts together again; separators will be unmodified
             return implode('', $matches);
         }
 
@@ -99,8 +99,11 @@ class DateTimeAnonymizer implements AnonymizerInterface
             $matches[0] = '';                 // Remove original string
             $matches[2] = $matches[4] = '01'; // month, day
 
-            // Glues the parts together again; seperators will be unmodified
+            // Glues the parts together again; separators will be unmodified
             return implode('', $matches);
         }
+
+        // No regex matches the string; unknown datetime format
+        return false;
     }
 }

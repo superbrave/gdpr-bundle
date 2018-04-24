@@ -33,7 +33,7 @@ class DateTimeAnonymizerTest extends TestCase
     }
 
     /**
-     * Returns a list of test cases for the testDateTimeObject test
+     * Returns a list of test cases for the testDateTime test
      *
      * @return array
      */
