@@ -72,7 +72,14 @@ class DateTimeAnonymizer implements AnonymizerInterface
     /**
      * Anonymize a DateTime string by setting day and month to 1, hours, minutes and seconds to 0.
      *
-     * @param string $dateTime The date/time as string in format "yyyy-mm-dd hh:ii:ss" or "yyyy-mm-dd"
+     * Currently supported string formats:
+     * - 1983-12-31 16:00:00
+     * - 1983-12-31T16:00:00
+     * - 1983-12-31
+     *
+     * What goes in, must come out, so the result will be the exact same format as the input.
+     *
+     * @param string $dateTime The date/time as string
      *
      * @return string|boolean False on failure
      */
