@@ -44,4 +44,11 @@ class IpAnonymizerTest extends TestCase
 
         $this->assertEquals('1234:5678:90ab:4520::', $anonymizer->anonymize('1234:5678:90ab:cdef:1234:5678:90ab:cdef', []));
     }
+
+    public function testIpv4AsLong()
+    {
+        $anonymizer = new IpAnonymizer('255.192.0.0');
+
+        $this->assertEquals(176160768, $anonymizer->anonymize(176954920, []));
+    }
 }
