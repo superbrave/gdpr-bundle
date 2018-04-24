@@ -66,7 +66,9 @@ class PropertyAnonymizerTest extends TestCase
     public function testPropertyAnonymizerUsesAnonymizerCollection()
     {
         $reflectionProperty = $this->reflectionClass->getProperty('foo');
-        $annotation = new Anonymize(['type' => 'testtype', 'value' => 'testvalue']);
+        $annotation = new Anonymize();
+        $annotation->type = 'testtype';
+        $annotation->value = 'testvalue';
 
         $anonymizerMock = $this->getMockBuilder(AnonymizerInterface::class)->getMock();
 
