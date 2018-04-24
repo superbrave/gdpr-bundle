@@ -50,7 +50,8 @@ class PropertyAnonymizer
         $propertyValue = $property->getValue($object);
 
         $newPropertyValue = $anonymizer->anonymize($propertyValue, array(
-            'annotationValue' => $annotation->value
+            'annotationValue' => $annotation->value,
+            'object' => $object,
         ));
 
         $property->setValue($object, $newPropertyValue);

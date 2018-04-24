@@ -34,52 +34,7 @@ use Doctrine\Common\Annotations\AnnotationException;
 class Anonymize
 {
     /**
-     * Alias of TYPE_CONCAT
-     */
-    const TYPE_STRING = 'string';
-
-    /**
-     * Anonymize a string to <columnName>-<primaryKey>
-     */
-    const TYPE_CONCAT = 'concat';
-
-    /**
-     * Anonymize a field by emptying it
-     * Alias of TYPE_FIXED with an empty value.
-     */
-    const TYPE_TRUNCATE = 'truncate';
-
-    /**
-     * Anonymize an IP field by setting the last bytes to 0
-     *
-     * @see https://support.google.com/analytics/answer/2763052
-     *
-     * Supports string fields only
-     */
-    const TYPE_IP = 'ip';
-
-    /**
-     * Anonymize by providing a fixed value
-     * Requires the value property to be given
-     */
-    const TYPE_FIXED = 'fixed';
-
-    /**
-     * Anonymize an email to "<primaryKey>@localhost"
-     */
-    const TYPE_EMAIL = 'email';
-
-    /**
      * The type used to specify what kind of anonymizer should be used for the field
-     *
-     * @Annotation\Enum({
-     *     Anonymize::TYPE_STRING,
-     *     Anonymize::TYPE_IP,
-     *     Anonymize::TYPE_FIXED,
-     *     Anonymize::TYPE_EMAIL,
-     *     Anonymize::TYPE_CONCAT,
-     *     Anonymize::TYPE_TRUNCATE
-     * })
      *
      * @var string
      */
@@ -91,23 +46,4 @@ class Anonymize
      * @var string
      */
     public $value;
-
-    /**
-     * Performs a validation check according to the type given.
-     * If this type is 'Fixed' then a value has to be passed in as second argument
-     *
-     * @param array $arguments Array of arguments passed into the annotation
-     *
-     * @throws \Exception
-     * @throws AnnotationException
-     */
-    public function __construct(array $arguments)
-    {
-        $this->type = $arguments['type'];
-        $this->value = $arguments['value'];
-
-        if (self::TYPE_FIXED === $this->type && null === $this->value) {
-            throw new AnnotationException("'fixed' type requires 'value' property to be set.");
-        }
-    }
 }

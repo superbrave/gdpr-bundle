@@ -31,12 +31,17 @@ class PropertyManipulator
     public function getPropertyValue($object, $propertyName)
     {
         try {
-            $propertyData = $this->propertyAccessor->getValue($object, $propertyName);
-        } catch (NoSuchPropertyException $exception) {
-            $reflectionProperty = new ReflectionProperty($object, $propertyName);
-            $reflectionProperty->setAccessible(true);
+            try {
+                $propertyData = $this->propertyAccessor->getValue($object, $propertyName);
+            } catch (NoSuchPropertyException $exception) {
+                $reflectionProperty = new ReflectionProperty($object, $propertyName);
+                $reflectionProperty->setAccessible(true);
 
-            $propertyData = $reflectionProperty->getValue($object);
+                $propertyData = $reflectionProperty->getValue($object);
+            }
+        } catch (\Exception $e) {
+            throw new \InvalidArgumentException(
+                sprintf('The property "$%s" does not exist on class "%s"', $propertyName, get_class($object)));
         }
 
         return $propertyData;
