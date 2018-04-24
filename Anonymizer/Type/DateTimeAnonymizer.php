@@ -24,6 +24,9 @@ class DateTimeAnonymizer implements AnonymizerInterface
     /**
      * Anonymizes a DateTime by setting month and day to 01 and hours, minutes and seconds to 00.
      *
+     * The return value will be of the same time as $propertyValue.
+     * For supported string formats, @see anonymizeByString
+     *
      * @param \DateTime|int|string $propertyValue The value that has to be converted
      * @param array                $options       Options to help the anonymizer do its job
      *
