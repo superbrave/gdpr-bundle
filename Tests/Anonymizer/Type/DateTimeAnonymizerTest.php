@@ -13,7 +13,7 @@
 namespace SuperBrave\GdprBundle\Tests\Anonymizer;
 
 use PHPUnit\Framework\TestCase;
-use SuperBrave\GdprBundle\Anonymizer\DateTimeAnonymizer;
+use SuperBrave\GdprBundle\Anonymizer\Type\DateTimeAnonymizer;
 
 /**
  * Class DateTimeAnonymizerTest
