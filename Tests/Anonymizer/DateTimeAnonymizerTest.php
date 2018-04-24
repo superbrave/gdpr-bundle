@@ -12,10 +12,14 @@
 
 namespace SuperBrave\GdprBundle\Tests\Anonymizer;
 
-
 use PHPUnit\Framework\TestCase;
 use SuperBrave\GdprBundle\Anonymizer\DateTimeAnonymizer;
 
+/**
+ * Class DateTimeAnonymizerTest
+ *
+ * @package Gdpr
+ */
 class DateTimeAnonymizerTest extends TestCase
 {
     /**
@@ -24,7 +28,9 @@ class DateTimeAnonymizerTest extends TestCase
      * @param \DateTime|int|string $testDate       The original date/time set
      * @param \DateTime|int|string $expectedResult The expected result after anonymizing the data
      *
-     * @dataProvider DateTimeDataProvider
+     * @return void
+     *
+     * @dataProvider dateTimeDataProvider
      */
     public function testDateTime($testDate, $expectedResult)
     {
@@ -37,7 +43,7 @@ class DateTimeAnonymizerTest extends TestCase
      *
      * @return array
      */
-    public function DateTimeDataProvider()
+    public function dateTimeDataProvider()
     {
         return array(
             // DateTime objects
