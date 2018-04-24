@@ -50,7 +50,6 @@ class DateTimeAnonymizer implements AnonymizerInterface
             return $result;
         }
 
-
         throw new \Exception("Invalid format of \$propertyValue for ".__CLASS__."::".__METHOD__);
     }
 
@@ -83,7 +82,7 @@ class DateTimeAnonymizer implements AnonymizerInterface
 
         // Splits up the string in year, month, day, hours, minutes and seconds
         preg_match(
-            '/([0-9]{2,4}-)([0-9]{2})(-)([0-9]{2})([\s|T]{1})([0-9]{2})(:)([0-9]{2})(:)([0-9]{2})/',
+            '/^([0-9]{2,4}-)([0-9]{2})(-)([0-9]{2})([\s|T]{1})([0-9]{2})(:)([0-9]{2})(:)([0-9]{2})$/',
             $dateTime,
             $matches
         );
@@ -98,7 +97,7 @@ class DateTimeAnonymizer implements AnonymizerInterface
         }
 
         // Splits up the string in year, month and day
-        preg_match('/([0-9]{2,4}-)([0-9]{2})(-)([0-9]{2})/', $dateTime, $matches);
+        preg_match('/^([0-9]{2,4}-)([0-9]{2})(-)([0-9]{2})$/', $dateTime, $matches);
         if ($matches) {
             // Resets specific keys
             $matches[0] = '';                 // Remove original string
