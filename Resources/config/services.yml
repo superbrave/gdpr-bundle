@@ -51,11 +51,16 @@ services:
         public: true
 
     super_brave_gdpr.fixed_value_anonymizer:
-        class: SuperBrave\GdprBundle\Anonymizer\FixedValueAnonymizer
+        class: SuperBrave\GdprBundle\Anonymizer\Type\FixedValueAnonymizer
         tags:
             - { name: super_brave_gdpr.anonymizer, type: fixedValue }
 
     super_brave_gdpr.date_time_anonymizer:
-        class: SuperBrave\GdprBundle\Anonymizer\DateTimeAnonymizer
+        class: SuperBrave\GdprBundle\Anonymizer\Type\DateTimeAnonymizer
         tags:
             - { name: super_brave_gdpr.anonymizer, type: dateTime }
+
+    super_brave_gdpr.ip_anonymizer:
+        class: SuperBrave\GdprBundle\Anonymizer\Type\IpAnonymizer
+        tags:
+            - { name: super_brave_gdpr.anonymizer, type: ip }

@@ -10,9 +10,9 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace SuperBrave\GdprBundle\Anonymizer;
+namespace SuperBrave\GdprBundle\Anonymizer\Type;
 
-use SuperBrave\GdprBundle\Annotation\Anonymize;
+use SuperBrave\GdprBundle\Anonymizer\AnonymizerInterface;
 
 /**
  * DateTime anonymizer class

@@ -10,11 +10,11 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace SuperBrave\GdprBundle\Anonymizer;
+namespace SuperBrave\GdprBundle\Anonymizer\Type;
 
+use SuperBrave\GdprBundle\Anonymizer\AnonymizerInterface;
 use SuperBrave\GdprBundle\Manipulator\PropertyManipulator;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
 
 /**
  * Email anonymizer class
