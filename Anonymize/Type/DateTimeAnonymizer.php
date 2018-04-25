@@ -74,6 +74,7 @@ class DateTimeAnonymizer implements AnonymizerInterface
         // Unix timestamp
         if (is_numeric($propertyValue)) {
             $dateTime = new \DateTime();
+            $dateTime->setTimezone(date_default_timezone_get());
             $dateTime->setTimestamp($propertyValue);
             return $this->anonymizeByDateTime($dateTime)->getTimestamp();
         }
