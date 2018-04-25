@@ -10,9 +10,10 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace SuperBrave\GdprBundle\Anonymize;
+namespace SuperBrave\GdprBundle\Anonymize\Type;
 
 use InvalidArgumentException;
+use SuperBrave\GdprBundle\Anonymize\AnonymizerInterface;
 
 class IpAnonymizer implements AnonymizerInterface
 {
@@ -43,14 +44,32 @@ class IpAnonymizer implements AnonymizerInterface
      */
     public function anonymize($propertyValue, array $options = [])
     {
-        $ipv4 = filter_var($propertyValue, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
-        $ipv6 = filter_var($propertyValue, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6);
+        if (is_int($propertyValue)) {
+            $propertyValue = long2ip($propertyValue);
 
-        if (($ipv4 === false) && ($ipv6 === false)) {
-            throw new InvalidArgumentException(sprintf('%s is not a valid ipv4 or ipv6 address', $propertyValue));
+            return ip2long($this->anonymizeIpAddress($propertyValue, $this->getIpMask($propertyValue)));
         }
 
-        return $ipv4 ? $this->anonymizeIpAddress($propertyValue, $this->ipv4Mask) : $this->anonymizeIpAddress($propertyValue, $this->ipv6Mask);
+        return $this->anonymizeIpAddress($propertyValue, $this->getIpMask($propertyValue));
+    }
+
+    /**
+     * Checks if the address is a valid ipv4 or ipv6 string, and returns the appropriate mask
+     *
+     * @param $address
+     *
+     * @return string
+     */
+    private function getIpMask($address)
+    {
+        $ipv4 = filter_var($address, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
+        $ipv6 = filter_var($address, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6);
+
+        if (($ipv4 === false) && ($ipv6 === false)) {
+            throw new InvalidArgumentException(sprintf('%s is not a valid ipv4 or ipv6 address', $address));
+        }
+
+        return $ipv4 ? $this->ipv4Mask : $this->ipv6Mask;
     }
 
     /**

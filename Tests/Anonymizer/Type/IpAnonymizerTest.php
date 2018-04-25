@@ -14,7 +14,7 @@ namespace SuperBrave\GdprBundle\Tests\Anonymizer;
 
 
 use PHPUnit\Framework\TestCase;
-use SuperBrave\GdprBundle\Anonymize\IpAnonymizer;
+use SuperBrave\GdprBundle\Anonymizer\Type\IpAnonymizer;
 
 class IpAnonymizerTest extends TestCase
 {
@@ -43,5 +43,12 @@ class IpAnonymizerTest extends TestCase
         $anonymizer = new IpAnonymizer('255.255.255.0', 'ffff:ffff:ffff:7730::');
 
         $this->assertEquals('1234:5678:90ab:4520::', $anonymizer->anonymize('1234:5678:90ab:cdef:1234:5678:90ab:cdef', []));
+    }
+
+    public function testIpv4AsLong()
+    {
+        $anonymizer = new IpAnonymizer('255.192.0.0');
+
+        $this->assertEquals(176160768, $anonymizer->anonymize(176954920, []));
     }
 }
