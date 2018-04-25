@@ -49,8 +49,11 @@ class DateTimeAnonymizer implements AnonymizerInterface
         }
 
         // String date
-        if (is_string($propertyValue) && $result = $this->anonymizeByString($propertyValue)) {
-            return $result;
+        if (is_string($propertyValue)) {
+            $result = $this->anonymizeByString($propertyValue);
+            if ($result !== false) {
+                return $result;
+            }
         }
 
         throw new \Exception("Invalid format of \$propertyValue for ".__CLASS__."::".__METHOD__);
@@ -75,7 +78,7 @@ class DateTimeAnonymizer implements AnonymizerInterface
     /**
      * Anonymize a DateTime string by setting day and month to 1, hours, minutes and seconds to 0.
      *
-     * Currently supported string formats are the DATE_ATOM / DATE_W3C / DATE_ISO8601 formats;
+     * Currently supported string formats are the RFC3339 / ISO8601 formats
      * - 1983-12-31
      * - 1983-12-31 16:00:00
      * - 1983-12-31T16:00:00
@@ -89,33 +92,24 @@ class DateTimeAnonymizer implements AnonymizerInterface
      */
     private function anonymizeByString($dateTime)
     {
-        $matches = array();
+        // Constants DATE_ATOM, DATE_RFC3339 and DATE_W3C are the same
+        $supported_formats = [
+            // PHP predefined standards
+            DATE_RFC3339   => '/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}[+-]{1}[0-9]{2}:[0-9]{2}$/',
+            DATE_ISO8601   => '/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}[+-]{1}[0-9]{4}$/',
 
-        // Splits up the string in year, month, day, hours, minutes and seconds
-        preg_match(
-            '/^([0-9]{2,4}-)([0-9]{2})(-)([0-9]{2})([\s|T]{1})([0-9]{2})(:)([0-9]{2})(:)([0-9]{2})([+-][0-9\:]*|)$/',
-            $dateTime,
-            $matches
-        );
-        if ($matches) {
-            // Resets specific keys
-            $matches[0] = '';                                // Remove original string
-            $matches[2] = $matches[4] = '01';                // month, day
-            $matches[6] = $matches[8] = $matches[10] = '00'; // hours, minutes, seconds
+            // Variants on ISO8601 which are used by different database storage designs
+            'Y-m-d'        => '/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/',
+            'Y-m-d H:i:s'  => '/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/',
+            'Y-m-d\TH:i:s' => '/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}$/',
+        ];
 
-            // Glues the parts together again; separators will be unmodified
-            return implode('', $matches);
-        }
-
-        // Splits up the string in year, month and day
-        preg_match('/^([0-9]{2,4}-)([0-9]{2})(-)([0-9]{2})$/', $dateTime, $matches);
-        if ($matches) {
-            // Resets specific keys
-            $matches[0] = '';                 // Remove original string
-            $matches[2] = $matches[4] = '01'; // month, day
-
-            // Glues the parts together again; separators will be unmodified
-            return implode('', $matches);
+        foreach ($supported_formats as $dateFormat => $regexTest) {
+            if (!preg_match($regexTest, $dateTime)) {
+                continue;
+            }
+            $value = new \DateTime($dateTime);
+            return $this->anonymizeByDateTime($value)->format($dateFormat);
         }
 
         // No regex matches the string; unknown datetime format
