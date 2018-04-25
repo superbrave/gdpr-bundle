@@ -109,7 +109,7 @@ class AnnotationNormalizer implements NormalizerInterface
                 $propertyName = $propertyAnnotation->alias;
             }
 
-            $normalizedData[$propertyName] = $propertyValue;
+            $normalizedData[$propertyName] = $this->getMappedPropertyValue($propertyAnnotation, $propertyValue);
         }
 
         return $normalizedData;
@@ -135,5 +135,31 @@ class AnnotationNormalizer implements NormalizerInterface
         }
 
         return $propertyData;
+    }
+
+    /**
+     * Returns the mapped value of a property or the original value when no value map is configured on the annotation.
+     *
+     * @param object $annotation    The annotation instance
+     * @param mixed  $propertyValue The value of the property retrieved from the object
+     *
+     * @return mixed
+     */
+    private function getMappedPropertyValue($annotation, $propertyValue)
+    {
+        if (is_scalar($propertyValue) === false) {
+            return $propertyValue;
+        }
+
+        if (property_exists($annotation, 'valueMap') === false || isset($annotation->valueMap) === false) {
+            return $propertyValue;
+        }
+
+        $mappedPropertyValue = null;
+        if (isset($annotation->valueMap[$propertyValue])) {
+            $mappedPropertyValue = $annotation->valueMap[$propertyValue];
+        }
+
+        return $mappedPropertyValue;
     }
 }
