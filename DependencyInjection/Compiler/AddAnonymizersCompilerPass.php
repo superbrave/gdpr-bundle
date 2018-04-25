@@ -3,7 +3,7 @@
 namespace SuperBrave\GdprBundle\DependencyInjection\Compiler;
 
 use LogicException;
-use SuperBrave\GdprBundle\Anonymizer\AnonymizerInterface;
+use SuperBrave\GdprBundle\Anonymize\AnonymizerInterface;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;

@@ -10,11 +10,15 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace SuperBrave\GdprBundle\Anonymizer\Type;
+namespace SuperBrave\GdprBundle\Anonymize\Type;
 
 use InvalidArgumentException;
-use SuperBrave\GdprBundle\Anonymizer\AnonymizerInterface;
+use SuperBrave\GdprBundle\Anonymize\AnonymizerInterface;
 
+/**
+ * Class IpAnonymizer
+ * @package SuperBrave\GdprBundle\Anonymize\Type
+ */
 class IpAnonymizer implements AnonymizerInterface
 {
     /**

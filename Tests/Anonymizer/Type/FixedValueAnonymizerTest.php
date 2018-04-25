@@ -13,7 +13,7 @@
 namespace SuperBrave\GdprBundle\Tests\Anonymizer;
 
 use PHPUnit_Framework_MockObject_MockObject;
-use SuperBrave\GdprBundle\Anonymizer\Type\FixedValueAnonymizer;
+use SuperBrave\GdprBundle\Anonymize\Type\FixedValueAnonymizer;
 use SuperBrave\GdprBundle\Manipulator\PropertyManipulator;
 use SuperBrave\GdprBundle\Tests\AnnotatedMock;
 use Symfony\Component\OptionsResolver\Exception\MissingOptionsException;
