@@ -65,6 +65,13 @@ class DateTimeAnonymizerTest extends TestCase
             'stringdate5' => ["2018-05-25T13:37:00+0200", "2018-01-01T00:00:00+0200"],
             // RFC3339 string format
             'stringdate6' => ["2018-05-25T13:37:00+02:00", "2018-01-01T00:00:00+02:00"],
+            'stringdate7' => ["1983-08-11T13:37:01.337+02:00", "1983-01-01T00:00:00.000+02:00"],
+            // RFC822 string format
+            'stringdate8' => ["Thu, 11 Aug 83 13:37:00 +0200", "Sat, 01 Jan 83 00:00:00 +0200"],
+            // RFC850 string format
+            'stringdate9' => ["Thursday, 11-Aug-83 13:37:00 CEST", "Saturday, 01-Jan-83 00:00:00 CEST"],
+            // RFC7231 string format
+            'stringdate10' => ["Thu, 11 Aug 1983 13:37:00 GMT", "Sat, 01 Jan 1983 00:00:00 GMT"],
         );
     }
 }

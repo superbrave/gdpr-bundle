@@ -24,16 +24,26 @@ class DateTimeAnonymizer implements AnonymizerInterface
     /**
      * Array with supported string formats
      *
-     * Currently supported string formats are the ATOM, W3C, RFC3339 and ISO8601 formats.
-     * Constants DATE_ATOM, DATE_RFC3339 and DATE_W3C are the same, so they're not added in this array
+     * Currently supported string formats are the ATOM, W3C, RSS, COOKIE, RFC822, RFC850, RFC1036, RFC1123, RFC2822,
+     * RFC3339, RFC7231 and ISO8601 formats.
      *
+     * Constants DATE_ATOM and DATE_W3C are the same as DATE_RFC3339;
+     * constants DATE_RFC1036, DATE_RFC1123, DATE_RFC2822 and DATE_RSS are the same as DATE_RFC822;
+     * constant DATE_COOKIE is the same as DATE_RFC850
+     * so they're not added in this array
+     *
+     * @see http://php.net/manual/en/class.datetime.php#datetime.constants.types
      * @var array
      */
     private $stringFormats = [
         // PHP predefined standards
-        DATE_RFC3339   => '/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}[+-]{1}[0-9]{2}:[0-9]{2}$/',
         DATE_ISO8601   => '/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}[+-]{1}[0-9]{4}$/',
-
+        DATE_RFC822    => '/^[a-z]{3}, [0-9]{2} [a-z]{3} [0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2} [+-]{1}[0-9]{4}$/i',
+        DATE_RFC850    => '/^[a-z]{4,}, [0-9]{2}-[a-z]{3}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2} [a-z]{1,}$/i',
+        DATE_RFC7231   => '/^[a-z]{3}, [0-9]{2} [a-z]{3} [0-9]{4} [0-9]{2}:[0-9]{2}:[0-9]{2} GMT$/i',
+        DATE_RFC3339   => '/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}[+-]{1}[0-9]{2}:[0-9]{2}$/',
+        DATE_RFC3339_EXTENDED =>
+            '/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}[+-]{1}[0-9]{2}:[0-9]{2}$/',
         // Variants on ISO8601 which are used by different database storage designs
         'Y-m-d'        => '/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/',
         'Y-m-d H:i:s'  => '/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/',
