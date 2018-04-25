@@ -20,21 +20,23 @@ use Symfony\Component\OptionsResolver\Exception\MissingOptionsException;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 
 /**
- * tests the behaviour of the EmailAnonymizer
+ * Tests the behaviour of the EmailAnonymizer
  */
 class FixedValueAnonymizerTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * The mock property accessor instance.
      *
-     * @var PHPUnit_Framework_MockObject_MockObject
+     * @var    PHPUnit_Framework_MockObject_MockObject
+     * @return void
      */
     private $propertyManipulator;
 
     /**
-     * An instance of StringAnonymizer being tested
+     * An instance of StringAnonymizer being tested.
      *
-     * @var FixedValueAnonymizer
+     * @var    FixedValueAnonymizer
+     * @return void
      */
     private $anonymizer;
 
@@ -62,6 +64,11 @@ class FixedValueAnonymizerTest extends \PHPUnit_Framework_TestCase
         $this->assertAttributeSame($this->propertyManipulator, 'propertyManipulator', $this->anonymizer);
     }
 
+    /**
+     * An exception should be thrown when the annotationValue isn't provided.
+     *
+     * @return void
+     */
     public function testAnonymizerShouldReceiveAnnotationValueOptionOrThrowException()
     {
         $this->expectException(MissingOptionsException::class);
@@ -74,6 +81,11 @@ class FixedValueAnonymizerTest extends \PHPUnit_Framework_TestCase
         ]);
     }
 
+    /**
+     * An exception should be thrown when the object option isn't provided
+     *
+     * @return void
+     */
     public function testAnonymizerShouldReceiveObjectOptionOrThrowException()
     {
         $this->expectException(MissingOptionsException::class);
@@ -86,24 +98,33 @@ class FixedValueAnonymizerTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test wether or not getting the wildcards properties will be replaced with their values
+     *
+     * @return void
      */
     public function testAnonymizeStringGivenAFormatWithMultipleProperties()
     {
         $mock = new AnnotatedMock();
 
-        $this->assertEquals('email-1-bar@localhost', $this->anonymizer->anonymize('johndoe@appleseed.com', [
-            'annotationValue' => 'email-{baz}-{foo}@localhost',
-            'object' => $mock,
-        ]));
+        $this->assertEquals(
+            'email-1-bar@localhost',
+            $this->anonymizer->anonymize('johndoe@appleseed.com', [
+                'annotationValue' => 'email-{baz}-{foo}@localhost',
+                'object' => $mock,
+            ])
+        );
     }
 
     /**
      * Test that an exception is thrown when the object does not have the specified property
+     *
+     * @return void
      */
     public function testAnonymizeStringGivenAFormatWithInvalidPropertiesThrowsAnException()
     {
         $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('The property "$nonexistent" does not exist on class "SuperBrave\GdprBundle\Tests\AnnotatedMock"');
+        $this->expectExceptionMessage(
+            'The property "$nonexistent" does not exist on class "SuperBrave\GdprBundle\Tests\AnnotatedMock"'
+        );
 
         $mock = new AnnotatedMock();
 
@@ -115,6 +136,8 @@ class FixedValueAnonymizerTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test that the value is returned if there aren't any wildcards
+     *
+     * @return void
      */
     public function testAnonymizeStringGivenAFormatWithNoWildcardReturnsTheString()
     {

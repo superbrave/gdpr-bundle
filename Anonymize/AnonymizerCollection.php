@@ -15,20 +15,26 @@ namespace SuperBrave\GdprBundle\Anonymize;
 use LogicException;
 
 /**
- *
+ * Class AnonymizerCollection
  *
  * @package SuperBrave\GdprBundle\Anonymize
  */
 class AnonymizerCollection
 {
     /**
+     * Array of anonymizers
+     *
      * @var AnonymizerInterface[]
      */
     private $anonymizers = [];
 
     /**
-     * @param string              $type
-     * @param AnonymizerInterface $anonymizer
+     * Addn an anonymizer
+     *
+     * @param string              $type       The anonymizer type to be added
+     * @param AnonymizerInterface $anonymizer The anonymizer class to be added
+     *
+     * @return void
      */
     public function addAnonymizer($type, $anonymizer)
     {
@@ -40,7 +46,10 @@ class AnonymizerCollection
     }
 
     /**
-     * @param string $type
+     * Get an anonymizer by its type
+     *
+     * @param string $type The anonymizer type to be fetched
+     *
      * @return AnonymizerInterface
      */
     public function getAnonymizer($type)

@@ -32,7 +32,8 @@ class FixedValueAnonymizer implements AnonymizerInterface
 
     /**
      * StringAnonymizer constructor.
-     * @param PropertyManipulator $propertyManipulator
+     *
+     * @param PropertyManipulator $propertyManipulator Used to get the value of a property
      */
     public function __construct(PropertyManipulator $propertyManipulator)
     {
@@ -40,8 +41,10 @@ class FixedValueAnonymizer implements AnonymizerInterface
     }
 
     /**
+     * Anonymize the data given according to the options provided
+     *
      * @param mixed $propertyValue The value that has to be converted
-     * @param array $options Options to help the anonymizer do its job
+     * @param array $options       Options to help the anonymizer do its job
      *
      * @return string               The Anonymized string
      */
@@ -64,6 +67,13 @@ class FixedValueAnonymizer implements AnonymizerInterface
         return $annotationValue;
     }
 
+    /**
+     * Configures the options needed for this class
+     *
+     * @param OptionsResolver $resolver The options resolver
+     *
+     * @return void
+     */
     private function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setRequired(['annotationValue', 'object']);

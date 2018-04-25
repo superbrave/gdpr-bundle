@@ -16,11 +16,14 @@ use SuperBrave\GdprBundle\Annotation\AnnotationReader;
 
 /**
  * Class Anonymizer
+ *
  * @package SuperBrave\GdprBundle\Anonymize
  */
 class Anonymizer
 {
     /**
+     * The annotation reader service
+     *
      * @var AnnotationReader
      */
     private $annotationReader;
@@ -28,7 +31,7 @@ class Anonymizer
     /**
      * Anonymizer constructor.
      *
-     * @param AnnotationReader $annotationReader
+     * @param AnnotationReader $annotationReader The annotation reader service
      */
     public function __construct(AnnotationReader $annotationReader)
     {
@@ -36,9 +39,13 @@ class Anonymizer
     }
 
     /**
-     * @param object $object
+     * Anonymize the object passed
+     *
+     * @param object $object The object that is being anonymized
      *
      * @todo implement function
+     *
+     * @return void
      */
     public function anonymize($object)
     {
