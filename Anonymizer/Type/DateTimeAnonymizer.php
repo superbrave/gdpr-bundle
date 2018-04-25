@@ -22,10 +22,29 @@ use SuperBrave\GdprBundle\Anonymizer\AnonymizerInterface;
 class DateTimeAnonymizer implements AnonymizerInterface
 {
     /**
+     * Array with supported string formats
+     *
+     * Constants DATE_ATOM, DATE_RFC3339 and DATE_W3C are the same, so they're not added in this array
+     *
+     * @var array
+     */
+    private $stringFormats = [
+        // PHP predefined standards
+        DATE_RFC3339   => '/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}[+-]{1}[0-9]{2}:[0-9]{2}$/',
+        DATE_ISO8601   => '/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}[+-]{1}[0-9]{4}$/',
+
+        // Variants on ISO8601 which are used by different database storage designs
+        'Y-m-d'        => '/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/',
+        'Y-m-d H:i:s'  => '/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/',
+        'Y-m-d\TH:i:s' => '/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}$/',
+    ];
+
+    /**
      * Anonymizes a DateTime by setting month and day to 01 and hours, minutes and seconds to 00.
      *
-     * The return value will be of the same time as $propertyValue.
-     * For supported string formats, @see anonymizeByString
+     * The return value will be of the same type as $propertyValue.
+     * All anonimizing will happen in {@see DateTimeAnonymizer::anonymizeByDateTime()}
+     * Supported string formats are documented in {@see DateTimeAnonymizer::$stringFormats}
      *
      * @param \DateTime|int|string $propertyValue The value that has to be converted
      * @param array                $options       Options to help the anonymizer do its job
@@ -85,19 +104,7 @@ class DateTimeAnonymizer implements AnonymizerInterface
      */
     private function anonymizeByString($dateTime)
     {
-        // Constants DATE_ATOM, DATE_RFC3339 and DATE_W3C are the same
-        $supported_formats = [
-            // PHP predefined standards
-            DATE_RFC3339   => '/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}[+-]{1}[0-9]{2}:[0-9]{2}$/',
-            DATE_ISO8601   => '/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}[+-]{1}[0-9]{4}$/',
-
-            // Variants on ISO8601 which are used by different database storage designs
-            'Y-m-d'        => '/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/',
-            'Y-m-d H:i:s'  => '/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/',
-            'Y-m-d\TH:i:s' => '/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}$/',
-        ];
-
-        foreach ($supported_formats as $dateFormat => $regexTest) {
+        foreach ($this->stringFormats as $dateFormat => $regexTest) {
             if (!preg_match($regexTest, $dateTime)) {
                 continue;
             }
