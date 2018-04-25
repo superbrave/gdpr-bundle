@@ -16,7 +16,8 @@ services:
         class: SuperBrave\GdprBundle\Anonymize\Anonymizer
         arguments:
             - "@super_brave_gdpr.annotation.reader"
-            - "@super_brave_gdpr.property_anonymizer"
+            - "@super_brave_gdpr.anonymizer_collection"
+            - "@super_brave_gdpr.property_manipulator"
         public: true
 
     super_brave_gdpr.exporter.serializer:

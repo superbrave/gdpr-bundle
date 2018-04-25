@@ -14,8 +14,10 @@ namespace SuperBrave\GdprBundle\Anonymize;
 
 use SuperBrave\GdprBundle\Annotation\AnnotationReader;
 use SuperBrave\GdprBundle\Annotation\Anonymize;
+use SuperBrave\GdprBundle\Manipulator\PropertyManipulator;
 use InvalidArgumentException;
 use ReflectionException;
+use ReflectionClass;
 
 /**
  * Class Anonymizer
@@ -29,24 +31,36 @@ class Anonymizer
     private $annotationReader;
 
     /**
-     * @var PropertyAnonymizer
+     * @var AnonymizerCollection
      */
-    private $propertyAnonymizer;
+    private $anonymizerCollection;
+
+    /**
+     * @var PropertyManipulator
+     */
+    private $propertyManipulator;
 
     /**
      * Anonymizer constructor.
      *
-     * @param AnnotationReader   $annotationReader
-     * @param PropertyAnonymizer $propertyAnonymizer
+     * @param AnnotationReader     $annotationReader
+     * @param AnonymizerCollection $anonymizerCollection
+     * @param PropertyManipulator  $propertyManipulator
      */
-    public function __construct(AnnotationReader $annotationReader, PropertyAnonymizer $propertyAnonymizer)
-    {
-        $this->annotationReader = $annotationReader;
-        $this->propertyAnonymizer = $propertyAnonymizer;
+    public function __construct(
+        AnnotationReader $annotationReader,
+        AnonymizerCollection $anonymizerCollection,
+        PropertyManipulator $propertyManipulator
+    ) {
+        $this->annotationReader     = $annotationReader;
+        $this->propertyManipulator  = $propertyManipulator;
+        $this->anonymizerCollection = $anonymizerCollection;
     }
 
     /**
-     * @param object $object
+     * Anonymizes the given object which should contain the @see Anonymize annotations.
+     *
+     * @param object $object The object to anonymize.
      *
      * @throws InvalidArgumentException
      * @throws ReflectionException
@@ -54,16 +68,60 @@ class Anonymizer
     public function anonymize(/*object */$object)
     {
         if (!is_object($object)) {
-            throw new InvalidArgumentException(sprintf(
-                'Invalid argument given "%s" should be of type object.',
-                gettype($object)
-            ));
+            throw new InvalidArgumentException(
+                sprintf(
+                    'Invalid argument given "%s" should be of type object.',
+                    gettype($object)
+                )
+            );
         }
 
-        $annotations = $this->annotationReader->getPropertiesWithAnnotation(new \ReflectionClass($object), Anonymize::class);
+        $reflectionClass = new ReflectionClass($object);
+        $annotations     = $this->annotationReader->getPropertiesWithAnnotation($reflectionClass, Anonymize::class);
 
-        foreach ($annotations as $field => $annotation) {
-            $this->propertyAnonymizer->anonymizeField($object, $field, $annotation);
+        foreach ($annotations as $property => $annotation) {
+            $this->anonymizeField($object, $property, $annotation);
         }
+    }
+
+    /**
+     * Anonymizes the given property on the given object by the given annotation.
+     * The value is used for recursion in case the given property is an object or array.
+     *
+     * @param object     $object The current object to be anonymized.
+     * @param string     $property The field property of the annotation.
+     * @param Anonymize  $annotation The annotation of the field.
+     * @param null|mixed $value The recursive value if used by traversal.
+     *
+     * @return void
+     *
+     * @throws ReflectionException
+     */
+    private function anonymizeField($object, $property, Anonymize $annotation, &$value = null)
+    {
+        if (null === $value) {
+            $value = $this->propertyManipulator->getPropertyValue($object, $property);
+        }
+
+        if (is_object($value)) {
+            $this->anonymize($value);
+            return;
+        }
+
+        if (is_array($value)) {
+            foreach ($value as &$item) {
+                $this->anonymizeField($object, $property, $annotation, $item);
+            }
+
+            $this->propertyManipulator->setPropertyValue($object, $property, $value);
+            return;
+        }
+
+        $anonymizer = $this->anonymizerCollection->getAnonymizer($annotation->type);
+        $value = $anonymizer->anonymize($value, array(
+            'annotationValue' => $annotation->value,
+            'object' => $object,
+        ));
+        $this->propertyManipulator->setPropertyValue($object, $property, $value);
     }
 }
