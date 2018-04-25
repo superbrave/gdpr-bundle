@@ -61,18 +61,3 @@ services:
         arguments:
             - "@super_brave_gdpr.property_manipulator"
             - "@uper_brave_gdpr.anonymizer_collection"
-
-    super_brave_gdpr.fixed_value_anonymizer:
-        class: SuperBrave\GdprBundle\Anonymize\Type\FixedValueAnonymizer
-        tags:
-            - { name: super_brave_gdpr.anonymizer, type: fixedValue }
-
-    super_brave_gdpr.date_time_anonymizer:
-        class: SuperBrave\GdprBundle\Anonymize\Type\DateTimeAnonymizer
-        tags:
-            - { name: super_brave_gdpr.anonymizer, type: dateTime }
-
-    super_brave_gdpr.ip_anonymizer:
-        class: SuperBrave\GdprBundle\Anonymize\Type\IpAnonymizer
-        tags:
-            - { name: super_brave_gdpr.anonymizer, type: ip }
