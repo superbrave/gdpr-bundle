@@ -51,9 +51,9 @@ class DateTimeAnonymizerTest extends TestCase
             'datetime2' => [new \DateTime('2018-05-25 13:37:00'), new \DateTime('2018-01-01 00:00:00')],
 
             // Timestamps
-            'timestamp1' => [1527248220  /*2018-05-25 13:37:00*/, 1514761200  /*2018-01-01 00:00:00*/],
-            'timestamp2' => [-778212000  /*1945-05-05 00:00:00*/, -788922000  /*1945-01-01 00:00:00*/],
-            'timestamp3' => [32473793647 /*2999-01-20 03:14:07*/, 32472140400 /*2999-01-01 00:00:00*/],
+            'timestamp1' => [strtotime("2018-05-25 13:37:00"), strtotime("2018-01-01 00:00:00")],
+            'timestamp2' => [strtotime("1945-05-05 00:00:00"), strtotime("1945-01-01 00:00:00")],
+            'timestamp3' => [strtotime("2999-01-20 03:14:07"), strtotime("2999-01-01 00:00:00")],
 
             // Several ISO8601 string formats
             'stringdate1' => ["2016-04-27",                        "2016-01-01"],
