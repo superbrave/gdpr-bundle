@@ -77,14 +77,7 @@ class DateTimeAnonymizer implements AnonymizerInterface
 
     /**
      * Anonymize a DateTime string by setting day and month to 1, hours, minutes and seconds to 0.
-     *
-     * Currently supported string formats are the RFC3339 / ISO8601 formats
-     * - 1983-12-31
-     * - 1983-12-31 16:00:00
-     * - 1983-12-31T16:00:00
-     * - 1983-12-31T16:00:00+0200
-     *
-     * What goes in, must come out, so the result will be the exact same format as the input.
+     * Currently supported string formats are the ATOM, W3C, RFC3339 and ISO8601 formats.
      *
      * @param string $dateTime The date/time as string
      *
