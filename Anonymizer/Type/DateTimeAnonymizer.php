@@ -75,10 +75,11 @@ class DateTimeAnonymizer implements AnonymizerInterface
     /**
      * Anonymize a DateTime string by setting day and month to 1, hours, minutes and seconds to 0.
      *
-     * Currently supported string formats:
+     * Currently supported string formats are the DATE_ATOM / DATE_W3C / DATE_ISO8601 formats;
+     * - 1983-12-31
      * - 1983-12-31 16:00:00
      * - 1983-12-31T16:00:00
-     * - 1983-12-31
+     * - 1983-12-31T16:00:00+0200
      *
      * What goes in, must come out, so the result will be the exact same format as the input.
      *
@@ -92,7 +93,7 @@ class DateTimeAnonymizer implements AnonymizerInterface
 
         // Splits up the string in year, month, day, hours, minutes and seconds
         preg_match(
-            '/^([0-9]{2,4}-)([0-9]{2})(-)([0-9]{2})([\s|T]{1})([0-9]{2})(:)([0-9]{2})(:)([0-9]{2})$/',
+            '/^([0-9]{2,4}-)([0-9]{2})(-)([0-9]{2})([\s|T]{1})([0-9]{2})(:)([0-9]{2})(:)([0-9]{2})([+-][0-9\:]*|)$/',
             $dateTime,
             $matches
         );
