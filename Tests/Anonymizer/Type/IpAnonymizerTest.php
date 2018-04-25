@@ -12,12 +12,21 @@
 
 namespace SuperBrave\GdprBundle\Tests\Anonymizer;
 
-
 use PHPUnit\Framework\TestCase;
 use SuperBrave\GdprBundle\Anonymizer\Type\IpAnonymizer;
 
+/**
+ * Class IpAnonymizerTest
+ *
+ * @package SuperBrave\GdprBundle\Tests\Anonymizer
+ */
 class IpAnonymizerTest extends TestCase
 {
+    /**
+     * Tests an IPv4 address with a default mask
+     *
+     * @return void
+     */
     public function testIpv4WithDefaultMask()
     {
         $anonymizer = new IpAnonymizer();
@@ -25,12 +34,26 @@ class IpAnonymizerTest extends TestCase
         $this->assertEquals('10.20.30.0', $anonymizer->anonymize('10.20.30.40', []));
     }
 
+    /**
+     * Tests an IPv6 address with a default mask
+     *
+     * @return void
+     */
     public function testIpv6WithDefaultMask()
     {
         $anonymizer = new IpAnonymizer();
 
-        $this->assertEquals('1234:5678:90ab::', $anonymizer->anonymize('1234:5678:90ab:cdef:1234:5678:90ab:cdef', []));
+        $this->assertEquals(
+            '1234:5678:90ab::',
+            $anonymizer->anonymize('1234:5678:90ab:cdef:1234:5678:90ab:cdef', [])
+        );
     }
+
+    /**
+     * Tests an IPv4 address with a custom mask
+     *
+     * @return void
+     */
     public function testIpv4WithCustomMask()
     {
         $anonymizer = new IpAnonymizer('255.192.0.0');
@@ -38,13 +61,26 @@ class IpAnonymizerTest extends TestCase
         $this->assertEquals('10.128.0.0', $anonymizer->anonymize('10.140.30.40', []));
     }
 
+    /**
+     * Tests an IPv6 address with a custpm mask
+     *
+     * @return void
+     */
     public function testIpv6WithCustomMask()
     {
         $anonymizer = new IpAnonymizer('255.255.255.0', 'ffff:ffff:ffff:7730::');
 
-        $this->assertEquals('1234:5678:90ab:4520::', $anonymizer->anonymize('1234:5678:90ab:cdef:1234:5678:90ab:cdef', []));
+        $this->assertEquals(
+            '1234:5678:90ab:4520::',
+            $anonymizer->anonymize('1234:5678:90ab:cdef:1234:5678:90ab:cdef', [])
+        );
     }
 
+    /**
+     * Test an IPv4 as a long int using INET_ATON
+     *
+     * @return void
+     */
     public function testIpv4AsLong()
     {
         $anonymizer = new IpAnonymizer('255.192.0.0');

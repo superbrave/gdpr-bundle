@@ -20,8 +20,10 @@ namespace SuperBrave\GdprBundle\Anonymizer;
 interface AnonymizerInterface
 {
     /**
-     * @param mixed $propertyValue
-     * @param array $options
+     * Anonymize the data given the value and options
+     *
+     * @param mixed $propertyValue The value used to anonymize
+     * @param array $options       Options that may be used to help anonymization
      *
      * @return mixed
      */

@@ -15,14 +15,23 @@ namespace SuperBrave\GdprBundle\Anonymizer\Type;
 use InvalidArgumentException;
 use SuperBrave\GdprBundle\Anonymizer\AnonymizerInterface;
 
+/**
+ * Class IpAnonymizer
+ *
+ * @package SuperBrave\GdprBundle\Anonymizer\Type
+ */
 class IpAnonymizer implements AnonymizerInterface
 {
     /**
+     * The mask used for IPv4
+     *
      * @var string
      */
     private $ipv4Mask;
 
     /**
+     * The mask used for IPv6
+     *
      * @var string
      */
     private $ipv6Mask;
@@ -30,8 +39,8 @@ class IpAnonymizer implements AnonymizerInterface
     /**
      * IpAnonymizer constructor.
      *
-     * @param string $ipv4Mask
-     * @param string $ipv6Mask
+     * @param string $ipv4Mask The mask that should be used for IPv4
+     * @param string $ipv6Mask The mask that should be user for IPv6
      */
     public function __construct($ipv4Mask = '255.255.255.0', $ipv6Mask = 'ffff:ffff:ffff::')
     {
@@ -40,7 +49,12 @@ class IpAnonymizer implements AnonymizerInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Anonymize the data given the value and options
+     *
+     * @param mixed $propertyValue The value used to anonymize
+     * @param array $options       Options that may be used to help anonymization
+     *
+     * @return mixed
      */
     public function anonymize($propertyValue, array $options = [])
     {
@@ -56,7 +70,7 @@ class IpAnonymizer implements AnonymizerInterface
     /**
      * Checks if the address is a valid ipv4 or ipv6 string, and returns the appropriate mask
      *
-     * @param $address
+     * @param string $address The IP address being checked
      *
      * @return string
      */
@@ -73,8 +87,11 @@ class IpAnonymizer implements AnonymizerInterface
     }
 
     /**
-     * @param $address
-     * @param $mask
+     * Anonymize an ip adress
+     *
+     * @param string $address The IP being anonymized
+     * @param string $mask    The Mask being used
+     *
      * @return string
      */
     private function anonymizeIpAddress($address, $mask)
