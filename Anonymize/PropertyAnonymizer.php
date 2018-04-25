@@ -12,10 +12,8 @@
 
 namespace SuperBrave\GdprBundle\Anonymize;
 
-use ReflectionProperty;
 use SuperBrave\GdprBundle\Annotation\Anonymize;
 use SuperBrave\GdprBundle\Manipulator\PropertyManipulator;
-use Symfony\Component\PropertyAccess\PropertyAccessor;
 
 /**
  * Class PropertyAnonymizer

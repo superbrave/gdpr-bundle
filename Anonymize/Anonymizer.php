@@ -13,6 +13,9 @@
 namespace SuperBrave\GdprBundle\Anonymize;
 
 use SuperBrave\GdprBundle\Annotation\AnnotationReader;
+use SuperBrave\GdprBundle\Annotation\Anonymize;
+use InvalidArgumentException;
+use ReflectionException;
 
 /**
  * Class Anonymizer
@@ -26,27 +29,41 @@ class Anonymizer
     private $annotationReader;
 
     /**
+     * @var PropertyAnonymizer
+     */
+    private $propertyAnonymizer;
+
+    /**
      * Anonymizer constructor.
      *
-     * @param AnnotationReader $annotationReader
+     * @param AnnotationReader   $annotationReader
+     * @param PropertyAnonymizer $propertyAnonymizer
      */
-    public function __construct(AnnotationReader $annotationReader)
+    public function __construct(AnnotationReader $annotationReader, PropertyAnonymizer $propertyAnonymizer)
     {
         $this->annotationReader = $annotationReader;
+        $this->propertyAnonymizer = $propertyAnonymizer;
     }
 
     /**
      * @param object $object
      *
-     * @todo implement function
+     * @throws InvalidArgumentException
+     * @throws ReflectionException
      */
-    public function anonymize($object)
+    public function anonymize(/*object */$object)
     {
         if (!is_object($object)) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'Invalid argument given "%s" should be of type object.',
                 gettype($object)
             ));
+        }
+
+        $annotations = $this->annotationReader->getPropertiesWithAnnotation(new \ReflectionClass($object), Anonymize::class);
+
+        foreach ($annotations as $field => $annotation) {
+            $this->propertyAnonymizer->anonymizeField($object, $field, $annotation);
         }
     }
 }
