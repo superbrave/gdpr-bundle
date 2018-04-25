@@ -31,4 +31,11 @@ class Export
      * @var string
      */
     public $alias;
+
+    /**
+     * The value map used to change a value to a human-readable value.
+     *
+     * @var array
+     */
+    public $valueMap;
 }
