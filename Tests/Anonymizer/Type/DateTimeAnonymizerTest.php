@@ -54,6 +54,7 @@ class DateTimeAnonymizerTest extends TestCase
             'timestamp1' => [strtotime("2016-04-27"), strtotime("2016-01-01")],
             'timestamp2' => [strtotime("2018-05-25 13:37:00"), strtotime("2018-01-01 00:00:00")],
             'timestamp3' => [strtotime("1945-05-05"), strtotime("1945-01-01")],
+            'timestamp4' => [strtotime("2038-01-20 03:14:07"), strtotime("2038-01-01 00:00:00")],
 
             // Several ISO8601 string formats
             'stringdate1' => ["2016-04-27", "2016-01-01"],
