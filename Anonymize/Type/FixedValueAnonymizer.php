@@ -10,16 +10,16 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace SuperBrave\GdprBundle\Anonymizer\Type;
+namespace SuperBrave\GdprBundle\Anonymize\Type;
 
-use SuperBrave\GdprBundle\Anonymizer\AnonymizerInterface;
+use SuperBrave\GdprBundle\Anonymize\AnonymizerInterface;
 use SuperBrave\GdprBundle\Manipulator\PropertyManipulator;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Email anonymizer class
  *
- * @package SuperBrave\GdprBundle\Anonymizer
+ * @package SuperBrave\GdprBundle\Anonymize\Type
  */
 class FixedValueAnonymizer implements AnonymizerInterface
 {

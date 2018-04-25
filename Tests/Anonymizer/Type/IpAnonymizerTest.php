@@ -13,7 +13,7 @@
 namespace SuperBrave\GdprBundle\Tests\Anonymizer;
 
 use PHPUnit\Framework\TestCase;
-use SuperBrave\GdprBundle\Anonymizer\Type\IpAnonymizer;
+use SuperBrave\GdprBundle\Anonymize\Type\IpAnonymizer;
 
 /**
  * Class IpAnonymizerTest

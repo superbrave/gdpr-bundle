@@ -10,12 +10,12 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace SuperBrave\GdprBundle\Anonymizer;
+namespace SuperBrave\GdprBundle\Anonymize;
 
 /**
  * Interface AnonymizerInterface
  *
- * @package SuperBrave\GdprBundle\Anonymizer
+ * @package SuperBrave\GdprBundle\Anonymize
  */
 interface AnonymizerInterface
 {

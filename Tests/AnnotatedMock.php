@@ -62,7 +62,12 @@ class AnnotatedMock implements ObjectExportInterface
     /**
      * The property that is annotated with the Export annotation, but without getter method.
      *
-     * @GDPR\Export()
+     * @GDPR\Export(
+     *     valueMap={
+     *         true = "Yes",
+     *         false = "No"
+     *     }
+     * )
      *
      * @var bool
      */
