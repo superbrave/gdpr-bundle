@@ -36,11 +36,17 @@ class Anonymizer
     }
 
     /**
-     * @param ObjectAnonymizeInterface $object
+     * @param object $object
      *
      * @todo implement function
      */
-    public function anonymize(ObjectAnonymizeInterface $object)
+    public function anonymize($object)
     {
+        if (!is_object($object)) {
+            throw new \InvalidArgumentException(sprintf(
+                'Invalid argument given "%s" should be of type object.',
+                gettype($object)
+            ));
+        }
     }
 }
