@@ -22,3 +22,19 @@ services:
         parent: super_brave_gdpr.base_type_anonymizer
         tags:
             - { name: super_brave_gdpr.anonymizer, type: ip }
+
+    super_brave_gdpr.object_anonymizer:
+        class: SuperBrave\GdprBundle\Anonymize\Type\ObjectAnonymizer
+        public: false
+        arguments:
+            - "@super_brave_gdpr.anonymizer"
+        tags:
+            - { name: super_brave_gdpr.anonymizer, private: true, type: object }
+
+    super_brave_gdpr.array_anonymizer:
+        class: SuperBrave\GdprBundle\Anonymize\Type\ArrayAnonymizer
+        public: false
+        arguments:
+            - "@super_brave_gdpr.anonymizer"
+        tags:
+            - { name: super_brave_gdpr.anonymizer, private: true, type: array }

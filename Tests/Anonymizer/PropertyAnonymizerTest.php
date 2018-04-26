@@ -12,22 +12,22 @@
 
 namespace SuperBrave\GdprBundle\Tests\Anonymizer;
 
-use PHPUnit\Framework\TestCase;
+use PHPUnit_Framework_TestCase;
 use PHPUnit_Framework_MockObject_MockObject;
 use Reflectionclass;
 use SuperBrave\GdprBundle\Annotation\Anonymize;
-use SuperBrave\GdprBundle\Anonymizer\AnonymizerCollection;
-use SuperBrave\GdprBundle\Anonymizer\AnonymizerInterface;
-use SuperBrave\GdprBundle\Anonymizer\PropertyAnonymizer;
+use SuperBrave\GdprBundle\Anonymize\AnonymizerCollection;
+use SuperBrave\GdprBundle\Anonymize\AnonymizerInterface;
+use SuperBrave\GdprBundle\Anonymize\PropertyAnonymizer;
 use SuperBrave\GdprBundle\Manipulator\PropertyManipulator;
 use SuperBrave\GdprBundle\Tests\AnnotatedMock;
 
 /**
  * Test the behaviour of the PropertyAnonymizer
  */
-class PropertyAnonymizerTest extends TestCase
+class PropertyAnonymizerTest extends PHPUnit_Framework_TestCase
 {
-    /**
+    /**.
      * @var PHPUnit_Framework_MockObject_MockObject
      */
     private $propertyManipulatorMock;

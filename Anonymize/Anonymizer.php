@@ -53,8 +53,8 @@ class Anonymizer
         PropertyManipulator $propertyManipulator
     ) {
         $this->annotationReader     = $annotationReader;
-        $this->propertyManipulator  = $propertyManipulator;
         $this->anonymizerCollection = $anonymizerCollection;
+        $this->propertyManipulator  = $propertyManipulator;
     }
 
     /**
