@@ -39,10 +39,7 @@ class FixedValueAnonymizer implements AnonymizerInterface
     }
 
     /**
-     * @param mixed $propertyValue The value that has to be converted
-     * @param array $options Options to help the anonymizer do its job
-     *
-     * @return string               The Anonymized string
+     * {@inheritdoc}
      */
     public function anonymize($propertyValue, array $options = [])
     {
@@ -63,6 +60,11 @@ class FixedValueAnonymizer implements AnonymizerInterface
         return $annotationValue;
     }
 
+    /**
+     * Configures the options for this anonymizer.
+     *
+     * @param OptionsResolver $resolver The resolver for the options.
+     */
     private function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setRequired(['annotationValue', 'object']);

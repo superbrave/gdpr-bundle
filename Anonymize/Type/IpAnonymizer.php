@@ -59,7 +59,7 @@ class IpAnonymizer implements AnonymizerInterface
     /**
      * Checks if the address is a valid ipv4 or ipv6 string, and returns the appropriate mask
      *
-     * @param $address
+     * @param string $address
      *
      * @return string
      */
@@ -76,8 +76,8 @@ class IpAnonymizer implements AnonymizerInterface
     }
 
     /**
-     * @param $address
-     * @param $mask
+     * @param string $address
+     * @param string $mask
      * @return string
      */
     private function anonymizeIpAddress($address, $mask)

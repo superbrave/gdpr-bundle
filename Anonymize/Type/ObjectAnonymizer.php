@@ -40,6 +40,14 @@ class ObjectAnonymizer implements AnonymizerInterface
      */
     public function anonymize($propertyValue, array $options = [])
     {
+        if (!is_object($propertyValue)) {
+            throw new \InvalidArgumentException(sprintf(
+                'Invalid argument given \"%s\" for class %s should be of type object.',
+                gettype($propertyValue),
+                __CLASS__
+            ));
+        }
+
         $this->anonymizer->anonymize($propertyValue);
         return $propertyValue;
     }

@@ -38,6 +38,14 @@ class ArrayAnonymizer implements AnonymizerInterface
      */
     public function anonymize($propertyValue, array $options = [])
     {
+        if (!is_iterable($propertyValue)) {
+            throw new \InvalidArgumentException(sprintf(
+                'Invalid argument given \"%s\" for class %s should be of type iterable.',
+                gettype($propertyValue),
+                __CLASS__
+            ));
+        }
+
         foreach ($propertyValue as $index => $value) {
             $propertyValue[$index] = $this->anonymizer->anonymize($value, $options);
         }
