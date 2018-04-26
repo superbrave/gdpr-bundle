@@ -12,8 +12,6 @@
 
 namespace SuperBrave\GdprBundle\Anonymize\Type;
 
-use SuperBrave\GdprBundle\Anonymize\AnonymizerInterface;
-
 /**
  * DateTime anonymizer class
  *

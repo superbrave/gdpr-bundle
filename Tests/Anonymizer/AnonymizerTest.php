@@ -6,8 +6,7 @@ use PHPUnit_Framework_MockObject_MockObject;
 use PHPUnit_Framework_TestCase;
 use SuperBrave\GdprBundle\Annotation\AnnotationReader;
 use SuperBrave\GdprBundle\Anonymize\Anonymizer;
-use SuperBrave\GdprBundle\Anonymize\AnonymizerCollection;
-use SuperBrave\GdprBundle\Manipulator\PropertyManipulator;
+use SuperBrave\GdprBundle\Anonymize\PropertyAnonymizer;
 
 class AnonymizerTest extends PHPUnit_Framework_TestCase
 {
@@ -24,12 +23,7 @@ class AnonymizerTest extends PHPUnit_Framework_TestCase
     /**
      * @var PHPUnit_Framework_MockObject_MockObject
      */
-    private $anonymizerCollection;
-
-    /**
-     * @var PHPUnit_Framework_MockObject_MockObject
-     */
-    private $propertyManipulator;
+    private $propertyAnonymizer;
 
     /**
      * {@inheritdoc}
@@ -39,16 +33,12 @@ class AnonymizerTest extends PHPUnit_Framework_TestCase
         $this->annotationReaderMock = $this->getMockBuilder(AnnotationReader::class)
             ->getMock();
 
-        $this->anonymizerCollection =  $this->getMockBuilder(AnonymizerCollection::class)
-            ->getMock();
-
-        $this->propertyManipulator = $this->getMockBuilder(PropertyManipulator::class)
+        $this->propertyAnonymizer =  $this->getMockBuilder(PropertyAnonymizer::class)
             ->getMock();
 
         $this->anonymizer = new Anonymizer(
             $this->annotationReaderMock,
-            $this->anonymizerCollection,
-            $this->propertyManipulator
+            $this->propertyAnonymizer
         );
     }
 
@@ -58,7 +48,6 @@ class AnonymizerTest extends PHPUnit_Framework_TestCase
     public function testConstruct()
     {
         $this->assertAttributeSame($this->annotationReaderMock, 'annotationReader', $this->anonymizer);
-        $this->assertAttributeSame($this->anonymizerCollection, 'anonymizerCollection', $this->anonymizer);
-        $this->assertAttributeSame($this->propertyManipulator, 'propertyManipulator', $this->anonymizer);
+        $this->assertAttributeSame($this->propertyAnonymizer, 'propertyAnonymizer', $this->anonymizer);
     }
 }

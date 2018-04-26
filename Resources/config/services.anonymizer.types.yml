@@ -29,12 +29,12 @@ services:
         arguments:
             - "@super_brave_gdpr.anonymizer"
         tags:
-            - { name: super_brave_gdpr.anonymizer, private: true, type: object }
+            - { name: super_brave_gdpr.anonymizer, type: object }
 
-    super_brave_gdpr.array_anonymizer:
+    super_brave_gdpr.collection_anonymizer:
         class: SuperBrave\GdprBundle\Anonymize\Type\ArrayAnonymizer
         public: false
         arguments:
-            - "@super_brave_gdpr.anonymizer"
+            - "@super_brave_gdpr.object_anonymizer"
         tags:
-            - { name: super_brave_gdpr.anonymizer, private: true, type: array }
+            - { name: super_brave_gdpr.anonymizer, type: collection }
