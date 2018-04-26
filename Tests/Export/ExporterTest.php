@@ -12,6 +12,7 @@
 
 namespace SuperBrave\GdprBundle\Tests\Export;
 
+use InvalidArgumentException;
 use PHPUnit_Framework_MockObject_MockObject;
 use PHPUnit_Framework_TestCase;
 use SuperBrave\GdprBundle\Export\Exporter;
@@ -111,5 +112,18 @@ class ExporterTest extends PHPUnit_Framework_TestCase
             '<?xml version="1.0"?><custom_name/>',
             $this->exporter->exportObject($annotatedMock, 'custom_name')
         );
+    }
+
+    /**
+     * Tests if Exporter::exportObject throws an InvalidArgumentException when the first argument is not an object.
+     *
+     * @return void
+     */
+    public function testExportObjectThrowsInvalidArgumentExceptionWhenObjectIsNotObject()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('$object must be of type object. string given.');
+
+        $this->exporter->exportObject('no object');
     }
 }
