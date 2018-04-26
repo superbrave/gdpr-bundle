@@ -12,7 +12,6 @@
 
 namespace SuperBrave\GdprBundle\Anonymize\Type;
 
-use SuperBrave\GdprBundle\Anonymize\AnonymizerInterface;
 use SuperBrave\GdprBundle\Manipulator\PropertyManipulator;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 

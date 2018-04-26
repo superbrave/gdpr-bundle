@@ -27,6 +27,7 @@ class AnnotatedMock implements ObjectExportInterface
      * The foo property.
      *
      * @GDPR\Export()
+     * @GDPR\Anonymize(type="fixedValue", value="foo")
      *
      * @var string
      */

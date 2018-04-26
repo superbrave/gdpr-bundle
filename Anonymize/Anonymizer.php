@@ -14,7 +14,6 @@ namespace SuperBrave\GdprBundle\Anonymize;
 
 use SuperBrave\GdprBundle\Annotation\AnnotationReader;
 use SuperBrave\GdprBundle\Annotation\Anonymize;
-use SuperBrave\GdprBundle\Manipulator\PropertyManipulator;
 use InvalidArgumentException;
 use ReflectionException;
 use ReflectionClass;
@@ -31,30 +30,22 @@ class Anonymizer
     private $annotationReader;
 
     /**
-     * @var AnonymizerCollection
+     * @var PropertyAnonymizer
      */
-    private $anonymizerCollection;
-
-    /**
-     * @var PropertyManipulator
-     */
-    private $propertyManipulator;
+    private $propertyAnonymizer;
 
     /**
      * Anonymizer constructor.
      *
-     * @param AnnotationReader     $annotationReader
-     * @param AnonymizerCollection $anonymizerCollection
-     * @param PropertyManipulator  $propertyManipulator
+     * @param AnnotationReader   $annotationReader
+     * @param PropertyAnonymizer $propertyAnonymizer
      */
     public function __construct(
         AnnotationReader $annotationReader,
-        AnonymizerCollection $anonymizerCollection,
-        PropertyManipulator $propertyManipulator
+        PropertyAnonymizer $propertyAnonymizer
     ) {
         $this->annotationReader     = $annotationReader;
-        $this->propertyManipulator  = $propertyManipulator;
-        $this->anonymizerCollection = $anonymizerCollection;
+        $this->propertyAnonymizer   = $propertyAnonymizer;
     }
 
     /**
@@ -78,48 +69,7 @@ class Anonymizer
         $annotations     = $this->annotationReader->getPropertiesWithAnnotation($reflectionClass, Anonymize::class);
 
         foreach ($annotations as $property => $annotation) {
-            $this->anonymizeField($object, $property, $annotation);
+            $this->propertyAnonymizer->anonymizeField($object, $property, $annotation);
         }
-    }
-
-    /**
-     * Anonymizes the given property on the given object by the given annotation.
-     * The value is used for recursion in case the given property is an object or array.
-     *
-     * @param object     $object The current object to be anonymized.
-     * @param string     $property The field property of the annotation.
-     * @param Anonymize  $annotation The annotation of the field.
-     * @param null|mixed $value The recursive value if used by traversal.
-     *
-     * @return void
-     *
-     * @throws ReflectionException
-     */
-    private function anonymizeField($object, $property, Anonymize $annotation, &$value = null)
-    {
-        if (null === $value) {
-            $value = $this->propertyManipulator->getPropertyValue($object, $property);
-        }
-
-        if (is_object($value)) {
-            $this->anonymize($value);
-            return;
-        }
-
-        if (is_array($value)) {
-            foreach ($value as &$item) {
-                $this->anonymizeField($object, $property, $annotation, $item);
-            }
-
-            $this->propertyManipulator->setPropertyValue($object, $property, $value);
-            return;
-        }
-
-        $anonymizer = $this->anonymizerCollection->getAnonymizer($annotation->type);
-        $value = $anonymizer->anonymize($value, array(
-            'annotationValue' => $annotation->value,
-            'object' => $object,
-        ));
-        $this->propertyManipulator->setPropertyValue($object, $property, $value);
     }
 }
