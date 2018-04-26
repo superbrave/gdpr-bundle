@@ -141,7 +141,13 @@ class FixedValueAnonymizerTest extends \PHPUnit_Framework_TestCase
         ]));
     }
 
-    public function testAnonymizeRequiresTheValueToBeNonEmptyOrThrowException()
+    /**
+     * Tests that an exception is thrown when the value provided in the annotation is an empty string
+     * Type "fixed" is expected to receive a value
+     *
+     * @return void
+     */
+    public function testAnonymizeRequiresTheValueToBeANonEmptyStringOrThrowException()
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('The option "annotationValue" cannot be empty');
