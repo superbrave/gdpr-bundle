@@ -5,7 +5,7 @@ services:
     super_brave_gdpr.fixed_value_anonymizer:
         class: SuperBrave\GdprBundle\Anonymize\Type\FixedValueAnonymizer
         tags:
-            - { name: super_brave_gdpr.anonymizer, type: fixedValue }
+            - { name: super_brave_gdpr.anonymizer, type: fixed }
 
     super_brave_gdpr.date_time_anonymizer:
         class: SuperBrave\GdprBundle\Anonymize\Type\DateTimeAnonymizer
