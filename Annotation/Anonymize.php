@@ -26,7 +26,7 @@ use Doctrine\Common\Annotations\Annotation\Attributes;
  * @Annotation\Target({"PROPERTY"})
  *
  * @Attributes({
- *    @Attribute("type",  required=false, type="string"),
+ *    @Attribute("type",  required=true,  type="string"),
  *    @Attribute("value", required=false, type="string")
  * })
  */
