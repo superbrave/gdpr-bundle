@@ -14,6 +14,7 @@ namespace SuperBrave\GdprBundle\Anonymize\Type;
 
 /**
  * Class ArrayAnonymizer
+ *
  * @package SuperBrave\GdprBundle\Anonymize\Type
  */
 class ArrayAnonymizer implements AnonymizerInterface

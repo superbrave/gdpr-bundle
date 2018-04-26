@@ -20,6 +20,7 @@ use ReflectionClass;
 
 /**
  * Class Anonymizer
+ *
  * @package SuperBrave\GdprBundle\Anonymize
  */
 class Anonymizer

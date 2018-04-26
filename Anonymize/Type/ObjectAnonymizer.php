@@ -16,6 +16,7 @@ use SuperBrave\GdprBundle\Anonymize\Anonymizer;
 
 /**
  * Class ObjectAnonymizer
+ *
  * @package SuperBrave\GdprBundle\Anonymize\Type
  */
 class ObjectAnonymizer implements AnonymizerInterface

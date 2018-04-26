@@ -16,6 +16,7 @@ use InvalidArgumentException;
 
 /**
  * Class IpAnonymizer
+ * 
  * @package SuperBrave\GdprBundle\Anonymize\Type
  */
 class IpAnonymizer implements AnonymizerInterface
