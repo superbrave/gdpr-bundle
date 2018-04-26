@@ -31,7 +31,8 @@ class FixedValueAnonymizer implements AnonymizerInterface
 
     /**
      * StringAnonymizer constructor.
-     * @param PropertyManipulator $propertyManipulator
+     *
+     * @param PropertyManipulator $propertyManipulator Used to get the value of a property
      */
     public function __construct(PropertyManipulator $propertyManipulator)
     {

@@ -47,24 +47,28 @@ class DateTimeAnonymizerTest extends TestCase
     {
         return array(
             // DateTime objects
-            'datetime1' => [new \DateTime('1983-08-11'), new \DateTime('1983-01-01')],
-            'datetime2' => [new \DateTime('2016-04-27'), new \DateTime('2016-01-01')],
-            'datetime3' => [new \DateTime('2018-05-25 13:37:00'), new \DateTime('2018-01-01 00:00:00')],
+            'datetime1' => [new \DateTime('2016-04-27'),          new \DateTime('2016-01-01')],
+            'datetime2' => [new \DateTime('2018-05-25 13:37:00'), new \DateTime('2018-01-01 00:00:00')],
 
             // Timestamps
-            'timestamp1' => [strtotime("1983-08-11"), strtotime("1983-01-01")],
-            'timestamp2' => [strtotime("2016-04-27"), strtotime("2016-01-01")],
-            'timestamp3' => [strtotime("2018-05-25 13:37:00"), strtotime("2018-01-01 00:00:00")],
-            'timestamp4' => [strtotime("1945-05-05"), strtotime("1945-01-01")],
+            'timestamp1' => [strtotime("2018-05-25 13:37:00"), strtotime("2018-01-01 00:00:00")],
+            'timestamp2' => [strtotime("1945-05-05 00:00:00"), strtotime("1945-01-01 00:00:00")],
+            'timestamp3' => [strtotime("2999-01-20 03:14:07"), strtotime("2999-01-01 00:00:00")],
 
             // Several ISO8601 string formats
-            'stringdate1' => ["1983-08-11", "1983-01-01"],
-            'stringdate2' => ["2016-04-27", "2016-01-01"],
-            'stringdate3' => ["2018-05-25 13:37:00", "2018-01-01 00:00:00"],
-            'stringdate4' => ["2018-05-25T13:37:00", "2018-01-01T00:00:00"],
-            'stringdate5' => ["2018-05-25T13:37:00+0200", "2018-01-01T00:00:00+0200"],
-            // RFC3339 string format
-            'stringdate6' => ["2018-05-25T13:37:00+02:00", "2018-01-01T00:00:00+02:00"],
+            'stringdate1' => ["2016-04-27",                        "2016-01-01"],
+            'stringdate2' => ["2018-05-25 13:37:00",               "2018-01-01 00:00:00"],
+            'stringdate3' => ["2018-05-25T13:37:00",               "2018-01-01T00:00:00"],
+            'stringdate4' => ["2018-05-25T13:37:00+0200",          "2018-01-01T00:00:00+0200"],
+            // RFC3339 string formats
+            'stringdate5' => ["2018-05-25T13:37:00+02:00",         "2018-01-01T00:00:00+02:00"],
+            'stringdate6' => ["1983-08-11T13:37:01.337+02:00",     "1983-01-01T00:00:00.000+02:00"],
+            // RFC822 string format
+            'stringdate7' => ["Thu, 11 Aug 83 13:37:00 +0200",     "Sat, 01 Jan 83 00:00:00 +0200"],
+            // RFC850 string format
+            'stringdate8' => ["Thursday, 11-Aug-83 13:37:00 CEST", "Saturday, 01-Jan-83 00:00:00 CEST"],
+            // RFC7231 string format
+            'stringdate9' => ["Thu, 11 Aug 1983 13:37:00 GMT",     "Sat, 01 Jan 1983 00:00:00 GMT"],
         );
     }
 }

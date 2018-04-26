@@ -23,15 +23,25 @@ use SuperBrave\GdprBundle\Manipulator\PropertyManipulator;
 class PropertyAnonymizer
 {
     /**
+     * Property manipulator service
+     *
      * @var PropertyManipulator
      */
     private $propertyManipulator;
 
     /**
+     * The collection of anonymizers
+     *
      * @var AnonymizerCollection
      */
     private $anonymizerCollection;
 
+    /**
+     * Constructs the class given the parameters
+     *
+     * @param PropertyManipulator  $propertyManipulator  The PropertyManipulator class used to get the property value
+     * @param AnonymizerCollection $anonymizerCollection A collection of anonymizers registered by the compiler pass
+     */
     public function __construct(PropertyManipulator $propertyManipulator, AnonymizerCollection $anonymizerCollection)
     {
         $this->propertyManipulator = $propertyManipulator;
@@ -42,9 +52,11 @@ class PropertyAnonymizer
      * Anonymize the property the annotation is on.
      * Takes into account the type specified in the annotation
      *
-     * @param $object
-     * @param string $property
-     * @param Anonymize $annotation
+     * @param object    $object     The owner of the property being anonymized
+     * @param string    $property   The property being anonymized
+     * @param Anonymize $annotation The annotation gotten from the object
+     *
+     * @return void
      */
     public function anonymizeField($object, $property, Anonymize $annotation)
     {

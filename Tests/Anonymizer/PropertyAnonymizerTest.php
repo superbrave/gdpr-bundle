@@ -27,26 +27,39 @@ use SuperBrave\GdprBundle\Tests\AnnotatedMock;
  */
 class PropertyAnonymizerTest extends PHPUnit_Framework_TestCase
 {
-    /**.
+    /**
+     * Mock for the PropertyManipulator
+     *
      * @var PHPUnit_Framework_MockObject_MockObject
      */
     private $propertyManipulatorMock;
 
     /**
+     * Mock for the AnonymizerCollection
+     *
      * @var PHPUnit_Framework_MockObject_MockObject
      */
     private $anonymizerCollection;
 
     /**
+     * The propertyAnonymizer to be tested
+     *
      * @var PropertyAnonymizer
      */
     private $propertyAnonymizer;
 
     /**
+     * A ReflectionClass build from AnnotatedMock class
+     *
      * @var ReflectionClass
      */
     private $reflectionClass;
 
+    /**
+     * Sets up the properties to be used in further tests
+     *
+     * @return void
+     */
     public function setUp()
     {
         $this->anonymizerCollection = $this->getMockBuilder(AnonymizerCollection::class)
@@ -63,6 +76,8 @@ class PropertyAnonymizerTest extends PHPUnit_Framework_TestCase
 
     /**
      * Test that the property anonymizer correctly utilizes its dependencies to do its job
+     *
+     * @return void
      */
     public function testPropertyAnonymizerUsesDependencies()
     {
