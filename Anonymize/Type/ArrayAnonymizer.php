@@ -40,7 +40,7 @@ class ArrayAnonymizer implements AnonymizerInterface
     {
         if (!is_iterable($propertyValue)) {
             throw new \InvalidArgumentException(sprintf(
-                'Invalid argument given \"%s\" for class %s should be of type iterable.',
+                'Invalid argument given "%s" for class "%s" should be of type iterable.',
                 gettype($propertyValue),
                 __CLASS__
             ));

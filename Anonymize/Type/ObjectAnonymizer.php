@@ -42,7 +42,7 @@ class ObjectAnonymizer implements AnonymizerInterface
     {
         if (!is_object($propertyValue)) {
             throw new \InvalidArgumentException(sprintf(
-                'Invalid argument given \"%s\" for class %s should be of type object.',
+                'Invalid argument given "%s" for class "%s" should be of type object.',
                 gettype($propertyValue),
                 __CLASS__
             ));
