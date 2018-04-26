@@ -68,12 +68,10 @@ class Anonymizer
     public function anonymize(/*object */$object)
     {
         if (!is_object($object)) {
-            throw new InvalidArgumentException(
-                sprintf(
-                    'Invalid argument given "%s" should be of type object.',
-                    gettype($object)
-                )
-            );
+            throw new InvalidArgumentException(sprintf(
+                'Invalid argument given "%s" should be of type object.',
+                gettype($object)
+            ));
         }
 
         $reflectionClass = new ReflectionClass($object);
