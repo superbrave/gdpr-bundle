@@ -30,7 +30,7 @@ class AnonymizerCollection
     private $anonymizers = [];
 
     /**
-     * Addn an anonymizer
+     * Adds an anonymizer to the collection.
      *
      * @param string              $type       The anonymizer type to be added
      * @param AnonymizerInterface $anonymizer The anonymizer class to be added
@@ -47,7 +47,7 @@ class AnonymizerCollection
     }
 
     /**
-     * Get an anonymizer by its type
+     * Get an anonymizer by its type from the collection.
      *
      * @param string $type The anonymizer type to be fetched
      *
