@@ -55,7 +55,7 @@ class AnonymizerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests if Anonymizer::anonymize class the annotation reader instance and property anonymizer instance.
+     * Tests if Anonymizer::anonymize calls the annotation reader instance and property anonymizer instance.
      */
     public function testAnonymizeObject()
     {
