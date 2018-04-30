@@ -57,17 +57,17 @@ class DateTimeAnonymizer implements AnonymizerInterface
      * Actual anonimizing will happen in {@see DateTimeAnonymizer::anonymizeByDateTime()}; string and int are converted.
      * Supported string formats are documented in {@see DateTimeAnonymizer::$stringFormats}
      *
-     * @param \DateTime|int|string $propertyValue The value that has to be converted
-     * @param array                $options       Options to help the anonymizer do its job
+     * @param \DateTimeInterface|int|string $propertyValue The value that has to be converted
+     * @param array                         $options       Options to help the anonymizer do its job
      *
-     * @return \DateTime|int|string The anonymized result
+     * @return \DateTimeInterface|int|string The anonymized result
      *
      * @throws \Exception When the $propertyValue is invalid, an exception will be thrown
      */
     public function anonymize($propertyValue, array $options = [])
     {
         // Regular DateTime object
-        if ($propertyValue instanceof \DateTime) {
+        if ($propertyValue instanceof \DateTimeInterface) {
             return $this->anonymizeByDateTime($propertyValue);
         }
 
@@ -91,17 +91,23 @@ class DateTimeAnonymizer implements AnonymizerInterface
     /**
      * Anonymize a DateTime object by setting day and month to 1, hours, minutes and seconds to 0.
      *
-     * @param \DateTime $dateTime Original DateTime object
+     * @param \DateTimeInterface $dateTime Original DateTime object
      *
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    private function anonymizeByDateTime(\DateTime $dateTime)
+    private function anonymizeByDateTime(\DateTimeInterface $dateTime)
     {
-        // Clone the object, instead of modifying the $dateTime object.
-        $result = clone $dateTime;
-        $result->setDate($dateTime->format('Y'), 1, 1);
-        $result->setTime(0, 0, 0, 0);
-        return $result;
+        if (is_a($dateTime, \DateTimeImmutable::class)) {
+            // Immutable doesn't modify the current object but returns a new object instead.
+            // This looks a bit like the singleton pattern but isn't really the same.
+            return $dateTime->setDate($dateTime->format('Y'), 1, 1)->setTime(0, 0, 0, 0);
+        } else {
+            // For a DateTime object, clone the object, instead of modifying the existing DateTime object.
+            $result = clone $dateTime;
+            $result->setDate($dateTime->format('Y'), 1, 1);
+            $result->setTime(0, 0, 0, 0);
+            return $result;
+        }
     }
 
     /**
