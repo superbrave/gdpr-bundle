@@ -17,7 +17,7 @@ use PHPUnit_Framework_MockObject_MockObject;
 use Reflectionclass;
 use SuperBrave\GdprBundle\Annotation\Anonymize;
 use SuperBrave\GdprBundle\Anonymize\AnonymizerCollection;
-use SuperBrave\GdprBundle\Anonymize\AnonymizerInterface;
+use SuperBrave\GdprBundle\Anonymize\Type\AnonymizerInterface;
 use SuperBrave\GdprBundle\Anonymize\PropertyAnonymizer;
 use SuperBrave\GdprBundle\Manipulator\PropertyManipulator;
 use SuperBrave\GdprBundle\Tests\AnnotatedMock;
