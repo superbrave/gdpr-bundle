@@ -56,6 +56,8 @@ class Anonymizer
      *
      * @throws InvalidArgumentException
      * @throws ReflectionException
+     *                            
+     * @return void
      */
     public function anonymize(/*object */$object)
     {

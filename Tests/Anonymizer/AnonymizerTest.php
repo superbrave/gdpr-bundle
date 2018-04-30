@@ -1,4 +1,14 @@
 <?php
+/**
+ * This file is part of the GDPR bundle.
+ *
+ * @category  Bundle
+ * @package   Gdpr
+ * @author    SuperBrave <info@superbrave.nl>
+ * @copyright 2018 SuperBrave <info@superbrave.nl>
+ * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
+ * @link      https://www.superbrave.nl/
+ */
 
 namespace SuperBrave\GdprBundle\Tests\Anonymizer;
 
@@ -10,6 +20,11 @@ use SuperBrave\GdprBundle\Anonymize\Anonymizer;
 use SuperBrave\GdprBundle\Anonymize\PropertyAnonymizer;
 use SuperBrave\GdprBundle\Tests\AnnotatedMock;
 
+/**
+ * Class AnonymizerTest
+ *
+ * @package SuperBrave\GdprBundle\Tests\Anonymizer
+ */
 class AnonymizerTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -47,6 +62,8 @@ class AnonymizerTest extends PHPUnit_Framework_TestCase
 
     /**
      * Tests if constructing a new Anonymizer instance sets the instance properties.
+     *
+     * @return void
      */
     public function testConstruct()
     {
@@ -56,6 +73,8 @@ class AnonymizerTest extends PHPUnit_Framework_TestCase
 
     /**
      * Tests if Anonymizer::anonymize calls the annotation reader instance and property anonymizer instance.
+     *
+     * @return void
      */
     public function testAnonymizeObject()
     {
