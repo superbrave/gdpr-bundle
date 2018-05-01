@@ -25,8 +25,8 @@ class DateTimeAnonymizerTest extends TestCase
     /**
      * Tests the DateTime anonymizer
      *
-     * @param \DateTime|int|string $testDate       The original date/time set
-     * @param \DateTime|int|string $expectedResult The expected result after anonymizing the data
+     * @param \DateTimeInterface|int|string $testDate       The original date/time set
+     * @param \DateTimeInterface|int|string $expectedResult The expected result after anonymizing the data
      *
      * @return void
      *
@@ -49,6 +49,10 @@ class DateTimeAnonymizerTest extends TestCase
             // DateTime objects
             'datetime1' => [new \DateTime('2016-04-27'),          new \DateTime('2016-01-01')],
             'datetime2' => [new \DateTime('2018-05-25 13:37:00'), new \DateTime('2018-01-01 00:00:00')],
+
+            // DateTimeImmutable objects
+            'datetime3' => [new \DateTimeImmutable('2016-04-27'),       new \DateTimeImmutable('2016-01-01')],
+            'datetime4' => [new \DateTimeImmutable('2018-05-25 13:37'), new \DateTimeImmutable('2018-01-01 00:00')],
 
             // Timestamps
             'timestamp1' => [strtotime("2018-05-25 13:37:00"), strtotime("2018-01-01 00:00:00")],
