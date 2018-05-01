@@ -12,27 +12,5 @@
     <!-- Only validate files with the php extension -->
     <arg name="extensions" value="php"/>
 
-    <!-- For security reasons, let's disable some functions -->
-    <rule ref="Generic.PHP.ForbiddenFunctions">
-        <properties>
-            <property name="forbiddenFunctions" type="array" value="eval=>null,exec=>null,shell_exec=>null,system=>null,passthru=>null,popen=>null,stream_select=>null,create_function=>null,include=>require,include_once=>require_once" />
-        </properties>
-    </rule>
-
-    <rule ref="Generic.Commenting"/>
-
-    <!-- PEAR checks are mostly because this standard is very strict in docblocks -->
-    <rule ref="PEAR.Commenting">
-        <!-- Versioning is beeing taken care of by Composer -->
-        <exclude name="PEAR.Commenting.FileComment.MissingVersion"/>
-        <!-- These tags are already defined per file. Since we only have one class per file, this is a bit excessive -->
-        <exclude name="PEAR.Commenting.ClassComment.MissingCategoryTag"/>
-        <exclude name="PEAR.Commenting.ClassComment.MissingPackageTag"/>
-        <exclude name="PEAR.Commenting.ClassComment.MissingAuthorTag"/>
-        <exclude name="PEAR.Commenting.ClassComment.MissingLicenseTag"/>
-        <exclude name="PEAR.Commenting.ClassComment.MissingLinkTag"/>
-    </rule>
-
-    <!-- PSR2 checks are used (and recommended) for usage with the Symfony framework, PSR1 is implied. -->
-    <rule ref="PSR2"/>
+    <rule ref="vendor/superbrave/coding-standards/Superbrave"/>
 </ruleset>
