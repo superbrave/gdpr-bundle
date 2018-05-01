@@ -19,6 +19,7 @@
     "roave/security-advisories": "dev-master",
     "doctrine/collections": "^1.4",
     "phpunit/phpunit": "^5.6",
+    "superbrave/coding-standards": "dev-master",
     "squizlabs/php_codesniffer": "^3.2"
   },
   "autoload"   : {
