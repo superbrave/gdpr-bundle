@@ -29,7 +29,7 @@ class ObjectAnonymizer implements AnonymizerInterface
     /**
      * ObjectAnonymizer constructor.
      *
-     * @param Anonymizer $anonymizer
+     * @param Anonymizer $anonymizer Any Anonymizer
      */
     public function __construct(Anonymizer $anonymizer)
     {

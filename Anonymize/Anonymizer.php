@@ -38,8 +38,8 @@ class Anonymizer
     /**
      * Anonymizer constructor.
      *
-     * @param AnnotationReader   $annotationReader
-     * @param PropertyAnonymizer $propertyAnonymizer
+     * @param AnnotationReader   $annotationReader   The annotation reader that should be used
+     * @param PropertyAnonymizer $propertyAnonymizer The property anonymizer
      */
     public function __construct(
         AnnotationReader $annotationReader,

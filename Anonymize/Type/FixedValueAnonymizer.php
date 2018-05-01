@@ -65,6 +65,8 @@ class FixedValueAnonymizer implements AnonymizerInterface
      * Configures the options for this anonymizer.
      *
      * @param OptionsResolver $resolver The resolver for the options.
+     *
+     * @return void
      */
     private function configureOptions(OptionsResolver $resolver)
     {
