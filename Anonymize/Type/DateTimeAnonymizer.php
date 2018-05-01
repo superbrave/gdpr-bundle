@@ -20,13 +20,6 @@ namespace SuperBrave\GdprBundle\Anonymize\Type;
 defined('DATE_RFC7231') or define('DATE_RFC7231', "D, d M Y H:i:s \G\M\T");
 
 /**
- * DATE_RFC3339_EXTENDED is not natively supported in PHP 5.6
- *
- * @deprecated since PHP 7.0.0
- */
-defined('DATE_RFC3339_EXTENDED') or define('DATE_RFC3339_EXTENDED', "Y-m-d\TH:i:s.vP");
-
-/**
  * DateTime anonymizer class
  *
  * @package SuperBrave\GdprBundle\Anonymize\Type
