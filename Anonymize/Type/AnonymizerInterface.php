@@ -23,7 +23,7 @@ interface AnonymizerInterface
      * Anonymizes the given property value.
      *
      * @param mixed $propertyValue The value of the property.
-     * @param array $options The options for the anonymizer.
+     * @param array $options       The options for the anonymizer.
      *
      * @return mixed
      */
