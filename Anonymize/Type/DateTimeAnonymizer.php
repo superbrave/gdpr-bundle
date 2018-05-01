@@ -105,7 +105,7 @@ class DateTimeAnonymizer implements AnonymizerInterface
         // Clone the object, instead of modifying the $dateTime object.
         $result = clone $dateTime;
         $result->setDate($dateTime->format('Y'), 1, 1);
-        $result->setTime(0, 0, 0, 0);
+        $result->setTime(0, 0, 0);
         return $result;
     }
 
