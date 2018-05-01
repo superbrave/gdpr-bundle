@@ -100,12 +100,12 @@ class DateTimeAnonymizer implements AnonymizerInterface
         if (is_a($dateTime, \DateTimeImmutable::class)) {
             // Immutable doesn't modify the current object but returns a new object instead.
             // This looks a bit like the singleton pattern but isn't really the same.
-            return $dateTime->setDate($dateTime->format('Y'), 1, 1)->setTime(0, 0, 0, 0);
+            return $dateTime->setDate($dateTime->format('Y'), 1, 1)->setTime(0, 0, 0);
         } else {
             // For a DateTime object, clone the object, instead of modifying the existing DateTime object.
             $result = clone $dateTime;
             $result->setDate($dateTime->format('Y'), 1, 1);
-            $result->setTime(0, 0, 0, 0);
+            $result->setTime(0, 0, 0);
             return $result;
         }
     }
