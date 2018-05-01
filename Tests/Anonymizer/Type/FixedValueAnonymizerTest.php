@@ -153,7 +153,7 @@ class FixedValueAnonymizerTest extends \PHPUnit_Framework_TestCase
         $this->expectExceptionMessage('The option "annotationValue" cannot be empty');
 
         $this->anonymizer->anonymize('johndoe@appleseed.com', [
-            'annotationValue' => '',
+            'annotationValue' => null,
             'object' => new AnnotatedMock(),
         ]);
     }

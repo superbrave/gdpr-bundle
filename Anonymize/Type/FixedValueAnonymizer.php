@@ -55,7 +55,7 @@ class FixedValueAnonymizer implements AnonymizerInterface
         $this->configureOptions($resolver);
         $options = $resolver->resolve($options);
 
-        if ('' === $options['annotationValue']) {
+        if (null === $options['annotationValue']) {
             throw new \InvalidArgumentException('The option "annotationValue" cannot be empty');
         }
 
