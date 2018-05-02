@@ -46,7 +46,7 @@ class FixedValueAnonymizer implements AnonymizerInterface
      * You can specify a property you want to be resolved using a wildcard manner
      *
      * example:
-     *    'my-fixed-value-{id}' would become 'my-fixed-valie-10'
+     *    'my-fixed-value-{id}' would become 'my-fixed-value-10'
      *    when the id property on the object returns 10
      *
      * @param mixed $propertyValue The value that has to be converted
