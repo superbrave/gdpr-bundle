@@ -42,6 +42,7 @@ class FixedValueAnonymizer implements AnonymizerInterface
 
     /**
      * Anonymize the data given according to the options provided
+     * The value is required in the annotation for this anonymizer
      *
      * @param mixed $propertyValue The value that has to be converted
      * @param array $options       Options to help the anonymizer do its job
@@ -53,6 +54,10 @@ class FixedValueAnonymizer implements AnonymizerInterface
         $resolver = new OptionsResolver();
         $this->configureOptions($resolver);
         $options = $resolver->resolve($options);
+
+        if (null === $options['annotationValue']) {
+            throw new \InvalidArgumentException('The option "annotationValue" cannot be empty');
+        }
 
         $annotationValue = $options['annotationValue'];
 
