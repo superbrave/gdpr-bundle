@@ -74,10 +74,8 @@ class FixedValueAnonymizerTest extends \PHPUnit_Framework_TestCase
         $this->expectException(MissingOptionsException::class);
         $this->expectExceptionMessage('The required option "annotationValue" is missing.');
 
-        $mock = new AnnotatedMock();
-
         $this->anonymizer->anonymize('johndoe@appleseed.com', [
-            'object' => $mock,
+            'object' => new AnnotatedMock(),
         ]);
     }
 
@@ -103,13 +101,11 @@ class FixedValueAnonymizerTest extends \PHPUnit_Framework_TestCase
      */
     public function testAnonymizeStringGivenAFormatWithMultipleProperties()
     {
-        $mock = new AnnotatedMock();
-
         $this->assertEquals(
             'email-1-bar@localhost',
             $this->anonymizer->anonymize('johndoe@appleseed.com', [
                 'annotationValue' => 'email-{baz}-{foo}@localhost',
-                'object' => $mock,
+                'object' => new AnnotatedMock(),
             ])
         );
     }
@@ -126,11 +122,9 @@ class FixedValueAnonymizerTest extends \PHPUnit_Framework_TestCase
             'The property "$nonexistent" does not exist on class "SuperBrave\GdprBundle\Tests\AnnotatedMock"'
         );
 
-        $mock = new AnnotatedMock();
-
         $this->anonymizer->anonymize('johndoe@appleseed.com', [
             'annotationValue' => 'email-{nonexistent}',
-            'object' => $mock,
+            'object' => new AnnotatedMock(),
         ]);
     }
 
@@ -141,11 +135,26 @@ class FixedValueAnonymizerTest extends \PHPUnit_Framework_TestCase
      */
     public function testAnonymizeStringGivenAFormatWithNoWildcardReturnsTheString()
     {
-        $mock = new AnnotatedMock();
-
         $this->assertEquals('foobarbaz', $this->anonymizer->anonymize('johndoe@appleseed.com', [
             'annotationValue' => 'foobarbaz',
-            'object' => $mock,
+            'object' => new AnnotatedMock(),
         ]));
+    }
+
+    /**
+     * Tests that an exception is thrown when the value provided in the annotation is an empty string
+     * Type "fixed" is expected to receive a value
+     *
+     * @return void
+     */
+    public function testAnonymizeRequiresTheValueToBeANonEmptyStringOrThrowException()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('The option "annotationValue" cannot be empty');
+
+        $this->anonymizer->anonymize('johndoe@appleseed.com', [
+            'annotationValue' => null,
+            'object' => new AnnotatedMock(),
+        ]);
     }
 }

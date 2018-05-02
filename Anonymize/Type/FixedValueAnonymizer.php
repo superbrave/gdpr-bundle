@@ -40,13 +40,29 @@ class FixedValueAnonymizer implements AnonymizerInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Anonymize the data given according to the options provided
+     * The value is required in the annotation for this anonymizer
+     *
+     * You can specify a property you want to be resolved using a wildcard manner
+     * 
+     * example:
+     *    'my-fixed-value-{id}' would become 'my-fixed-valie-10' 
+     *    when the id property on the object returns 10
+     * 
+     * @param mixed $propertyValue The value that has to be converted
+     * @param array $options       Options to help the anonymizer do its job
+     *
+     * @return string               The Anonymized string
      */
     public function anonymize($propertyValue, array $options = [])
     {
         $resolver = new OptionsResolver();
         $this->configureOptions($resolver);
         $options = $resolver->resolve($options);
+
+        if (null === $options['annotationValue']) {
+            throw new \InvalidArgumentException('The option "annotationValue" cannot be empty');
+        }
 
         $annotationValue = $options['annotationValue'];
 
