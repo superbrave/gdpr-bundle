@@ -13,7 +13,6 @@
 namespace SuperBrave\GdprBundle\Anonymize\Type;
 
 use InvalidArgumentException;
-use SuperBrave\GdprBundle\Anonymize\AnonymizerInterface;
 
 /**
  * Class IpAnonymizer
@@ -49,12 +48,7 @@ class IpAnonymizer implements AnonymizerInterface
     }
 
     /**
-     * Anonymize the data given the value and options
-     *
-     * @param mixed $propertyValue The value used to anonymize
-     * @param array $options       Options that may be used to help anonymization
-     *
-     * @return mixed
+     * {@inheritdoc}
      */
     public function anonymize($propertyValue, array $options = [])
     {

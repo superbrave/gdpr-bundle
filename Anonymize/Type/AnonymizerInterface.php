@@ -10,20 +10,20 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace SuperBrave\GdprBundle\Anonymize;
+namespace SuperBrave\GdprBundle\Anonymize\Type;
 
 /**
  * Interface AnonymizerInterface
  *
- * @package SuperBrave\GdprBundle\Anonymize
+ * @package SuperBrave\GdprBundle\Anonymize\Type
  */
 interface AnonymizerInterface
 {
     /**
-     * Anonymize the data given the value and options
+     * Anonymizes the given property value.
      *
-     * @param mixed $propertyValue The value used to anonymize
-     * @param array $options       Options that may be used to help anonymization
+     * @param mixed $propertyValue The value of the property.
+     * @param array $options       The options for the anonymizer.
      *
      * @return mixed
      */

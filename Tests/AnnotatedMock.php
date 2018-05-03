@@ -26,6 +26,7 @@ class AnnotatedMock
      * The foo property.
      *
      * @GDPR\Export()
+     * @GDPR\Anonymize(type="fixedValue", value="foo")
      *
      * @var string
      */

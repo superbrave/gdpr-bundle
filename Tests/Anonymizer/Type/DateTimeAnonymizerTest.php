@@ -64,9 +64,8 @@ class DateTimeAnonymizerTest extends TestCase
             'stringdate2' => ["2018-05-25 13:37:00",               "2018-01-01 00:00:00"],
             'stringdate3' => ["2018-05-25T13:37:00",               "2018-01-01T00:00:00"],
             'stringdate4' => ["2018-05-25T13:37:00+0200",          "2018-01-01T00:00:00+0200"],
-            // RFC3339 string formats
+            // RFC3339 string format
             'stringdate5' => ["2018-05-25T13:37:00+02:00",         "2018-01-01T00:00:00+02:00"],
-            'stringdate6' => ["1983-08-11T13:37:01.337+02:00",     "1983-01-01T00:00:00.000+02:00"],
             // RFC822 string format
             'stringdate7' => ["Thu, 11 Aug 83 13:37:00 +0200",     "Sat, 01 Jan 83 00:00:00 +0200"],
             // RFC850 string format

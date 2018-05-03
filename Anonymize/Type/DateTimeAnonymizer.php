@@ -12,7 +12,12 @@
 
 namespace SuperBrave\GdprBundle\Anonymize\Type;
 
-use SuperBrave\GdprBundle\Anonymize\AnonymizerInterface;
+/**
+ * DATE_RFC7231 is not natively supported in PHP 5.6
+ *
+ * @deprecated since PHP 7.0.19
+ */
+defined('DATE_RFC7231') or define('DATE_RFC7231', "D, d M Y H:i:s \G\M\T");
 
 /**
  * DateTime anonymizer class
@@ -42,8 +47,6 @@ class DateTimeAnonymizer implements AnonymizerInterface
         DATE_RFC850    => '/^[a-z]{4,}, [0-9]{2}-[a-z]{3}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2} [a-z]{1,}$/i',
         DATE_RFC7231   => '/^[a-z]{3}, [0-9]{2} [a-z]{3} [0-9]{4} [0-9]{2}:[0-9]{2}:[0-9]{2} GMT$/i',
         DATE_RFC3339   => '/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}[+-]{1}[0-9]{2}:[0-9]{2}$/',
-        DATE_RFC3339_EXTENDED =>
-            '/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}[+-]{1}[0-9]{2}:[0-9]{2}$/',
         // Variants on ISO8601 which are used by different database storage designs
         'Y-m-d'        => '/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/',
         'Y-m-d H:i:s'  => '/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/',

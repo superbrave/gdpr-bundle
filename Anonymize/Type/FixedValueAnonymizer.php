@@ -12,7 +12,6 @@
 
 namespace SuperBrave\GdprBundle\Anonymize\Type;
 
-use SuperBrave\GdprBundle\Anonymize\AnonymizerInterface;
 use SuperBrave\GdprBundle\Manipulator\PropertyManipulator;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -44,6 +43,12 @@ class FixedValueAnonymizer implements AnonymizerInterface
      * Anonymize the data given according to the options provided
      * The value is required in the annotation for this anonymizer
      *
+     * You can specify a property you want to be resolved using a wildcard manner
+     *
+     * example:
+     *    'my-fixed-value-{id}' would become 'my-fixed-value-10'
+     *    when the id property on the object returns 10
+     *
      * @param mixed $propertyValue The value that has to be converted
      * @param array $options       Options to help the anonymizer do its job
      *
@@ -73,9 +78,9 @@ class FixedValueAnonymizer implements AnonymizerInterface
     }
 
     /**
-     * Configures the options needed for this class
+     * Configures the options for this anonymizer.
      *
-     * @param OptionsResolver $resolver The options resolver
+     * @param OptionsResolver $resolver The resolver for the options.
      *
      * @return void
      */

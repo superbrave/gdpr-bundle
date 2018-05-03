@@ -12,7 +12,6 @@
 
 namespace SuperBrave\GdprBundle\Anonymize;
 
-use ReflectionProperty;
 use SuperBrave\GdprBundle\Annotation\Anonymize;
 use SuperBrave\GdprBundle\Manipulator\PropertyManipulator;
 

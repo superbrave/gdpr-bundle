@@ -15,6 +15,7 @@ namespace SuperBrave\GdprBundle\Tests\Annotation;
 use PHPUnit_Framework_TestCase;
 use ReflectionClass;
 use SuperBrave\GdprBundle\Annotation\AnnotationReader;
+use SuperBrave\GdprBundle\Annotation\Anonymize;
 use SuperBrave\GdprBundle\Annotation\Export;
 use SuperBrave\GdprBundle\Tests\AnnotatedMock;
 use SuperBrave\GdprBundle\Tests\ExtendedAnnotedMock;
@@ -46,14 +47,16 @@ class AnnotationReaderTest extends PHPUnit_Framework_TestCase
         // used in the AnnotationReader does not use the existing classloaders.
         // Only the AnnotationRegistry classloader.
         class_exists(Export::class);
+        class_exists(Anonymize::class);
     }
 
     /**
-     * Tests if AnnotationReader::getPropertiesWithAnnotation returns a keyed array with the annotation instances.
+     * Tests if AnnotationReader::getPropertiesWithAnnotation returns a keyed array with the annotation export
+     * instances.
      *
      * @return void
      */
-    public function testGetPropertiesWithAnnotation()
+    public function testGetPropertiesWithAnnotationExport()
     {
         $result = $this->annotationReader->getPropertiesWithAnnotation(
             new ReflectionClass(AnnotatedMock::class),
@@ -67,6 +70,28 @@ class AnnotationReaderTest extends PHPUnit_Framework_TestCase
             array_keys($result)
         );
         $this->assertInstanceOf(Export::class, current($result));
+    }
+
+    /**
+     * Tests if AnnotationReader::getPropertiesWithAnnotation returns a keyed array with the annotation anonymize
+     * instances.
+     *
+     * @return void
+     */
+    public function testGetPropertiesWithAnnotationAnonymize()
+    {
+        $result = $this->annotationReader->getPropertiesWithAnnotation(
+            new ReflectionClass(AnnotatedMock::class),
+            Anonymize::class
+        );
+
+        $this->assertInternalType('array', $result);
+        $this->assertCount(1, $result);
+        $this->assertSame(
+            array('foo'),
+            array_keys($result)
+        );
+        $this->assertInstanceOf(Anonymize::class, current($result));
     }
 
     /**
