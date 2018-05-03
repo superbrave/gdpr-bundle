@@ -103,4 +103,17 @@ class AnonymizerTest extends PHPUnit_Framework_TestCase
 
         $this->anonymizer->anonymize($annotatedMock);
     }
+
+    /**
+     * Test if Anonymizer can only handle objects as argument.
+     *
+     * @return void
+     */
+    public function testAnonymizerShouldReceiveExceptionWhenArgumentIsNoObject()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid argument given "string" should be of type object.');
+
+        $this->anonymizer->anonymize('test');
+    }
 }
