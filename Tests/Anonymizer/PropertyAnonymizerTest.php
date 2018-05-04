@@ -14,7 +14,7 @@ namespace SuperBrave\GdprBundle\Tests\Anonymizer;
 
 use PHPUnit_Framework_TestCase;
 use PHPUnit_Framework_MockObject_MockObject;
-use Reflectionclass;
+use ReflectionClass;
 use SuperBrave\GdprBundle\Annotation\Anonymize;
 use SuperBrave\GdprBundle\Anonymize\AnonymizerCollection;
 use SuperBrave\GdprBundle\Anonymize\Type\AnonymizerInterface;
@@ -87,7 +87,7 @@ class PropertyAnonymizerTest extends PHPUnit_Framework_TestCase
 
         $anonymizerMock = $this->getMockBuilder(AnonymizerInterface::class)->getMock();
 
-        $theObject = new \StdClass();
+        $theObject = new \stdClass();
 
         //first it uses the collection to find an anonymizer
         $this->anonymizerCollection
