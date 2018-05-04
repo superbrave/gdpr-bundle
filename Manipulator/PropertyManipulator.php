@@ -70,6 +70,8 @@ class PropertyManipulator
      * @param string $propertyName The property name where the value is written to
      * @param mixed  $value        The new value for the property
      *
+     * @throws \InvalidArgumentException if property does not exist.
+     *
      * @return void
      */
     public function setPropertyValue($object, $propertyName, $value)

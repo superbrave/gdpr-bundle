@@ -31,6 +31,8 @@ class AddAnonymizersCompilerPass implements CompilerPassInterface
      *
      * @param ContainerBuilder $container The service container
      *
+     * @throws LogicException on invalid interface usage.
+     *
      * @return void
      */
     public function process(ContainerBuilder $container)

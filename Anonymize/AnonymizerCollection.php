@@ -35,6 +35,8 @@ class AnonymizerCollection
      * @param string              $type       The anonymizer type to be added
      * @param AnonymizerInterface $anonymizer The anonymizer class to be added
      *
+     * @throws LogicException on duplicate anonymizer keys.
+     *
      * @return void
      */
     public function addAnonymizer($type, $anonymizer)
@@ -50,6 +52,8 @@ class AnonymizerCollection
      * Get an anonymizer by its type from the collection.
      *
      * @param string $type The anonymizer type to be fetched
+     *
+     * @throws LogicException if the anonymizer type is not registered.
      *
      * @return AnonymizerInterface
      */

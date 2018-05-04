@@ -36,12 +36,14 @@ class ArrayAnonymizer implements AnonymizerInterface
 
     /**
      * {@inheritdoc}
+     *
+     * @throws \InvalidArgumentException if property is not iterable.
      */
     public function anonymize($propertyValue, array $options = [])
     {
         if (!is_iterable($propertyValue)) {
             throw new \InvalidArgumentException(sprintf(
-                'Invalid argument given "%s" for class "%s" should be of type iterable.',
+                'Invalid argument given; "%s" for class "%s" should be of type iterable.',
                 gettype($propertyValue),
                 __CLASS__
             ));
