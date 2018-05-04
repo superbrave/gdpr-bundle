@@ -38,3 +38,9 @@ services:
             - "@super_brave_gdpr.object_anonymizer"
         tags:
             - { name: super_brave_gdpr.anonymizer, type: collection }
+
+    super_brave_gdpr.null_anonymizer:
+        class: SuperBrave\GdprBundle\Anonymize\Type\NullAnonymizer
+        public: false
+        tags:
+            - { name: super_brave_gdpr.anonymizer, type: null }
