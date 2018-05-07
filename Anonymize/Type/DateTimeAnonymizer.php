@@ -65,7 +65,7 @@ class DateTimeAnonymizer implements AnonymizerInterface
      *
      * @return \DateTimeInterface|int|string The anonymized result
      *
-     * @throws \Exception When the $propertyValue is invalid, an exception will be thrown
+     * @throws \InvalidArgumentException When the $propertyValue is invalid, an exception will be thrown
      */
     public function anonymize($propertyValue, array $options = [])
     {
@@ -88,7 +88,7 @@ class DateTimeAnonymizer implements AnonymizerInterface
             }
         }
 
-        throw new \Exception("Invalid format of \$propertyValue for ".__CLASS__."::".__METHOD__);
+        throw new \InvalidArgumentException("Invalid format for \$propertyValue in ".__CLASS__."::".__METHOD__);
     }
 
     /**
