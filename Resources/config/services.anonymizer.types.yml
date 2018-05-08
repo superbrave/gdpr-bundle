@@ -1,7 +1,9 @@
 services:
+    _defaults:
+        public: false
+
     super_brave_gdpr.fixed_anonymizer:
         class: SuperBrave\GdprBundle\Anonymize\Type\FixedAnonymizer
-        public: false
         arguments:
             - "@super_brave_gdpr.property_manipulator"
         tags:
@@ -9,19 +11,16 @@ services:
 
     super_brave_gdpr.date_time_anonymizer:
         class: SuperBrave\GdprBundle\Anonymize\Type\DateTimeAnonymizer
-        public: false
         tags:
             - { name: super_brave_gdpr.anonymizer, type: dateTime }
 
     super_brave_gdpr.ip_anonymizer:
         class: SuperBrave\GdprBundle\Anonymize\Type\IpAnonymizer
-        public: false
         tags:
             - { name: super_brave_gdpr.anonymizer, type: ip }
 
     super_brave_gdpr.object_anonymizer:
         class: SuperBrave\GdprBundle\Anonymize\Type\ObjectAnonymizer
-        public: false
         arguments:
             - "@super_brave_gdpr.anonymizer"
         tags:
@@ -29,7 +28,6 @@ services:
 
     super_brave_gdpr.collection_anonymizer:
         class: SuperBrave\GdprBundle\Anonymize\Type\ArrayAnonymizer
-        public: false
         arguments:
             - "@super_brave_gdpr.object_anonymizer"
         tags:
@@ -37,6 +35,5 @@ services:
 
     super_brave_gdpr.null_anonymizer:
         class: SuperBrave\GdprBundle\Anonymize\Type\NullAnonymizer
-        public: false
         tags:
             - { name: super_brave_gdpr.anonymizer, type: "null" }
