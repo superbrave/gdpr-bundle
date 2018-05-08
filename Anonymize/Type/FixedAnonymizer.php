@@ -30,7 +30,7 @@ class FixedAnonymizer implements AnonymizerInterface
     private $propertyManipulator;
 
     /**
-     * StringAnonymizer constructor.
+     * FixAnonymizer constructor.
      *
      * @param PropertyManipulator $propertyManipulator Used to get the value of a property
      */
