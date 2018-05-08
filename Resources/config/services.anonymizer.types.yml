@@ -5,7 +5,7 @@ services:
         arguments:
             - "@super_brave_gdpr.property_manipulator"
 
-    super_brave_gdpr.fixed_value_anonymizer:
+    super_brave_gdpr.fixed_anonymizer:
         class: SuperBrave\GdprBundle\Anonymize\Type\FixedAnonymizer
         parent: super_brave_gdpr.base_type_anonymizer
         tags:
