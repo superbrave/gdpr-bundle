@@ -26,7 +26,11 @@ your_bundle_name.your_anonymizer:
 
 #### Type: fixed
 
+Anonymizes the property with a fixed value.
+
 ##### Simple fixed value 
+
+Setting an fixed value for the property.
 
 ```php
 <?php
@@ -56,6 +60,8 @@ use SuperBrave\GdprBundle\Annotation as GDPR;
 
 #### Type: dateTime
 
+Anonymizes the date time field by setting the month and day to 01 and hours, minutes and seconds to 00.
+
 ```php
 <?php
 
@@ -69,6 +75,8 @@ use SuperBrave\GdprBundle\Annotation as GDPR;
 
 #### Type: ip
 
+Anonymizes the ip address by zeroing the last bytes of an ipv4 or ipv6 address.
+
 ```php
 <?php
 
@@ -81,6 +89,8 @@ use SuperBrave\GdprBundle\Annotation as GDPR;
 ```
 
 #### Type: null
+
+Anonymizes the property by setting it to null.
 
 ```php
 <?php
