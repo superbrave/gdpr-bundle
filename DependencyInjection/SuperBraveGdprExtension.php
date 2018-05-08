@@ -33,7 +33,8 @@ class SuperBraveGdprExtension extends Extension
      * @param ContainerBuilder $container A DI container that provides an API to easily describe services
      *
      * @return void
-     * @throws \InvalidArgumentException When provided tag is not defined in this extension
+     *
+     * @throws \InvalidArgumentException When provided tag is not defined in this extension.
      */
     public function load(array $configs, ContainerBuilder $container)
     {

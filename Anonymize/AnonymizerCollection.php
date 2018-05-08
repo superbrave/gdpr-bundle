@@ -32,12 +32,12 @@ class AnonymizerCollection
     /**
      * Adds an anonymizer to the collection.
      *
-     * @param string              $type       The anonymizer type to be added
-     * @param AnonymizerInterface $anonymizer The anonymizer class to be added
-     *
-     * @throws LogicException on duplicate anonymizer keys.
+     * @param string              $type       The anonymizer type to be added.
+     * @param AnonymizerInterface $anonymizer The anonymizer class to be added.
      *
      * @return void
+     *
+     * @throws LogicException On duplicate anonymizer keys.
      */
     public function addAnonymizer($type, $anonymizer)
     {
@@ -51,11 +51,11 @@ class AnonymizerCollection
     /**
      * Get an anonymizer by its type from the collection.
      *
-     * @param string $type The anonymizer type to be fetched
-     *
-     * @throws LogicException if the anonymizer type is not registered.
+     * @param string $type The anonymizer type to be fetched.
      *
      * @return AnonymizerInterface
+     *
+     * @throws LogicException If the anonymizer type is not registered.
      */
     public function getAnonymizer($type)
     {

@@ -66,9 +66,9 @@ class IpAnonymizer implements AnonymizerInterface
      *
      * @param string $address The IP address being checked
      *
-     * @throws \InvalidArgumentException if the address is not a valid ipv4 or ipv6 address.
-     *
      * @return string
+     *
+     * @throws \InvalidArgumentException if the address is not a valid ipv4 or ipv6 address.
      */
     private function getIpMask($address)
     {
