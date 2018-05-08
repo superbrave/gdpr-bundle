@@ -1,0 +1,158 @@
+# Anonymizer
+
+Provides an annotation for anonymizing objects based on specific anonymization types. Specific anonymization types can be created and registered with the compiler pass.
+
+## Anonymization types
+
+- fixed
+- dateTime
+- ip
+- object
+- collection
+- null
+
+## Registering new anonymizers
+
+You can create your own anonymizers and register them in the compiler pass by tagging the service:
+
+```yml
+your_bundle_name.your_anonymizer:
+    class: Your\Class\To\Your\Anonymizer
+    tags:
+        - { name: super_brave_gdpr.anonymizer, type: your_type }
+```
+
+## Examples
+
+#### Type: fixed
+
+##### Simple fixed value 
+
+```php
+<?php
+
+use SuperBrave\GdprBundle\Annotation as GDPR;
+
+ /**
+  * @GDPR/Anonymize(type="fixed", value="anonymized")
+  */
+ protected $value;
+```
+
+##### Advanced fixed value
+
+Brackets can be used here to concat the fixed value with an identifier of the object.
+
+```php
+<?php
+
+use SuperBrave\GdprBundle\Annotation as GDPR;
+
+ /**
+  * @GDPR/Anonymize(type="fixed", value="firstName-{id}")
+  */
+ protected $firstName;
+```
+
+#### Type: dateTime
+
+```php
+<?php
+
+use SuperBrave\GdprBundle\Annotation as GDPR;
+
+ /**
+  * @GDPR/Anonymize(type="dateTime")
+  */
+ protected $createdAt;
+```
+
+#### Type: ip
+
+```php
+<?php
+
+use SuperBrave\GdprBundle\Annotation as GDPR;
+
+ /**
+  * @GDPR/Anonymize(type="ip")
+  */
+ protected $ipAddress;
+```
+
+#### Type: null
+
+```php
+<?php
+
+use SuperBrave\GdprBundle\Annotation as GDPR;
+
+ /**
+  * @GDPR/Anonymize(type="null")
+  */
+ protected $city;
+```
+
+#### Type: object
+
+The object type anonymizer is to indicate that the property is an actual object which itself can have annotations.
+
+```php
+
+use SuperBrave\GdprBundle\Annotation AS GDPR;
+
+class Order
+{
+    /**
+     * @var string;
+     *
+     * @GDPR/Anonymize(type"ip")
+     */
+    protected $ipAddress;
+}
+```
+
+```php
+<?php
+
+use SuperBrave\GdprBundle\Annotation as GDPR;
+
+ /**
+  * @var Order
+  *
+  * @GDPR/Anonymize(type="object")
+  */
+ protected $order;
+```
+
+#### Type: collection
+
+The collection type anonymizer is to indicate that the property is an collection of objects which itself can be anonymized.
+
+```php
+
+use SuperBrave\GdprBundle\Annotation AS GDPR;
+
+class Order
+{
+    /**
+     * @var string;
+     *
+     * @GDPR/Anonymize(type"ip")
+     */
+    protected $ipAddress;
+}
+```
+
+```php
+<?php
+
+use SuperBrave\GdprBundle\Annotation as GDPR;
+
+ /**
+  * @var Order[]
+  *
+  * @GDPR/Anonymize(type="collection")
+  */
+ protected $orders;
+```
