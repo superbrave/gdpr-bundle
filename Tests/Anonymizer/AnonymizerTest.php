@@ -50,7 +50,7 @@ class AnonymizerTest extends PHPUnit_Framework_TestCase
         $this->annotationReaderMock = $this->getMockBuilder(AnnotationReader::class)
             ->getMock();
 
-        $this->propertyAnonymizer =  $this->getMockBuilder(PropertyAnonymizer::class)
+        $this->propertyAnonymizer = $this->getMockBuilder(PropertyAnonymizer::class)
             ->disableOriginalConstructor()
             ->getMock();
 
