@@ -14,6 +14,8 @@
 
 namespace SuperBrave\GdprBundle;
 
+use SuperBrave\GdprBundle\DependencyInjection\Compiler\AddAnonymizersCompilerPass;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
@@ -21,4 +23,17 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class SuperBraveGdprBundle extends Bundle
 {
+    /**
+     * Build the bundle and dependencies
+     *
+     * @param ContainerBuilder $container The service container
+     *
+     * @return void
+     */
+    public function build(ContainerBuilder $container)
+    {
+        parent::build($container);
+
+        $container->addCompilerPass(new AddAnonymizersCompilerPass());
+    }
 }

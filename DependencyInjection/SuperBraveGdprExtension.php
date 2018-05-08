@@ -33,7 +33,8 @@ class SuperBraveGdprExtension extends Extension
      * @param ContainerBuilder $container A DI container that provides an API to easily describe services
      *
      * @return void
-     * @throws \InvalidArgumentException When provided tag is not defined in this extension
+     *
+     * @throws \InvalidArgumentException When provided tag is not defined in this extension.
      */
     public function load(array $configs, ContainerBuilder $container)
     {
@@ -42,5 +43,6 @@ class SuperBraveGdprExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+        $loader->load('services.anonymizer.types.yml');
     }
 }
