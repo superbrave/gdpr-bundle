@@ -52,9 +52,9 @@ class FixedAnonymizer implements AnonymizerInterface
      * @param mixed $propertyValue The value that has to be converted
      * @param array $options       Options to help the anonymizer do its job
      *
-     * @throws \InvalidArgumentException if annotationValue is empty.
-     *
      * @return string              The Anonymized string
+     *
+     * @throws \InvalidArgumentException if annotationValue is empty.
      */
     public function anonymize($propertyValue, array $options = [])
     {
