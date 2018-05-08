@@ -28,6 +28,7 @@ You can anonymize objects by using the anonymizer service:
 
 ```php
 <?php
+
 $this->get('superbrave_gdpr.anonymizer')->anonymize($object);
 ```
 
