@@ -52,7 +52,7 @@ class IpAnonymizer implements AnonymizerInterface
      */
     public function anonymize($propertyValue, array $options = [])
     {
-        if (is_int($propertyValue)) {
+        if (is_numeric($propertyValue)) {
             $propertyValue = long2ip($propertyValue);
 
             return ip2long($this->anonymizeIpAddress($propertyValue, $this->getIpMask($propertyValue)));
