@@ -16,11 +16,11 @@ use SuperBrave\GdprBundle\Manipulator\PropertyManipulator;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Email anonymizer class
+ * Fixed anonymizer class
  *
  * @package SuperBrave\GdprBundle\Anonymize\Type
  */
-class FixedValueAnonymizer implements AnonymizerInterface
+class FixedAnonymizer implements AnonymizerInterface
 {
     /**
      * Property Manipulator service

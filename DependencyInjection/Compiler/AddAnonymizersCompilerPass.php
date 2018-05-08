@@ -26,8 +26,8 @@ use Symfony\Component\DependencyInjection\Reference;
 class AddAnonymizersCompilerPass implements CompilerPassInterface
 {
     /**
-     * Gets all the annonymizers from the services tagged with 'super_brave_gdpr.anonymizer'
-     * The adds them to the AnnonymizerCollection
+     * Gets all the anonymizers from the services tagged with 'superbrave_gdpr.anonymizer'
+     * The adds them to the AnonymizerCollection
      *
      * @param ContainerBuilder $container The service container
      *

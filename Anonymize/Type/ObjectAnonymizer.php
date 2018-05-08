@@ -52,6 +52,7 @@ class ObjectAnonymizer implements AnonymizerInterface
         }
 
         $this->anonymizer->anonymize($propertyValue);
+
         return $propertyValue;
     }
 }
