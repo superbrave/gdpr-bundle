@@ -30,7 +30,7 @@ class FixedAnonymizer implements AnonymizerInterface
     private $propertyManipulator;
 
     /**
-     * FixAnonymizer constructor.
+     * FixedAnonymizer constructor.
      *
      * @param PropertyManipulator $propertyManipulator Used to get the value of a property
      */
@@ -54,7 +54,7 @@ class FixedAnonymizer implements AnonymizerInterface
      *
      * @throws \InvalidArgumentException if annotationValue is empty.
      *
-     * @return string               The Anonymized string
+     * @return string              The Anonymized string
      */
     public function anonymize($propertyValue, array $options = [])
     {

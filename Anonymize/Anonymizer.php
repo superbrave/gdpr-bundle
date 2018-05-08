@@ -38,8 +38,8 @@ class Anonymizer
     /**
      * Anonymizer constructor.
      *
-     * @param AnnotationReader   $annotationReader   The annotation reader that should be used
-     * @param PropertyAnonymizer $propertyAnonymizer The property anonymizer
+     * @param AnnotationReader   $annotationReader   The annotation reader that should be used.
+     * @param PropertyAnonymizer $propertyAnonymizer The property anonymizer.
      */
     public function __construct(
         AnnotationReader $annotationReader,
@@ -54,10 +54,10 @@ class Anonymizer
      *
      * @param object $object The object to anonymize.
      *
-     * @throws InvalidArgumentException
-     * @throws ReflectionException
-     *
      * @return void
+     *
+     * @throws InvalidArgumentException If argument supplied is not an object.
+     * @throws ReflectionException If class doesn't exist.
      */
     public function anonymize(/*object */$object)
     {

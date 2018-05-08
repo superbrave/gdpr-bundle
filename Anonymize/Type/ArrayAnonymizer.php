@@ -37,7 +37,7 @@ class ArrayAnonymizer implements AnonymizerInterface
     /**
      * {@inheritdoc}
      *
-     * @throws \InvalidArgumentException if property is not iterable.
+     * @throws \InvalidArgumentException If property is not iterable.
      */
     public function anonymize($propertyValue, array $options = [])
     {
