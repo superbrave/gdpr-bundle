@@ -13,7 +13,7 @@
 namespace SuperBrave\GdprBundle\Tests\Anonymizer;
 
 use PHPUnit_Framework_MockObject_MockObject;
-use SuperBrave\GdprBundle\Anonymize\Type\FixedValueAnonymizer;
+use SuperBrave\GdprBundle\Anonymize\Type\FixedAnonymizer;
 use SuperBrave\GdprBundle\Manipulator\PropertyManipulator;
 use SuperBrave\GdprBundle\Tests\AnnotatedMock;
 use Symfony\Component\OptionsResolver\Exception\MissingOptionsException;
@@ -22,7 +22,7 @@ use Symfony\Component\PropertyAccess\PropertyAccess;
 /**
  * Tests the behaviour of the EmailAnonymizer
  */
-class FixedValueAnonymizerTest extends \PHPUnit_Framework_TestCase
+class FixedAnonymizerTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * The mock property accessor instance.
@@ -35,7 +35,7 @@ class FixedValueAnonymizerTest extends \PHPUnit_Framework_TestCase
     /**
      * An instance of StringAnonymizer being tested.
      *
-     * @var    FixedValueAnonymizer
+     * @var    FixedAnonymizer
      * @return void
      */
     private $anonymizer;
@@ -51,7 +51,7 @@ class FixedValueAnonymizerTest extends \PHPUnit_Framework_TestCase
             PropertyAccess::createPropertyAccessor()
         );
 
-        $this->anonymizer = new FixedValueAnonymizer($this->propertyManipulator);
+        $this->anonymizer = new FixedAnonymizer($this->propertyManipulator);
     }
 
     /**
