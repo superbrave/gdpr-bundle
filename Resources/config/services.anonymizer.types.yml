@@ -6,7 +6,7 @@ services:
             - "@super_brave_gdpr.property_manipulator"
 
     super_brave_gdpr.fixed_value_anonymizer:
-        class: SuperBrave\GdprBundle\Anonymize\Type\FixedValueAnonymizer
+        class: SuperBrave\GdprBundle\Anonymize\Type\FixedAnonymizer
         parent: super_brave_gdpr.base_type_anonymizer
         tags:
             - { name: super_brave_gdpr.anonymizer, type: fixed }
