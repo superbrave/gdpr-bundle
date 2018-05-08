@@ -40,6 +40,7 @@ class ObjectAnonymizer implements AnonymizerInterface
      * {@inheritdoc}
      *
      * @throws \InvalidArgumentException if propertyValue is not an object.
+     * @throws \ReflectionException if class does't exist.
      */
     public function anonymize($propertyValue, array $options = [])
     {

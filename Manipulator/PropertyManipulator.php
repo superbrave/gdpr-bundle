@@ -23,6 +23,9 @@ use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
  */
 class PropertyManipulator
 {
+    /**
+     * @var PropertyAccessorInterface
+     */
     private $propertyAccessor;
 
     /**
@@ -42,6 +45,8 @@ class PropertyManipulator
      * @param string $propertyName The property name where the value is taken from
      *
      * @return mixed
+     *
+     * @throws \InvalidArgumentException if property does not exist.
      */
     public function getPropertyValue($object, $propertyName)
     {
@@ -70,9 +75,9 @@ class PropertyManipulator
      * @param string $propertyName The property name where the value is written to
      * @param mixed  $value        The new value for the property
      *
-     * @throws \InvalidArgumentException if property does not exist.
-     *
      * @return void
+     *
+     * @throws \InvalidArgumentException if property does not exist.
      */
     public function setPropertyValue($object, $propertyName, $value)
     {
