@@ -19,7 +19,16 @@ You can create your own anonymizers and register them in the compiler pass by ta
 your_bundle_name.your_anonymizer:
     class: Your\Class\To\Your\Anonymizer
     tags:
-        - { name: super_brave_gdpr.anonymizer, type: your_type }
+        - { name: superbrave_gdpr.anonymizer, type: your_type }
+```
+
+## Usage
+
+You can anonymize objects by using the anonymizer service:
+
+```php
+<?php
+$this->get('superbrave_gdpr.anonymizer')->anonymize($object);
 ```
 
 ## Examples
