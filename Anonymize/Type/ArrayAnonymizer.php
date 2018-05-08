@@ -27,7 +27,7 @@ class ArrayAnonymizer implements AnonymizerInterface
     /**
      * ArrayAnonymizer constructor.
      *
-     * @param AnonymizerInterface $anonymizer Any Anonymizer that complies to it's interface
+     * @param AnonymizerInterface $anonymizer The anonymizer.
      */
     public function __construct(AnonymizerInterface $anonymizer)
     {
