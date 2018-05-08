@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3db5c0ad50e45ba3126b227ba01475db",
+    "content-hash": "7680fa63bc4c739804734dca66c07e42",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -3051,16 +3051,16 @@
         },
         {
             "name": "superbrave/coding-standards",
-            "version": "dev-master",
+            "version": "0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/superbrave/coding-standards.git",
-                "reference": "7dd5d480780e30be4ef1938fd4f14c6ddd69ac5f"
+                "reference": "0ecb7208be22b9ef1c463374cb32a2e2ed578750"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/superbrave/coding-standards/zipball/7dd5d480780e30be4ef1938fd4f14c6ddd69ac5f",
-                "reference": "7dd5d480780e30be4ef1938fd4f14c6ddd69ac5f",
+                "url": "https://api.github.com/repos/superbrave/coding-standards/zipball/0ecb7208be22b9ef1c463374cb32a2e2ed578750",
+                "reference": "0ecb7208be22b9ef1c463374cb32a2e2ed578750",
                 "shasum": ""
             },
             "require-dev": {
@@ -3080,7 +3080,7 @@
                 "Coding Standard",
                 "phpcs"
             ],
-            "time": "2018-05-01T10:05:32+00:00"
+            "time": "2018-05-08T13:22:21+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -3194,8 +3194,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "roave/security-advisories": 20,
-        "superbrave/coding-standards": 20
+        "roave/security-advisories": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
