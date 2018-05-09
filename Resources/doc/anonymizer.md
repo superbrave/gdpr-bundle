@@ -48,7 +48,7 @@ Setting a fixed value for the property.
 use SuperBrave\GdprBundle\Annotation as GDPR;
 
  /**
-  * @GDPR/Anonymize(type="fixed", value="anonymized")
+  * @GDPR\Anonymize(type="fixed", value="anonymized")
   */
  protected $value;
 ```
@@ -63,7 +63,7 @@ Brackets can be used here to concat the fixed value with an identifier of the ob
 use SuperBrave\GdprBundle\Annotation as GDPR;
 
  /**
-  * @GDPR/Anonymize(type="fixed", value="firstName-{id}")
+  * @GDPR\Anonymize(type="fixed", value="firstName-{id}")
   */
  protected $firstName;
 ```
@@ -78,7 +78,7 @@ Anonymizes the date time field by setting the month and day to 01 and hours, min
 use SuperBrave\GdprBundle\Annotation as GDPR;
 
  /**
-  * @GDPR/Anonymize(type="dateTime")
+  * @GDPR\Anonymize(type="dateTime")
   */
  protected $createdAt;
 ```
@@ -93,7 +93,7 @@ Anonymizes the ip address by zeroing the last bytes of an ipv4 or ipv6 address.
 use SuperBrave\GdprBundle\Annotation as GDPR;
 
  /**
-  * @GDPR/Anonymize(type="ip")
+  * @GDPR\Anonymize(type="ip")
   */
  protected $ipAddress;
 ```
@@ -108,7 +108,7 @@ Anonymizes the property by setting it to null.
 use SuperBrave\GdprBundle\Annotation as GDPR;
 
  /**
-  * @GDPR/Anonymize(type="null")
+  * @GDPR\Anonymize(type="null")
   */
  protected $city;
 ```
@@ -118,6 +118,7 @@ use SuperBrave\GdprBundle\Annotation as GDPR;
 The object type anonymizer is to indicate that the property is an actual object which itself can have annotations.
 
 ```php
+<?php
 
 use SuperBrave\GdprBundle\Annotation AS GDPR;
 
@@ -126,7 +127,7 @@ class Order
     /**
      * @var string;
      *
-     * @GDPR/Anonymize(type="ip")
+     * @GDPR\Anonymize(type="ip")
      */
     protected $ipAddress;
 }
@@ -140,7 +141,7 @@ use SuperBrave\GdprBundle\Annotation as GDPR;
  /**
   * @var Order
   *
-  * @GDPR/Anonymize(type="object")
+  * @GDPR\Anonymize(type="object")
   */
  protected $order;
 ```
@@ -150,7 +151,7 @@ use SuperBrave\GdprBundle\Annotation as GDPR;
 The collection type anonymizer is to indicate that the property is an collection of objects which itself can be anonymized.
 
 ```php
-
+<?php
 use SuperBrave\GdprBundle\Annotation AS GDPR;
 
 class Order
@@ -158,7 +159,7 @@ class Order
     /**
      * @var string;
      *
-     * @GDPR/Anonymize(type="ip")
+     * @GDPR\Anonymize(type="ip")
      */
     protected $ipAddress;
 }
@@ -172,7 +173,7 @@ use SuperBrave\GdprBundle\Annotation as GDPR;
  /**
   * @var Order[]
   *
-  * @GDPR/Anonymize(type="collection")
+  * @GDPR\Anonymize(type="collection")
   */
  protected $orders;
 ```
