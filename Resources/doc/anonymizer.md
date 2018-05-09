@@ -48,6 +48,8 @@ Setting a fixed value for the property.
 use SuperBrave\GdprBundle\Annotation as GDPR;
 
  /**
+  * @var string
+  *
   * @GDPR\Anonymize(type="fixed", value="anonymized")
   */
  protected $value;
@@ -68,6 +70,8 @@ If the checks above both failed it resorts back to a ReflectionProperty
 use SuperBrave\GdprBundle\Annotation as GDPR;
 
  /**
+  * @var string
+  *
   * @GDPR\Anonymize(type="fixed", value="firstName-{id}")
   */
  protected $firstName;
@@ -83,6 +87,8 @@ Anonymizes the date time field by setting the month and day to 01 and hours, min
 use SuperBrave\GdprBundle\Annotation as GDPR;
 
  /**
+  * @var \DateTimeInterface|string|int
+  *
   * @GDPR\Anonymize(type="dateTime")
   */
  protected $createdAt;
@@ -98,6 +104,8 @@ Anonymizes the ip address by zeroing the last bytes of an ipv4 or ipv6 address.
 use SuperBrave\GdprBundle\Annotation as GDPR;
 
  /**
+  * @var string
+  *
   * @GDPR\Anonymize(type="ip")
   */
  protected $ipAddress;
@@ -113,6 +121,8 @@ Anonymizes the property by setting it to null.
 use SuperBrave\GdprBundle\Annotation as GDPR;
 
  /**
+  * @var mixed
+  *
   * @GDPR\Anonymize(type="null")
   */
  protected $city;
