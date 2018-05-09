@@ -55,7 +55,12 @@ use SuperBrave\GdprBundle\Annotation as GDPR;
 
 ##### Advanced fixed value
 
-Brackets can be used here to concat the fixed value with an identifier of the object.
+Brackets can be used here to concat the fixed value with the value of a property on the object.  
+The value between the quotes has to be a property.  
+
+First a check is performed to determine if the property is public, if so that is used.  
+The second check is to determine whether or not the property has a getter, if so that is used.  
+If the checks above both failed it resorts back to a ReflectionProperty
 
 ```php
 <?php
