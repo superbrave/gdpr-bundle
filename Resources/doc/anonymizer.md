@@ -55,7 +55,7 @@ use SuperBrave\GdprBundle\Annotation as GDPR;
 
 ##### Advanced fixed value
 
-Brackets can be used here to concat the fixed value with the value of a property on the object.  
+Curly braces can be used here to concat the fixed value with the value of a property on the object.  
 The value between the quotes has to be a property.  
 
 First a check is performed to determine if the property is public, if so that is used.  
