@@ -40,7 +40,7 @@ Anonymizes the property with a fixed value.
 
 ##### Simple fixed value 
 
-Setting an fixed value for the property.
+Setting a fixed value for the property.
 
 ```php
 <?php
@@ -126,7 +126,7 @@ class Order
     /**
      * @var string;
      *
-     * @GDPR/Anonymize(type"ip")
+     * @GDPR/Anonymize(type="ip")
      */
     protected $ipAddress;
 }
@@ -158,7 +158,7 @@ class Order
     /**
      * @var string;
      *
-     * @GDPR/Anonymize(type"ip")
+     * @GDPR/Anonymize(type="ip")
      */
     protected $ipAddress;
 }
