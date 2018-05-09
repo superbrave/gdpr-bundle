@@ -125,22 +125,6 @@ The object type anonymizer is to indicate that the property is an actual object 
 ```php
 <?php
 
-use SuperBrave\GdprBundle\Annotation AS GDPR;
-
-class Order
-{
-    /**
-     * @var string;
-     *
-     * @GDPR\Anonymize(type="ip")
-     */
-    protected $ipAddress;
-}
-```
-
-```php
-<?php
-
 use SuperBrave\GdprBundle\Annotation as GDPR;
 
  /**
@@ -154,22 +138,6 @@ use SuperBrave\GdprBundle\Annotation as GDPR;
 #### Type: collection
 
 The collection type anonymizer is to indicate that the property is an collection of objects which itself can be anonymized.
-
-```php
-<?php
-
-use SuperBrave\GdprBundle\Annotation AS GDPR;
-
-class Order
-{
-    /**
-     * @var string;
-     *
-     * @GDPR\Anonymize(type="ip")
-     */
-    protected $ipAddress;
-}
-```
 
 ```php
 <?php
