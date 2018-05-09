@@ -13,7 +13,7 @@ A Symfony bundle for using entity annotations according to GDPR requirements and
 
 ## Setup
 
-#### Installation
+### Installation
 
 Using this package is similar to all Symfony bundles.
 
