@@ -37,13 +37,13 @@ class AddAnonymizersCompilerPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        if ($container->hasDefinition('super_brave_gdpr.anonymizer_collection') === false) {
+        if ($container->hasDefinition('superbrave_gdpr.anonymizer_collection') === false) {
             return;
         }
 
-        $anonymizerManagerDefinition = $container->getDefinition('super_brave_gdpr.anonymizer_collection');
+        $anonymizerManagerDefinition = $container->getDefinition('superbrave_gdpr.anonymizer_collection');
 
-        $anonymizers = $container->findTaggedServiceIds('super_brave_gdpr.anonymizer');
+        $anonymizers = $container->findTaggedServiceIds('superbrave_gdpr.anonymizer');
         foreach ($anonymizers as $anonymizer => $attributes) {
             $type = $attributes[0]['type'];
 

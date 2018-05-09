@@ -19,9 +19,9 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Class SuperBraveGdprBundle
+ * Class SuperbraveGdprBundle
  */
-class SuperBraveGdprBundle extends Bundle
+class SuperbraveGdprBundle extends Bundle
 {
     /**
      * Build the bundle and dependencies
