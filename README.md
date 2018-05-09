@@ -7,7 +7,8 @@ A Symfony bundle for using entity annotations according to GDPR requirements and
 
 ## Overview
 
-- Provides an annotation for anonymizing objects based on specific anonymization types. Specific anonymization types can be created and registered with the compiler pass.
+- Provides an annotation for anonymizing objects based on specific anonymization types.
+You can create your own anonynimization types, you can read more on how in: [Registering new anonymizers](Resources/doc/anonymizer.md#registering-new-anonymizers)
 
 - Provides an annotation for exporting object data to a specific format. 
 
