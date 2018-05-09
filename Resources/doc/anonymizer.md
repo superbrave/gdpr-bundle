@@ -17,14 +17,14 @@ You can create your own anonymizers and register them in the compiler pass by ta
 The `type` parameter specifies the name to be used in the `type` parameter of the annotation.
 
 ```yml
-your_bundle_name.your_anonymizer:`
+your_bundle_name.your_anonymizer:
     class: Your\Class\To\Your\Anonymizer
     tags:
         - { name: superbrave_gdpr.anonymizer, type: your_type }
 ```
 
-The examle above will register a anonymizer with the name `your_type`.
-You can then use it as follows ```@GDPR\Anonymize(type="your_type")```
+The example above will register an anonymizer with the name `your_type`. You can then use it as followed:
+```@GDPR\Anonymize(type="your_type")```
 
 ## Usage
 
