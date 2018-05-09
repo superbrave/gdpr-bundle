@@ -157,6 +157,7 @@ The collection type anonymizer is to indicate that the property is an collection
 
 ```php
 <?php
+
 use SuperBrave\GdprBundle\Annotation AS GDPR;
 
 class Order
