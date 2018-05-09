@@ -13,7 +13,7 @@ Provides an annotation for anonymizing objects based on specific anonymization t
 
 ## Registering new anonymizers
 
-You can create your own anonymizers and register them in the compiler pass by tagging the service:
+You can create your own anonymizers and register them in the compiler pass by tagging the service.
 The `type` parameter specifies the name to be used in the `type` parameter of the annotation.
 
 ```yml
