@@ -10,10 +10,10 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace Superbrave\GdprBundle\Anonymize;
+namespace SuperBrave\GdprBundle\Anonymize;
 
-use Superbrave\GdprBundle\Annotation\AnnotationReader;
-use Superbrave\GdprBundle\Annotation\Anonymize;
+use SuperBrave\GdprBundle\Annotation\AnnotationReader;
+use SuperBrave\GdprBundle\Annotation\Anonymize;
 use InvalidArgumentException;
 use ReflectionException;
 use ReflectionClass;

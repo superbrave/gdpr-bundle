@@ -10,7 +10,7 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace Superbrave\GdprBundle\DependencyInjection;
+namespace SuperBrave\GdprBundle\DependencyInjection;
 
 use Symfony\Component\Serializer\Encoder\EncoderInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;

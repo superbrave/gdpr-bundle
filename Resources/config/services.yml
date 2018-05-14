@@ -3,17 +3,17 @@ services:
         public: false
 
     superbrave_gdpr.annotation.reader:
-        class: Superbrave\GdprBundle\Annotation\AnnotationReader
+        class: SuperBrave\GdprBundle\Annotation\AnnotationReader
 
     superbrave_gdpr.exporter:
-        class: Superbrave\GdprBundle\Export\Exporter
+        class: SuperBrave\GdprBundle\Export\Exporter
         arguments:
             - "@superbrave_gdpr.exporter.serializer"
             - "xml"
         public: true
 
     superbrave_gdpr.anonymizer:
-        class: Superbrave\GdprBundle\Anonymize\Anonymizer
+        class: SuperBrave\GdprBundle\Anonymize\Anonymizer
         arguments:
             - "@superbrave_gdpr.annotation.reader"
             - "@superbrave_gdpr.property_anonymizer"
@@ -21,16 +21,16 @@ services:
 
     superbrave_gdpr.exporter.serializer:
         class: Symfony\Component\Serializer\Serializer
-        factory: ["Superbrave\\GdprBundle\\DependencyInjection\\ObjectFactory", "createSerializer"]
+        factory: ["SuperBrave\\GdprBundle\\DependencyInjection\\ObjectFactory", "createSerializer"]
         arguments:
             - !tagged "superbrave_gdpr.serializer.normalizer"
             - !tagged "superbrave_gdpr.serializer.encoder"
 
     superbrave_gdpr.exporter.serializer.normalizer.export_annotation:
-        class: Superbrave\GdprBundle\Serializer\Normalizer\AnnotationNormalizer
+        class: SuperBrave\GdprBundle\Serializer\Normalizer\AnnotationNormalizer
         arguments:
             - "@superbrave_gdpr.annotation.reader"
-            - "Superbrave\\GdprBundle\\Annotation\\Export"
+            - "SuperBrave\\GdprBundle\\Annotation\\Export"
             - "@superbrave_gdpr.property_manipulator"
         tags:
             - { name: "superbrave_gdpr.serializer.normalizer" }
@@ -49,16 +49,16 @@ services:
         class: Symfony\Component\PropertyAccess\PropertyAccessor
 
     superbrave_gdpr.property_manipulator:
-        class: Superbrave\GdprBundle\Manipulator\PropertyManipulator
+        class: SuperBrave\GdprBundle\Manipulator\PropertyManipulator
         arguments:
             - "@superbrave_gdpr.property_accessor"
 
     superbrave_gdpr.anonymizer_collection:
-        class: Superbrave\GdprBundle\Anonymize\AnonymizerCollection
+        class: SuperBrave\GdprBundle\Anonymize\AnonymizerCollection
         public: true
 
     superbrave_gdpr.property_anonymizer:
-        class: Superbrave\GdprBundle\Anonymize\PropertyAnonymizer
+        class: SuperBrave\GdprBundle\Anonymize\PropertyAnonymizer
         arguments:
             - "@superbrave_gdpr.property_manipulator"
             - "@superbrave_gdpr.anonymizer_collection"

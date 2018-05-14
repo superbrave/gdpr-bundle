@@ -10,9 +10,9 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace Superbrave\GdprBundle\Anonymize\Type;
+namespace SuperBrave\GdprBundle\Anonymize\Type;
 
-use Superbrave\GdprBundle\Manipulator\PropertyManipulator;
+use SuperBrave\GdprBundle\Manipulator\PropertyManipulator;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**

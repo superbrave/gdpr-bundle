@@ -10,10 +10,10 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace Superbrave\GdprBundle\Tests\Anonymizer;
+namespace SuperBrave\GdprBundle\Tests\Anonymizer;
 
 use PHPUnit\Framework\TestCase;
-use Superbrave\GdprBundle\Anonymize\Type\DateTimeAnonymizer;
+use SuperBrave\GdprBundle\Anonymize\Type\DateTimeAnonymizer;
 
 /**
  * Class DateTimeAnonymizerTest

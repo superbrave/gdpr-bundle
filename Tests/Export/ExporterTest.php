@@ -10,13 +10,13 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace Superbrave\GdprBundle\Tests\Export;
+namespace SuperBrave\GdprBundle\Tests\Export;
 
 use InvalidArgumentException;
 use PHPUnit_Framework_MockObject_MockObject;
 use PHPUnit_Framework_TestCase;
-use Superbrave\GdprBundle\Export\Exporter;
-use Superbrave\GdprBundle\Tests\AnnotatedMock;
+use SuperBrave\GdprBundle\Export\Exporter;
+use SuperBrave\GdprBundle\Tests\AnnotatedMock;
 use Symfony\Component\Serializer\SerializerInterface;
 
 /**

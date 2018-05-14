@@ -10,7 +10,7 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace Superbrave\GdprBundle\Annotation;
+namespace SuperBrave\GdprBundle\Annotation;
 
 use Doctrine\Common\Annotations\AnnotationReader as DoctrineAnnotationReader;
 use ReflectionClass;

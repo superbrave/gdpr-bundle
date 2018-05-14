@@ -10,7 +10,7 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace Superbrave\GdprBundle\Anonymize\Type;
+namespace SuperBrave\GdprBundle\Anonymize\Type;
 
 /**
  * DATE_RFC7231 is not natively supported in PHP 5.6

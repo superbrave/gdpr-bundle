@@ -10,10 +10,10 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace Superbrave\GdprBundle\Tests\Anonymizer;
+namespace SuperBrave\GdprBundle\Tests\Anonymizer;
 
 use PHPUnit\Framework\TestCase;
-use Superbrave\GdprBundle\Anonymize\Type\IpAnonymizer;
+use SuperBrave\GdprBundle\Anonymize\Type\IpAnonymizer;
 
 /**
  * Class IpAnonymizerTest

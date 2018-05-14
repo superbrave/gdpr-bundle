@@ -12,9 +12,9 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace Superbrave\GdprBundle;
+namespace SuperBrave\GdprBundle;
 
-use Superbrave\GdprBundle\DependencyInjection\Compiler\AddAnonymizersCompilerPass;
+use SuperBrave\GdprBundle\DependencyInjection\Compiler\AddAnonymizersCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

@@ -10,11 +10,11 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace Superbrave\GdprBundle\Serializer\Normalizer;
+namespace SuperBrave\GdprBundle\Serializer\Normalizer;
 
 use ReflectionClass;
-use Superbrave\GdprBundle\Annotation\AnnotationReader;
-use Superbrave\GdprBundle\Manipulator\PropertyManipulator;
+use SuperBrave\GdprBundle\Annotation\AnnotationReader;
+use SuperBrave\GdprBundle\Manipulator\PropertyManipulator;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 

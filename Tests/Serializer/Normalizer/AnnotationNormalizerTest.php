@@ -10,16 +10,16 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace Superbrave\GdprBundle\Tests\Serializer\Normalizer;
+namespace SuperBrave\GdprBundle\Tests\Serializer\Normalizer;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit_Framework_MockObject_MockObject;
 use ReflectionClass;
-use Superbrave\GdprBundle\Annotation\AnnotationReader;
-use Superbrave\GdprBundle\Annotation\Export;
-use Superbrave\GdprBundle\Manipulator\PropertyManipulator;
-use Superbrave\GdprBundle\Serializer\Normalizer\AnnotationNormalizer;
-use Superbrave\GdprBundle\Tests\AnnotatedMock;
+use SuperBrave\GdprBundle\Annotation\AnnotationReader;
+use SuperBrave\GdprBundle\Annotation\Export;
+use SuperBrave\GdprBundle\Manipulator\PropertyManipulator;
+use SuperBrave\GdprBundle\Serializer\Normalizer\AnnotationNormalizer;
+use SuperBrave\GdprBundle\Tests\AnnotatedMock;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Serializer;

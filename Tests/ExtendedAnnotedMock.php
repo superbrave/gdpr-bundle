@@ -10,9 +10,9 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace Superbrave\GdprBundle\Tests;
+namespace SuperBrave\GdprBundle\Tests;
 
-use Superbrave\GdprBundle\Annotation as GDPR;
+use SuperBrave\GdprBundle\Annotation as GDPR;
 
 /**
  * Class used to test the @see GDPR\AnnotationReader.

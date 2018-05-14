@@ -10,10 +10,10 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace Superbrave\GdprBundle\DependencyInjection\Compiler;
+namespace SuperBrave\GdprBundle\DependencyInjection\Compiler;
 
 use LogicException;
-use Superbrave\GdprBundle\Anonymize\Type\AnonymizerInterface;
+use SuperBrave\GdprBundle\Anonymize\Type\AnonymizerInterface;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;

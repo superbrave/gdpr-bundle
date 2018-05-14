@@ -10,10 +10,10 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace Superbrave\GdprBundle\Anonymize;
+namespace SuperBrave\GdprBundle\Anonymize;
 
 use LogicException;
-use Superbrave\GdprBundle\Anonymize\Type\AnonymizerInterface;
+use SuperBrave\GdprBundle\Anonymize\Type\AnonymizerInterface;
 
 /**
  * Class AnonymizerCollection

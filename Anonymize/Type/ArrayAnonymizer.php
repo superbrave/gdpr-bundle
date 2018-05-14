@@ -10,7 +10,7 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace Superbrave\GdprBundle\Anonymize\Type;
+namespace SuperBrave\GdprBundle\Anonymize\Type;
 
 /**
  * Class ArrayAnonymizer
