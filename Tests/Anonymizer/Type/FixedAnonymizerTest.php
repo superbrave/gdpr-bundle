@@ -10,12 +10,12 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace SuperBrave\GdprBundle\Tests\Anonymizer;
+namespace Superbrave\GdprBundle\Tests\Anonymizer;
 
 use PHPUnit_Framework_MockObject_MockObject;
-use SuperBrave\GdprBundle\Anonymize\Type\FixedAnonymizer;
-use SuperBrave\GdprBundle\Manipulator\PropertyManipulator;
-use SuperBrave\GdprBundle\Tests\AnnotatedMock;
+use Superbrave\GdprBundle\Anonymize\Type\FixedAnonymizer;
+use Superbrave\GdprBundle\Manipulator\PropertyManipulator;
+use Superbrave\GdprBundle\Tests\AnnotatedMock;
 use Symfony\Component\OptionsResolver\Exception\MissingOptionsException;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 

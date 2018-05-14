@@ -10,7 +10,7 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace SuperBrave\GdprBundle\Annotation;
+namespace Superbrave\GdprBundle\Annotation;
 
 use Doctrine\Common\Annotations\Annotation;
 
