@@ -24,7 +24,7 @@ use Symfony\Component\DependencyInjection\Loader;
  *
  * @link http://symfony.com/doc/current/cookbook/bundles/extension.html
  */
-class SuperBraveGdprExtension extends Extension
+class SuperbraveGdprExtension extends Extension
 {
     /**
      * Loads a specific configuration.
