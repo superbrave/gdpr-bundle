@@ -2,38 +2,38 @@ services:
     _defaults:
         public: false
 
-    super_brave_gdpr.fixed_anonymizer:
+    superbrave_gdpr.fixed_anonymizer:
         class: SuperBrave\GdprBundle\Anonymize\Type\FixedAnonymizer
         arguments:
-            - "@super_brave_gdpr.property_manipulator"
+            - "@superbrave_gdpr.property_manipulator"
         tags:
-            - { name: super_brave_gdpr.anonymizer, type: fixed }
+            - { name: superbrave_gdpr.anonymizer, type: fixed }
 
-    super_brave_gdpr.date_time_anonymizer:
+    superbrave_gdpr.date_time_anonymizer:
         class: SuperBrave\GdprBundle\Anonymize\Type\DateTimeAnonymizer
         tags:
-            - { name: super_brave_gdpr.anonymizer, type: dateTime }
+            - { name: superbrave_gdpr.anonymizer, type: dateTime }
 
-    super_brave_gdpr.ip_anonymizer:
+    superbrave_gdpr.ip_anonymizer:
         class: SuperBrave\GdprBundle\Anonymize\Type\IpAnonymizer
         tags:
-            - { name: super_brave_gdpr.anonymizer, type: ip }
+            - { name: superbrave_gdpr.anonymizer, type: ip }
 
-    super_brave_gdpr.object_anonymizer:
+    superbrave_gdpr.object_anonymizer:
         class: SuperBrave\GdprBundle\Anonymize\Type\ObjectAnonymizer
         arguments:
-            - "@super_brave_gdpr.anonymizer"
+            - "@superbrave_gdpr.anonymizer"
         tags:
-            - { name: super_brave_gdpr.anonymizer, type: object }
+            - { name: superbrave_gdpr.anonymizer, type: object }
 
-    super_brave_gdpr.collection_anonymizer:
+    superbrave_gdpr.collection_anonymizer:
         class: SuperBrave\GdprBundle\Anonymize\Type\ArrayAnonymizer
         arguments:
-            - "@super_brave_gdpr.object_anonymizer"
+            - "@superbrave_gdpr.object_anonymizer"
         tags:
-            - { name: super_brave_gdpr.anonymizer, type: collection }
+            - { name: superbrave_gdpr.anonymizer, type: collection }
 
-    super_brave_gdpr.null_anonymizer:
+    superbrave_gdpr.null_anonymizer:
         class: SuperBrave\GdprBundle\Anonymize\Type\NullAnonymizer
         tags:
-            - { name: super_brave_gdpr.anonymizer, type: "null" }
+            - { name: superbrave_gdpr.anonymizer, type: "null" }
