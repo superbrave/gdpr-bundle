@@ -20,6 +20,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
  * Class SuperbraveGdprBundle
+ * 
  * @package Superbrave\GdprBundle
  */
 class SuperbraveGdprBundle extends Bundle
