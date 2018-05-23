@@ -4,18 +4,18 @@
  *
  * @category  Bundle
  * @package   Gdpr
- * @author    SuperBrave <info@superbrave.nl>
- * @copyright 2018 SuperBrave <info@superbrave.nl>
+ * @author    Superbrave <info@superbrave.nl>
+ * @copyright 2018 Superbrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
  * @link      https://www.superbrave.nl/
  */
 
-namespace SuperBrave\GdprBundle\Anonymize\Type;
+namespace Superbrave\GdprBundle\Anonymize\Type;
 
 /**
  * Class ArrayAnonymizer
  *
- * @package SuperBrave\GdprBundle\Anonymize\Type
+ * @package Superbrave\GdprBundle\Anonymize\Type
  */
 class ArrayAnonymizer implements AnonymizerInterface
 {

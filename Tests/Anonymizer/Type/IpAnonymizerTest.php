@@ -4,21 +4,21 @@
  *
  * @category  Bundle
  * @package   Gdpr
- * @author    SuperBrave <info@superbrave.nl>
- * @copyright 2018 SuperBrave <info@superbrave.nl>
+ * @author    Superbrave <info@superbrave.nl>
+ * @copyright 2018 Superbrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
  * @link      https://www.superbrave.nl/
  */
 
-namespace SuperBrave\GdprBundle\Tests\Anonymizer;
+namespace Superbrave\GdprBundle\Tests\Anonymizer;
 
 use PHPUnit\Framework\TestCase;
-use SuperBrave\GdprBundle\Anonymize\Type\IpAnonymizer;
+use Superbrave\GdprBundle\Anonymize\Type\IpAnonymizer;
 
 /**
  * Class IpAnonymizerTest
  *
- * @package SuperBrave\GdprBundle\Tests\Anonymizer
+ * @package Superbrave\GdprBundle\Tests\Anonymizer
  */
 class IpAnonymizerTest extends TestCase
 {

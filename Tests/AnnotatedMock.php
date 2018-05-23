@@ -4,16 +4,16 @@
  *
  * @category  Bundle
  * @package   Gdpr
- * @author    SuperBrave <info@superbrave.nl>
- * @copyright 2018 SuperBrave <info@superbrave.nl>
+ * @author    Superbrave <info@superbrave.nl>
+ * @copyright 2018 Superbrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
  * @link      https://www.superbrave.nl/
  */
 
-namespace SuperBrave\GdprBundle\Tests;
+namespace Superbrave\GdprBundle\Tests;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use SuperBrave\GdprBundle\Annotation as GDPR;
+use Superbrave\GdprBundle\Annotation as GDPR;
 
 /**
  * Class used to test the @see GDPR\AnnotationReader.

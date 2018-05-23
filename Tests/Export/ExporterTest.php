@@ -4,19 +4,19 @@
  *
  * @category  Bundle
  * @package   Gdpr
- * @author    SuperBrave <info@superbrave.nl>
- * @copyright 2018 SuperBrave <info@superbrave.nl>
+ * @author    Superbrave <info@superbrave.nl>
+ * @copyright 2018 Superbrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
  * @link      https://www.superbrave.nl/
  */
 
-namespace SuperBrave\GdprBundle\Tests\Export;
+namespace Superbrave\GdprBundle\Tests\Export;
 
 use InvalidArgumentException;
 use PHPUnit_Framework_MockObject_MockObject;
 use PHPUnit_Framework_TestCase;
-use SuperBrave\GdprBundle\Export\Exporter;
-use SuperBrave\GdprBundle\Tests\AnnotatedMock;
+use Superbrave\GdprBundle\Export\Exporter;
+use Superbrave\GdprBundle\Tests\AnnotatedMock;
 use Symfony\Component\Serializer\SerializerInterface;
 
 /**

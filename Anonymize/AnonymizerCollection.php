@@ -4,21 +4,21 @@
  *
  * @category  Bundle
  * @package   Gdpr
- * @author    SuperBrave <info@superbrave.nl>
- * @copyright 2018 SuperBrave <info@superbrave.nl>
+ * @author    Superbrave <info@superbrave.nl>
+ * @copyright 2018 Superbrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
  * @link      https://www.superbrave.nl/
  */
 
-namespace SuperBrave\GdprBundle\Anonymize;
+namespace Superbrave\GdprBundle\Anonymize;
 
 use LogicException;
-use SuperBrave\GdprBundle\Anonymize\Type\AnonymizerInterface;
+use Superbrave\GdprBundle\Anonymize\Type\AnonymizerInterface;
 
 /**
  * Class AnonymizerCollection
  *
- * @package SuperBrave\GdprBundle\Anonymize
+ * @package Superbrave\GdprBundle\Anonymize
  */
 class AnonymizerCollection
 {

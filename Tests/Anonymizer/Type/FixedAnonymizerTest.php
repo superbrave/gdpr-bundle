@@ -4,18 +4,18 @@
  *
  * @category  Bundle
  * @package   Gdpr
- * @author    SuperBrave <info@superbrave.nl>
- * @copyright 2018 SuperBrave <info@superbrave.nl>
+ * @author    Superbrave <info@superbrave.nl>
+ * @copyright 2018 Superbrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
  * @link      https://www.superbrave.nl/
  */
 
-namespace SuperBrave\GdprBundle\Tests\Anonymizer;
+namespace Superbrave\GdprBundle\Tests\Anonymizer;
 
 use PHPUnit_Framework_MockObject_MockObject;
-use SuperBrave\GdprBundle\Anonymize\Type\FixedAnonymizer;
-use SuperBrave\GdprBundle\Manipulator\PropertyManipulator;
-use SuperBrave\GdprBundle\Tests\AnnotatedMock;
+use Superbrave\GdprBundle\Anonymize\Type\FixedAnonymizer;
+use Superbrave\GdprBundle\Manipulator\PropertyManipulator;
+use Superbrave\GdprBundle\Tests\AnnotatedMock;
 use Symfony\Component\OptionsResolver\Exception\MissingOptionsException;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 
@@ -119,7 +119,7 @@ class FixedAnonymizerTest extends \PHPUnit_Framework_TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage(
-            'The property "$nonexistent" does not exist on class "SuperBrave\GdprBundle\Tests\AnnotatedMock"'
+            'The property "$nonexistent" does not exist on class "Superbrave\GdprBundle\Tests\AnnotatedMock"'
         );
 
         $this->anonymizer->anonymize('johndoe@appleseed.com', [

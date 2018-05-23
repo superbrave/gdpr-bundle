@@ -49,7 +49,7 @@ Setting a fixed value for the property.
 ```php
 <?php
 
-use SuperBrave\GdprBundle\Annotation as GDPR;
+use Superbrave\GdprBundle\Annotation as GDPR;
 
  /**
   * @var string
@@ -71,7 +71,7 @@ If the checks above both failed it resorts back to a ReflectionProperty
 ```php
 <?php
 
-use SuperBrave\GdprBundle\Annotation as GDPR;
+use Superbrave\GdprBundle\Annotation as GDPR;
 
  /**
   * @var string
@@ -88,7 +88,7 @@ Anonymizes the date time field by setting the month and day to 01 and hours, min
 ```php
 <?php
 
-use SuperBrave\GdprBundle\Annotation as GDPR;
+use Superbrave\GdprBundle\Annotation as GDPR;
 
  /**
   * @var \DateTimeInterface|string|int
@@ -105,7 +105,7 @@ Anonymizes the ip address by zeroing the last bytes of an ipv4 or ipv6 address.
 ```php
 <?php
 
-use SuperBrave\GdprBundle\Annotation as GDPR;
+use Superbrave\GdprBundle\Annotation as GDPR;
 
  /**
   * @var string
@@ -122,7 +122,7 @@ Anonymizes the property by setting it to null.
 ```php
 <?php
 
-use SuperBrave\GdprBundle\Annotation as GDPR;
+use Superbrave\GdprBundle\Annotation as GDPR;
 
  /**
   * @var mixed
@@ -139,7 +139,7 @@ The object type anonymizer is to indicate that the property is an actual object 
 ```php
 <?php
 
-use SuperBrave\GdprBundle\Annotation AS GDPR;
+use Superbrave\GdprBundle\Annotation AS GDPR;
 
 class Order
 {
@@ -155,7 +155,7 @@ class Order
 ```php
 <?php
 
-use SuperBrave\GdprBundle\Annotation as GDPR;
+use Superbrave\GdprBundle\Annotation as GDPR;
 
  /**
   * @var Order
@@ -172,7 +172,7 @@ The collection type anonymizer is to indicate that the property is an collection
 ```php
 <?php
 
-use SuperBrave\GdprBundle\Annotation AS GDPR;
+use Superbrave\GdprBundle\Annotation AS GDPR;
 
 class Order
 {
@@ -188,7 +188,7 @@ class Order
 ```php
 <?php
 
-use SuperBrave\GdprBundle\Annotation as GDPR;
+use Superbrave\GdprBundle\Annotation as GDPR;
 
  /**
   * @var Order[]

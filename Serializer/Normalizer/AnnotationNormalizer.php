@@ -4,17 +4,17 @@
  *
  * @category  Bundle
  * @package   Gdpr
- * @author    SuperBrave <info@superbrave.nl>
- * @copyright 2018 SuperBrave <info@superbrave.nl>
+ * @author    Superbrave <info@superbrave.nl>
+ * @copyright 2018 Superbrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
  * @link      https://www.superbrave.nl/
  */
 
-namespace SuperBrave\GdprBundle\Serializer\Normalizer;
+namespace Superbrave\GdprBundle\Serializer\Normalizer;
 
 use ReflectionClass;
-use SuperBrave\GdprBundle\Annotation\AnnotationReader;
-use SuperBrave\GdprBundle\Manipulator\PropertyManipulator;
+use Superbrave\GdprBundle\Annotation\AnnotationReader;
+use Superbrave\GdprBundle\Manipulator\PropertyManipulator;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 

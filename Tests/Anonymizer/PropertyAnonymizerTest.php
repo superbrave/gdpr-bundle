@@ -4,23 +4,23 @@
  *
  * @category  Bundle
  * @package   Gdpr
- * @author    SuperBrave <info@superbrave.nl>
- * @copyright 2018 SuperBrave <info@superbrave.nl>
+ * @author    Superbrave <info@superbrave.nl>
+ * @copyright 2018 Superbrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
  * @link      https://www.superbrave.nl/
  */
 
-namespace SuperBrave\GdprBundle\Tests\Anonymizer;
+namespace Superbrave\GdprBundle\Tests\Anonymizer;
 
 use PHPUnit_Framework_TestCase;
 use PHPUnit_Framework_MockObject_MockObject;
 use ReflectionClass;
-use SuperBrave\GdprBundle\Annotation\Anonymize;
-use SuperBrave\GdprBundle\Anonymize\AnonymizerCollection;
-use SuperBrave\GdprBundle\Anonymize\Type\AnonymizerInterface;
-use SuperBrave\GdprBundle\Anonymize\PropertyAnonymizer;
-use SuperBrave\GdprBundle\Manipulator\PropertyManipulator;
-use SuperBrave\GdprBundle\Tests\AnnotatedMock;
+use Superbrave\GdprBundle\Annotation\Anonymize;
+use Superbrave\GdprBundle\Anonymize\AnonymizerCollection;
+use Superbrave\GdprBundle\Anonymize\Type\AnonymizerInterface;
+use Superbrave\GdprBundle\Anonymize\PropertyAnonymizer;
+use Superbrave\GdprBundle\Manipulator\PropertyManipulator;
+use Superbrave\GdprBundle\Tests\AnnotatedMock;
 
 /**
  * Test the behaviour of the PropertyAnonymizer
