@@ -10,10 +10,10 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace SuperBrave\GdprBundle\Tests;
+namespace Superbrave\GdprBundle\Tests;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use SuperBrave\GdprBundle\Annotation as GDPR;
+use Superbrave\GdprBundle\Annotation as GDPR;
 
 /**
  * Class used to test the @see GDPR\AnnotationReader.

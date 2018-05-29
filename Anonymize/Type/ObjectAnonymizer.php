@@ -10,14 +10,14 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace SuperBrave\GdprBundle\Anonymize\Type;
+namespace Superbrave\GdprBundle\Anonymize\Type;
 
-use SuperBrave\GdprBundle\Anonymize\Anonymizer;
+use Superbrave\GdprBundle\Anonymize\Anonymizer;
 
 /**
  * Class ObjectAnonymizer
  *
- * @package SuperBrave\GdprBundle\Anonymize\Type
+ * @package Superbrave\GdprBundle\Anonymize\Type
  */
 class ObjectAnonymizer implements AnonymizerInterface
 {

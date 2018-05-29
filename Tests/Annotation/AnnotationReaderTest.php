@@ -10,15 +10,15 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace SuperBrave\GdprBundle\Tests\Annotation;
+namespace Superbrave\GdprBundle\Tests\Annotation;
 
 use PHPUnit_Framework_TestCase;
 use ReflectionClass;
-use SuperBrave\GdprBundle\Annotation\AnnotationReader;
-use SuperBrave\GdprBundle\Annotation\Anonymize;
-use SuperBrave\GdprBundle\Annotation\Export;
-use SuperBrave\GdprBundle\Tests\AnnotatedMock;
-use SuperBrave\GdprBundle\Tests\ExtendedAnnotedMock;
+use Superbrave\GdprBundle\Annotation\AnnotationReader;
+use Superbrave\GdprBundle\Annotation\Anonymize;
+use Superbrave\GdprBundle\Annotation\Export;
+use Superbrave\GdprBundle\Tests\AnnotatedMock;
+use Superbrave\GdprBundle\Tests\ExtendedAnnotedMock;
 
 /**
  * AnnotationReaderTest.

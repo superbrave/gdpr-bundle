@@ -6,13 +6,13 @@
  *
  * @category  Bundle
  * @package   Gdpr
- * @author    Superbrave <info@superbrave.nl>
- * @copyright 2018 Superbrave <info@superbrave.nl>
+ * @author    SuperBrave <info@superbrave.nl>
+ * @copyright 2018 SuperBrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
  * @link      https://www.superbrave.nl/
  */
 
-namespace SuperBrave\GdprBundle\DependencyInjection;
+namespace Superbrave\GdprBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

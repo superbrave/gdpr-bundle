@@ -10,10 +10,10 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace SuperBrave\GdprBundle\DependencyInjection\Compiler;
+namespace Superbrave\GdprBundle\DependencyInjection\Compiler;
 
 use LogicException;
-use SuperBrave\GdprBundle\Anonymize\Type\AnonymizerInterface;
+use Superbrave\GdprBundle\Anonymize\Type\AnonymizerInterface;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
@@ -21,7 +21,7 @@ use Symfony\Component\DependencyInjection\Reference;
 /**
  * Compiler pass to add the tagged anonymizers to the anonymizer manager's definition
  *
- * @package SuperBrave\GdprBundle\DependencyInjection\Compiler
+ * @package Superbrave\GdprBundle\DependencyInjection\Compiler
  */
 class AddAnonymizersCompilerPass implements CompilerPassInterface
 {

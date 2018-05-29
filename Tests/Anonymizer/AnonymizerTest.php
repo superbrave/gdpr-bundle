@@ -10,20 +10,20 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace SuperBrave\GdprBundle\Tests\Anonymizer;
+namespace Superbrave\GdprBundle\Tests\Anonymizer;
 
 use PHPUnit_Framework_MockObject_MockObject;
 use PHPUnit_Framework_TestCase;
-use SuperBrave\GdprBundle\Annotation\AnnotationReader;
-use SuperBrave\GdprBundle\Annotation\Anonymize;
-use SuperBrave\GdprBundle\Anonymize\Anonymizer;
-use SuperBrave\GdprBundle\Anonymize\PropertyAnonymizer;
-use SuperBrave\GdprBundle\Tests\AnnotatedMock;
+use Superbrave\GdprBundle\Annotation\AnnotationReader;
+use Superbrave\GdprBundle\Annotation\Anonymize;
+use Superbrave\GdprBundle\Anonymize\Anonymizer;
+use Superbrave\GdprBundle\Anonymize\PropertyAnonymizer;
+use Superbrave\GdprBundle\Tests\AnnotatedMock;
 
 /**
  * Class AnonymizerTest
  *
- * @package SuperBrave\GdprBundle\Tests\Anonymizer
+ * @package Superbrave\GdprBundle\Tests\Anonymizer
  */
 class AnonymizerTest extends PHPUnit_Framework_TestCase
 {

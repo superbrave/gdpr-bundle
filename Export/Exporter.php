@@ -10,7 +10,7 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace SuperBrave\GdprBundle\Export;
+namespace Superbrave\GdprBundle\Export;
 
 use InvalidArgumentException;
 use ReflectionClass;

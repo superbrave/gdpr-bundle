@@ -10,7 +10,7 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace SuperBrave\GdprBundle\Anonymize\Type;
+namespace Superbrave\GdprBundle\Anonymize\Type;
 
 /**
  * DATE_RFC7231 is not natively supported in PHP 5.6
@@ -22,7 +22,7 @@ defined('DATE_RFC7231') or define('DATE_RFC7231', "D, d M Y H:i:s \G\M\T");
 /**
  * DateTime anonymizer class
  *
- * @package SuperBrave\GdprBundle\Anonymize\Type
+ * @package Superbrave\GdprBundle\Anonymize\Type
  */
 class DateTimeAnonymizer implements AnonymizerInterface
 {

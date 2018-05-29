@@ -10,15 +10,15 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace SuperBrave\GdprBundle\Anonymize;
+namespace Superbrave\GdprBundle\Anonymize;
 
-use SuperBrave\GdprBundle\Annotation\Anonymize;
-use SuperBrave\GdprBundle\Manipulator\PropertyManipulator;
+use Superbrave\GdprBundle\Annotation\Anonymize;
+use Superbrave\GdprBundle\Manipulator\PropertyManipulator;
 
 /**
  * Class PropertyAnonymizer
  *
- * @package SuperBrave\GdprBundle\Anonymizer
+ * @package Superbrave\GdprBundle\Anonymizer
  */
 class PropertyAnonymizer
 {

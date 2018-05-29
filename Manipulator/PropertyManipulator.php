@@ -10,7 +10,7 @@
  * @link      https://www.superbrave.nl/
  */
 
-namespace SuperBrave\GdprBundle\Manipulator;
+namespace Superbrave\GdprBundle\Manipulator;
 
 use ReflectionProperty;
 use Symfony\Component\PropertyAccess\Exception\NoSuchPropertyException;
@@ -19,7 +19,7 @@ use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 /**
  * Class PropertyManipulator
  *
- * @package SuperBrave\GdprBundle\Manipulator
+ * @package Superbrave\GdprBundle\Manipulator
  */
 class PropertyManipulator
 {

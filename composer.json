@@ -25,7 +25,7 @@
     "squizlabs/php_codesniffer": "^3.2"
   },
   "autoload"   : {
-    "psr-4": {"SuperBrave\\GdprBundle\\": ""}
+    "psr-4": {"Superbrave\\GdprBundle\\": ""}
   },
   "config"      : {
     "bin-dir"    : "bin",
