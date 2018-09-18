@@ -57,14 +57,14 @@ class Order
      *
      * @GDPR\Export()
      */
-    protected $id;
+    private $id;
 
     /**
      * @var Product
      *
      * @GDPR\Export()
      */
-    protected $product;
+    private $product;
 }
 
 class Product
@@ -72,13 +72,13 @@ class Product
     /**
      * @var int
      */
-    protected $id;
+    private $id;
 
     /**
      * @var int
      *
      * @GDPR\Export()
      */
-    protected $name;
+    private $name;
 }
 ```

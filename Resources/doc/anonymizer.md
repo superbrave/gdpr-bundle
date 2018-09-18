@@ -56,7 +56,7 @@ use Superbrave\GdprBundle\Annotation as GDPR;
   *
   * @GDPR\Anonymize(type="fixed", value="anonymized")
   */
- protected $value;
+ private $value;
 ```
 
 ##### Advanced fixed value
@@ -78,7 +78,7 @@ use Superbrave\GdprBundle\Annotation as GDPR;
   *
   * @GDPR\Anonymize(type="fixed", value="firstName-{id}")
   */
- protected $firstName;
+ private $firstName;
 ```
 
 #### Type: dateTime
@@ -95,7 +95,7 @@ use Superbrave\GdprBundle\Annotation as GDPR;
   *
   * @GDPR\Anonymize(type="dateTime")
   */
- protected $createdAt;
+ private $createdAt;
 ```
 
 #### Type: ip
@@ -112,7 +112,7 @@ use Superbrave\GdprBundle\Annotation as GDPR;
   *
   * @GDPR\Anonymize(type="ip")
   */
- protected $ipAddress;
+ private $ipAddress;
 ```
 
 #### Type: null
@@ -129,7 +129,7 @@ use Superbrave\GdprBundle\Annotation as GDPR;
   *
   * @GDPR\Anonymize(type="null")
   */
- protected $city;
+ private $city;
 ```
 
 #### Type: object
@@ -148,7 +148,7 @@ class Order
      *
      * @GDPR\Anonymize(type="ip")
      */
-    protected $ipAddress;
+    private $ipAddress;
 }
 ```
 
@@ -162,7 +162,7 @@ use Superbrave\GdprBundle\Annotation as GDPR;
   *
   * @GDPR\Anonymize(type="object")
   */
- protected $order;
+ private $order;
 ```
 
 #### Type: collection
@@ -181,7 +181,7 @@ class Order
      *
      * @GDPR\Anonymize(type="ip")
      */
-    protected $ipAddress;
+    private $ipAddress;
 }
 ```
 
@@ -195,5 +195,5 @@ use Superbrave\GdprBundle\Annotation as GDPR;
   *
   * @GDPR\Anonymize(type="collection")
   */
- protected $orders;
+ private $orders;
 ```
