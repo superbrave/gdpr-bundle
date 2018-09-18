@@ -36,7 +36,7 @@ You can export objects by using the exporter service:
 ```php
 <?php
 
-$this->get('superbrave_gdpr.exporter')->exportObject($object);
+$this->get('superbrave_gdpr.exporter')->exportObject($object, $objectName, $encoding);
 ```
 
 ## Examples
