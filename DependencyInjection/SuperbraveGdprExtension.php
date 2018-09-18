@@ -43,6 +43,7 @@ class SuperbraveGdprExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+        $loader->load('services.exporter.types.yml');
         $loader->load('services.anonymizer.types.yml');
     }
 }

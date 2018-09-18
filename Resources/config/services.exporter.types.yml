@@ -1,0 +1,22 @@
+services:
+    _defaults:
+        public: false
+
+    superbrave_gdpr.exporter.serializer.normalizer.export_annotation:
+        class: Superbrave\GdprBundle\Serializer\Normalizer\AnnotationNormalizer
+        arguments:
+            - "@superbrave_gdpr.annotation.reader"
+            - "Superbrave\\GdprBundle\\Annotation\\Export"
+            - "@superbrave_gdpr.property_manipulator"
+        tags:
+            - { name: "superbrave_gdpr.serializer.normalizer" }
+
+    superbrave_gdpr.exporter.serializer.encoder.xml:
+        class: Symfony\Component\Serializer\Encoder\XmlEncoder
+        tags:
+            - { name: "superbrave_gdpr.serializer.encoder" }
+
+    superbrave_gdpr.exporter.serializer.encoder.json:
+        class: Symfony\Component\Serializer\Encoder\JsonEncoder
+        tags:
+            - { name: "superbrave_gdpr.serializer.encoder" }
