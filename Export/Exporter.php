@@ -13,6 +13,7 @@
 namespace Superbrave\GdprBundle\Export;
 
 use InvalidArgumentException;
+use ReflectionException;
 use ReflectionClass;
 use Symfony\Component\Serializer\SerializerInterface;
 
@@ -31,22 +32,13 @@ class Exporter
     private $serializer;
 
     /**
-     * The format an object is serialized to.
-     *
-     * @var string
-     */
-    private $format;
-
-    /**
      * Constructs a new Export instance.
      *
      * @param SerializerInterface $serializer The Serializer instance
-     * @param string              $format     The format an object is serialized to
      */
-    public function __construct(SerializerInterface $serializer, $format = 'xml')
+    public function __construct(SerializerInterface $serializer)
     {
         $this->serializer = $serializer;
-        $this->format = $format;
     }
 
     /**
@@ -54,12 +46,14 @@ class Exporter
      *
      * @param object      $object     The object to be exported
      * @param string|null $objectName The name of the object used in the export (eg. the root node in XML)
+     * @param string      $format     The format an object is serialized to
      *
      * @return string
      *
      * @throws InvalidArgumentException
+     * @throws ReflectionException
      */
-    public function exportObject(/*object */$object, $objectName = null)
+    public function exportObject(/*object */$object, $objectName = null, $format = 'xml')
     {
         if (is_object($object) === false) {
             throw new InvalidArgumentException(
@@ -75,6 +69,6 @@ class Exporter
             $context['xml_root_node_name'] = (new ReflectionClass($object))->getShortName();
         }
 
-        return $this->serializer->serialize($object, $this->format, $context);
+        return $this->serializer->serialize($object, $format, $context);
     }
 }

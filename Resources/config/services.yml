@@ -9,7 +9,6 @@ services:
         class: Superbrave\GdprBundle\Export\Exporter
         arguments:
             - "@superbrave_gdpr.exporter.serializer"
-            - "xml"
         public: true
 
     superbrave_gdpr.anonymizer:

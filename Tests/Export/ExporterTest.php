@@ -50,7 +50,7 @@ class ExporterTest extends PHPUnit_Framework_TestCase
         $this->serializerMock = $this->getMockBuilder(SerializerInterface::class)
             ->getMock();
 
-        $this->exporter = new Exporter($this->serializerMock, 'xml');
+        $this->exporter = new Exporter($this->serializerMock);
     }
 
     /**
@@ -61,7 +61,6 @@ class ExporterTest extends PHPUnit_Framework_TestCase
     public function testConstruct()
     {
         $this->assertAttributeSame($this->serializerMock, 'serializer', $this->exporter);
-        $this->assertAttributeSame('xml', 'format', $this->exporter);
     }
 
     /**
