@@ -9,7 +9,7 @@ Provides an annotation for exporting object data to a specific format
 
 ## Register new normalizers
 
-You can create your own normalizers and register them in the compiler pass by tagging the service.
+You can create your own normalizers and add them to the compiler pass by tagging the service.
 
 ```yml
 your_bundle_name.your_normalizer:
@@ -20,7 +20,7 @@ your_bundle_name.your_normalizer:
 
 ## Register new encoders
 
-You can create your own encoders and register them in the compiler pass by tagging the service.
+You can create your own encoders and register them to the compiler pass by tagging the service.
 
 ```yml
 your_bundle_name.your_encoder:
@@ -36,14 +36,14 @@ You can export objects by using the exporter service:
 ```php
 <?php
 
-$this->get('superbrave_gdpr.exporter')->exportObject($object, $objectName, $encoding);
+$this->get('superbrave_gdpr.exporter')->exportObject($object, $objectName, $format);
 ```
 
 ## Examples
 
 #### Annotations
 
-Setting annotations on the object. Only the marked properties are being exported.
+Setting annotations on the object. Only the marked properties are being exported. If you mark an object, you also need to put annotations on properties of the object.
 
 ```php
 <?php
@@ -66,21 +66,11 @@ class Order
      */
     protected $product;
 }
-```
-
-You can even mark object properties but don't forget to put annotations on the object itself.
-
-```php
-<?php
-
-use Superbrave\GdprBundle\Annotation as GDPR;
 
 class Product
 {
     /**
      * @var int
-     *
-     * @GDPR\Export()
      */
     protected $id;
 

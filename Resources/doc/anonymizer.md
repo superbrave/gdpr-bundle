@@ -13,7 +13,7 @@ Provides an annotation for anonymizing objects based on specific anonymization t
 
 ## Registering new anonymizers
 
-You can create your own anonymizers and register them in the compiler pass by tagging the service.
+You can create your own anonymizers and add them to the compiler pass by tagging the service.
 The `type` parameter specifies the name to be used in the `type` parameter of the annotation.
 
 ```yml
@@ -23,7 +23,7 @@ your_bundle_name.your_anonymizer:
         - { name: superbrave_gdpr.anonymizer, type: your_type }
 ```
 
-The example above will register an anonymizer with the name `your_type`. You can then use it as followed:
+The example above will add an anonymizer with the name `your_type`. You can then use it as followed:
 ```@GDPR\Anonymize(type="your_type")```
 
 ## Usage
