@@ -13,7 +13,7 @@ Provides an annotation for anonymizing objects based on specific anonymization t
 
 ## Registering new anonymizers
 
-You can create your own anonymizers and register them in the compiler pass by tagging the service.
+You can create your own anonymizers and add them to the compiler pass by tagging the service.
 The `type` parameter specifies the name to be used in the `type` parameter of the annotation.
 
 ```yml
@@ -23,7 +23,7 @@ your_bundle_name.your_anonymizer:
         - { name: superbrave_gdpr.anonymizer, type: your_type }
 ```
 
-The example above will register an anonymizer with the name `your_type`. You can then use it as followed:
+The example above will add an anonymizer with the name `your_type`. You can then use it as followed:
 ```@GDPR\Anonymize(type="your_type")```
 
 ## Usage
@@ -56,7 +56,7 @@ use Superbrave\GdprBundle\Annotation as GDPR;
   *
   * @GDPR\Anonymize(type="fixed", value="anonymized")
   */
- protected $value;
+ private $value;
 ```
 
 ##### Advanced fixed value
@@ -78,7 +78,7 @@ use Superbrave\GdprBundle\Annotation as GDPR;
   *
   * @GDPR\Anonymize(type="fixed", value="firstName-{id}")
   */
- protected $firstName;
+ private $firstName;
 ```
 
 #### Type: dateTime
@@ -95,7 +95,7 @@ use Superbrave\GdprBundle\Annotation as GDPR;
   *
   * @GDPR\Anonymize(type="dateTime")
   */
- protected $createdAt;
+ private $createdAt;
 ```
 
 #### Type: ip
@@ -112,7 +112,7 @@ use Superbrave\GdprBundle\Annotation as GDPR;
   *
   * @GDPR\Anonymize(type="ip")
   */
- protected $ipAddress;
+ private $ipAddress;
 ```
 
 #### Type: null
@@ -129,7 +129,7 @@ use Superbrave\GdprBundle\Annotation as GDPR;
   *
   * @GDPR\Anonymize(type="null")
   */
- protected $city;
+ private $city;
 ```
 
 #### Type: object
@@ -148,7 +148,7 @@ class Order
      *
      * @GDPR\Anonymize(type="ip")
      */
-    protected $ipAddress;
+    private $ipAddress;
 }
 ```
 
@@ -162,7 +162,7 @@ use Superbrave\GdprBundle\Annotation as GDPR;
   *
   * @GDPR\Anonymize(type="object")
   */
- protected $order;
+ private $order;
 ```
 
 #### Type: collection
@@ -181,7 +181,7 @@ class Order
      *
      * @GDPR\Anonymize(type="ip")
      */
-    protected $ipAddress;
+    private $ipAddress;
 }
 ```
 
@@ -195,5 +195,5 @@ use Superbrave\GdprBundle\Annotation as GDPR;
   *
   * @GDPR\Anonymize(type="collection")
   */
- protected $orders;
+ private $orders;
 ```
