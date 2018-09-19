@@ -75,7 +75,7 @@ class Product
     private $id;
 
     /**
-     * @var int
+     * @var string
      *
      * @GDPR\Export()
      */
