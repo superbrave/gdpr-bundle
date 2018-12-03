@@ -47,14 +47,14 @@ class Exporter
      * @param object      $object         The object to be exported
      * @param string|null $objectName     The name of the object used in the export (eg. the root node in XML)
      * @param string      $format         The format an object is serialized to
-     * @param string|null $targetEncoding The target encoding for the export (XML)
+     * @param string      $targetEncoding The target encoding for the export (UTF-8 by default)
      *
      * @return string
      *
      * @throws InvalidArgumentException
      * @throws ReflectionException
      */
-    public function exportObject(/*object */$object, $objectName = null, $format = 'xml', $targetEncoding = null)
+    public function exportObject(/*object */$object, $objectName = null, $format = 'xml', $targetEncoding = 'UTF-8')
     {
         if (is_object($object) === false) {
             throw new InvalidArgumentException(
