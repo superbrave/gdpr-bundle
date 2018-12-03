@@ -47,7 +47,7 @@ class Exporter
      * @param object      $object         The object to be exported
      * @param string|null $objectName     The name of the object used in the export (eg. the root node in XML)
      * @param string      $format         The format an object is serialized to
-     * @param string|null $targetEncoding The target encoding for the XML export
+     * @param string|null $targetEncoding The target encoding for the export (XML)
      *
      * @return string
      *
