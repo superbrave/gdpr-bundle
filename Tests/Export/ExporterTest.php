@@ -114,6 +114,34 @@ class ExporterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests if Exporter::exportObject calls the serializer instance with the custom target encoding as context
+     * and returns the result of the serializer.
+     *
+     * @return void
+     */
+    public function testExportObjectWithTargetEncoding()
+    {
+        $annotatedMock = new AnnotatedMock();
+
+        $this->serializerMock->expects($this->once())
+            ->method('serialize')
+            ->with(
+                $annotatedMock,
+                'xml',
+                array(
+                    'xml_root_node_name' => 'AnnotatedMock',
+                    'xml_encoding' => 'UTF-8'
+                )
+            )
+            ->willReturn('<?xml version="1.0" encoding="UTF-8"?><AnnotatedMock/>');
+
+        $this->assertSame(
+            '<?xml version="1.0" encoding="UTF-8"?><AnnotatedMock/>',
+            $this->exporter->exportObject($annotatedMock, null, 'xml', 'UTF-8')
+        );
+    }
+
+    /**
      * Tests if Exporter::exportObject throws an InvalidArgumentException when the first argument is not an object.
      *
      * @return void
