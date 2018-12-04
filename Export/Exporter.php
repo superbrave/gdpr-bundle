@@ -64,10 +64,8 @@ class Exporter
 
         $context = array(
             'xml_root_node_name' => $objectName,
+            'xml_encoding' => $targetEncoding
         );
-        if ($targetEncoding !== null) {
-            $context['xml_encoding'] = $targetEncoding;
-        }
 
         if (is_string($context['xml_root_node_name']) === false) {
             $context['xml_root_node_name'] = (new ReflectionClass($object))->getShortName();
