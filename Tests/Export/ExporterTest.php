@@ -78,12 +78,15 @@ class ExporterTest extends PHPUnit_Framework_TestCase
             ->with(
                 $annotatedMock,
                 'xml',
-                array('xml_root_node_name' => 'AnnotatedMock')
+                array(
+                    'xml_root_node_name' => 'AnnotatedMock',
+                    'xml_encoding' => 'UTF-8'
+                )
             )
-            ->willReturn('<?xml version="1.0"?><AnnotatedMock/>');
+            ->willReturn('<?xml version="1.0" encoding="UTF-8"?><AnnotatedMock/>');
 
         $this->assertSame(
-            '<?xml version="1.0"?><AnnotatedMock/>',
+            '<?xml version="1.0" encoding="UTF-8"?><AnnotatedMock/>',
             $this->exporter->exportObject($annotatedMock)
         );
     }
@@ -103,13 +106,44 @@ class ExporterTest extends PHPUnit_Framework_TestCase
             ->with(
                 $annotatedMock,
                 'xml',
-                array('xml_root_node_name' => 'custom_name')
+                array(
+                    'xml_root_node_name' => 'custom_name',
+                    'xml_encoding' => 'UTF-8'
+                )
             )
-            ->willReturn('<?xml version="1.0"?><custom_name/>');
+            ->willReturn('<?xml version="1.0" encoding="UTF-8"?><custom_name/>');
 
         $this->assertSame(
-            '<?xml version="1.0"?><custom_name/>',
+            '<?xml version="1.0" encoding="UTF-8"?><custom_name/>',
             $this->exporter->exportObject($annotatedMock, 'custom_name')
+        );
+    }
+
+    /**
+     * Tests if Exporter::exportObject calls the serializer instance with the custom target encoding as context
+     * and returns the result of the serializer.
+     *
+     * @return void
+     */
+    public function testExportObjectWithCustomTargetEncoding()
+    {
+        $annotatedMock = new AnnotatedMock();
+
+        $this->serializerMock->expects($this->once())
+            ->method('serialize')
+            ->with(
+                $annotatedMock,
+                'xml',
+                array(
+                    'xml_root_node_name' => 'AnnotatedMock',
+                    'xml_encoding' => 'ISO-8859-1'
+                )
+            )
+            ->willReturn('<?xml version="1.0" encoding="ISO-8859-1"?><AnnotatedMock/>');
+
+        $this->assertSame(
+            '<?xml version="1.0" encoding="ISO-8859-1"?><AnnotatedMock/>',
+            $this->exporter->exportObject($annotatedMock, null, 'xml', 'ISO-8859-1')
         );
     }
 
