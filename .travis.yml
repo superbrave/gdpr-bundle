@@ -14,7 +14,7 @@ before_script:
   - mkdir -p build/logs
 
 script:
-  - bin/phpunit --log-junit build/logs/phpunit.xml --coverage-clover build/logs/clover.xml
+  - bin/phpunit --log-junit build/logs/phpunit.xml --coverage-clover ./tests/logs/clover.xml
   - bin/phpcs --report-full --report-junit=build/logs/phpcs.xml
 
 after_script:
