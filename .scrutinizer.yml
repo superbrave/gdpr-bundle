@@ -2,27 +2,30 @@ build:
   nodes:
     analysis:
       project_setup:
-        override:
-          - 'true'
+        override: true
       tests:
-        override:
-          - php-scrutinizer-run
-          -
-            command: phpcs-run
-            use_website_config: true
-    tests: true
-  coverage:
-    tests:
-      override:
-        - command: bin/phpunit --log-junit build/logs/phpunit.xml --coverage-clover build/logs/clover.xml
-          coverage:
-            file: build/logs/clover.xml
-            format: clover
+        override: [php-scrutinizer-run]
+
+filter:
+  excluded_paths: [Tests/*]
+
 checks:
-  php: true
-coding_style:
   php:
-    spaces:
-      other:
-        after_type_cast: false
-filter: {  }
+    remove_extra_empty_lines: true
+    remove_php_closing_tag: true
+    remove_trailing_whitespace: true
+    fix_use_statements:
+      remove_unused: true
+      preserve_multiple: false
+      preserve_blanklines: true
+      order_alphabetically: true
+    fix_php_opening_tag: true
+    fix_linefeed: true
+    fix_line_ending: true
+    fix_identation_4spaces: true
+    fix_doc_comments: true
+
+tools:
+  external_code_coverage:
+    timeout: 600
+    runs: 3
