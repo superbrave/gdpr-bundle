@@ -19,6 +19,10 @@
             <exclude>
                 <directory>bin</directory>
                 <directory>vendor</directory>
+                <directory>DependencyInjection/Configuration.php</directory>
+                <directory>DependencyInjection/ObjectFactory.php</directory>
+                <directory>DependencyInjection/SuperbraveGdprExtension.php</directory>
+                <directory>SuperbraveGdprBundle.php</directory>
             </exclude>
         </whitelist>
     </filter>
