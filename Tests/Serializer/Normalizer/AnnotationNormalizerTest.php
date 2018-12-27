@@ -13,7 +13,8 @@
 namespace Superbrave\GdprBundle\Tests\Serializer\Normalizer;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use PHPUnit_Framework_MockObject_MockObject;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 use Superbrave\GdprBundle\Annotation\AnnotationReader;
 use Superbrave\GdprBundle\Annotation\Export;
@@ -29,7 +30,7 @@ use Symfony\Component\Serializer\Serializer;
  *
  * @author Niels Nijens <nn@superbrave.nl>
  */
-class AnnotationNormalizerTest extends \PHPUnit_Framework_TestCase
+class AnnotationNormalizerTest extends TestCase
 {
     /**
      * The AnnotationNormalizer instance being tested.
@@ -41,14 +42,14 @@ class AnnotationNormalizerTest extends \PHPUnit_Framework_TestCase
     /**
      * The mock AnnotationReader instance.
      *
-     * @var PHPUnit_Framework_MockObject_MockObject
+     * @var MockObject
      */
     private $annotationReaderMock;
 
     /**
      * The mock property accessor instance.
      *
-     * @var PHPUnit_Framework_MockObject_MockObject
+     * @var MockObject
      */
     private $propertyManipulatorMock;
 

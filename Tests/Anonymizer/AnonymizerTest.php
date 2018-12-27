@@ -12,8 +12,8 @@
 
 namespace Superbrave\GdprBundle\Tests\Anonymizer;
 
-use PHPUnit_Framework_MockObject_MockObject;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Superbrave\GdprBundle\Annotation\AnnotationReader;
 use Superbrave\GdprBundle\Annotation\Anonymize;
 use Superbrave\GdprBundle\Anonymize\Anonymizer;
@@ -25,7 +25,7 @@ use Superbrave\GdprBundle\Tests\AnnotatedMock;
  *
  * @package Superbrave\GdprBundle\Tests\Anonymizer
  */
-class AnonymizerTest extends PHPUnit_Framework_TestCase
+class AnonymizerTest extends TestCase
 {
     /**
      * @var Anonymizer
@@ -33,12 +33,12 @@ class AnonymizerTest extends PHPUnit_Framework_TestCase
     private $anonymizer;
 
     /**
-     * @var PHPUnit_Framework_MockObject_MockObject
+     * @var MockObject
      */
     private $annotationReaderMock;
 
     /**
-     * @var PHPUnit_Framework_MockObject_MockObject
+     * @var MockObject
      */
     private $propertyAnonymizer;
 
