@@ -35,7 +35,7 @@ class ExtendedAnnotedMock extends AnnotatedMock
      *
      * @return bool
      */
-    public function getExtendedProperty()
+    public function getExtendedProperty(): bool
     {
         return $this->extendedProperty;
     }

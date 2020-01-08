@@ -40,3 +40,6 @@
 
 # Backup entities generated with doctrine:generate:entities command
 **/Entity/*~
+
+# PHPUnit
+.phpunit.result.cache

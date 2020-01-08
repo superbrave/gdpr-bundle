@@ -12,8 +12,8 @@
 
 namespace Superbrave\GdprBundle\Tests\Anonymizer;
 
-use PHPUnit_Framework_MockObject_MockObject;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Superbrave\GdprBundle\Annotation\AnnotationReader;
 use Superbrave\GdprBundle\Annotation\Anonymize;
 use Superbrave\GdprBundle\Anonymize\Anonymizer;
@@ -25,7 +25,7 @@ use Superbrave\GdprBundle\Tests\AnnotatedMock;
  *
  * @package Superbrave\GdprBundle\Tests\Anonymizer
  */
-class AnonymizerTest extends PHPUnit_Framework_TestCase
+class AnonymizerTest extends TestCase
 {
     /**
      * @var Anonymizer
@@ -33,19 +33,19 @@ class AnonymizerTest extends PHPUnit_Framework_TestCase
     private $anonymizer;
 
     /**
-     * @var PHPUnit_Framework_MockObject_MockObject
+     * @var MockObject
      */
     private $annotationReaderMock;
 
     /**
-     * @var PHPUnit_Framework_MockObject_MockObject
+     * @var MockObject
      */
     private $propertyAnonymizer;
 
     /**
      * {@inheritdoc}
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->annotationReaderMock = $this->getMockBuilder(AnnotationReader::class)
             ->getMock();
@@ -76,7 +76,7 @@ class AnonymizerTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function testAnonymizeObject()
+    public function testAnonymizeObject(): void
     {
         $annotatedMock = new AnnotatedMock();
         $anonymize = new Anonymize();
@@ -109,7 +109,7 @@ class AnonymizerTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function testAnonymizerShouldReceiveExceptionWhenArgumentIsNoObject()
+    public function testAnonymizerShouldReceiveExceptionWhenArgumentIsNoObject(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid argument given "string" should be of type object.');
