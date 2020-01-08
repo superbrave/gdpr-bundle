@@ -12,6 +12,8 @@
 
 namespace Superbrave\GdprBundle\Tests\Anonymizer;
 
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use PHPUnit_Framework_MockObject_MockObject;
 use Superbrave\GdprBundle\Anonymize\Type\FixedAnonymizer;
 use Superbrave\GdprBundle\Manipulator\PropertyManipulator;
@@ -22,12 +24,13 @@ use Symfony\Component\PropertyAccess\PropertyAccess;
 /**
  * Tests the behaviour of the EmailAnonymizer
  */
-class FixedAnonymizerTest extends \PHPUnit_Framework_TestCase
+class FixedAnonymizerTest extends TestCase
 {
     /**
      * The mock property accessor instance.
      *
-     * @var    PHPUnit_Framework_MockObject_MockObject
+     * @var MockObject
+     *
      * @return void
      */
     private $propertyManipulator;
@@ -36,6 +39,7 @@ class FixedAnonymizerTest extends \PHPUnit_Framework_TestCase
      * An instance of StringAnonymizer being tested.
      *
      * @var    FixedAnonymizer
+     *
      * @return void
      */
     private $anonymizer;
@@ -45,7 +49,7 @@ class FixedAnonymizerTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->propertyManipulator = new PropertyManipulator(
             PropertyAccess::createPropertyAccessor()
@@ -59,7 +63,7 @@ class FixedAnonymizerTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function testConstructHasCorrectProperty()
+    public function testConstructHasCorrectProperty(): void
     {
         $this->assertAttributeSame($this->propertyManipulator, 'propertyManipulator', $this->anonymizer);
     }
@@ -69,7 +73,7 @@ class FixedAnonymizerTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function testAnonymizerShouldReceiveAnnotationValueOptionOrThrowException()
+    public function testAnonymizerShouldReceiveAnnotationValueOptionOrThrowException(): void
     {
         $this->expectException(MissingOptionsException::class);
         $this->expectExceptionMessage('The required option "annotationValue" is missing.');
@@ -84,7 +88,7 @@ class FixedAnonymizerTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function testAnonymizerShouldReceiveObjectOptionOrThrowException()
+    public function testAnonymizerShouldReceiveObjectOptionOrThrowException(): void
     {
         $this->expectException(MissingOptionsException::class);
         $this->expectExceptionMessage('The required option "object" is missing.');
@@ -99,7 +103,7 @@ class FixedAnonymizerTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function testAnonymizeStringGivenAFormatWithMultipleProperties()
+    public function testAnonymizeStringGivenAFormatWithMultipleProperties(): void
     {
         $this->assertEquals(
             'email-1-bar@localhost',
@@ -115,7 +119,7 @@ class FixedAnonymizerTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function testAnonymizeStringGivenAFormatWithInvalidPropertiesThrowsAnException()
+    public function testAnonymizeStringGivenAFormatWithInvalidPropertiesThrowsAnException(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage(
@@ -133,7 +137,7 @@ class FixedAnonymizerTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function testAnonymizeStringGivenAFormatWithNoWildcardReturnsTheString()
+    public function testAnonymizeStringGivenAFormatWithNoWildcardReturnsTheString(): void
     {
         $this->assertEquals('foobarbaz', $this->anonymizer->anonymize('johndoe@appleseed.com', [
             'annotationValue' => 'foobarbaz',
@@ -147,7 +151,7 @@ class FixedAnonymizerTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function testAnonymizeRequiresTheValueToBeANonEmptyStringOrThrowException()
+    public function testAnonymizeRequiresTheValueToBeANonEmptyStringOrThrowException(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('The option "annotationValue" cannot be empty');
