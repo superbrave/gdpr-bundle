@@ -38,7 +38,7 @@ class FixedAnonymizerTest extends TestCase
     /**
      * An instance of StringAnonymizer being tested.
      *
-     * @var    FixedAnonymizer
+     * @var FixedAnonymizer
      *
      * @return void
      */
