@@ -1,37 +1,39 @@
 {
-  "name"       : "superbrave/gdpr-bundle",
-  "type"       : "symfony-bundle",
-  "description": "A Symfony bundle for using entity annotations according to GDPR requirements and anonymizing/exporting data",
-  "keywords"   : [
-    "annotations",
-    "GDPR",
-    "anonymizing",
-    "exporting"
-  ],
-  "licence"    : "MIT License",
-  "require"    : {
-    "php": ">=5.6.0",
-    "doctrine/annotations": "^1.4",
-    "symfony/framework-bundle": "^3.0.0",
-    "symfony/options-resolver": "^3.4",
-    "symfony/property-access": "^3.4",
-    "symfony/serializer": "^3.4"
-  },
-  "require-dev": {
-    "roave/security-advisories": "dev-master",
-    "doctrine/collections": "^1.4",
-    "phpunit/phpunit": "^5.6",
-    "superbrave/coding-standards": "^0.1",
-    "squizlabs/php_codesniffer": "^3.2"
-  },
-  "autoload"   : {
-    "psr-4": {"Superbrave\\GdprBundle\\": ""}
-  },
-  "config"      : {
-    "bin-dir"    : "bin",
-    "platform"   : {
-      "php": "5.6.0"
+    "name": "superbrave/gdpr-bundle",
+    "type": "symfony-bundle",
+    "description": "A Symfony bundle for using entity annotations according to GDPR requirements and anonymizing/exporting data",
+    "keywords": [
+        "annotations",
+        "GDPR",
+        "anonymizing",
+        "exporting"
+    ],
+    "license": "MIT License",
+    "require": {
+        "php": ">=7.2.0",
+        "doctrine/annotations": "^1.4",
+        "symfony/framework-bundle": "^3.0.0",
+        "symfony/options-resolver": "^3.4",
+        "symfony/property-access": "^3.4",
+        "symfony/serializer": "^3.4"
     },
-    "sort-packages": true
-  }
+    "require-dev": {
+        "roave/security-advisories": "dev-master",
+        "doctrine/collections": "^1.4",
+        "phpunit/phpunit": "^5.6",
+        "superbrave/coding-standards": "^0.1",
+        "squizlabs/php_codesniffer": "^3.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Superbrave\\GdprBundle\\": ""
+        }
+    },
+    "config": {
+        "bin-dir": "bin",
+        "platform": {
+            "php": "7.2.0"
+        },
+        "sort-packages": true
+    }
 }
