@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fd20671f21a41ce12aa0e990085aa9ff",
+    "content-hash": "9fd04ed4b64671dc8780f8090765f00d",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -3766,16 +3766,16 @@
         },
         {
             "name": "superbrave/coding-standards",
-            "version": "0.1",
+            "version": "0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/superbrave/coding-standards.git",
-                "reference": "0ecb7208be22b9ef1c463374cb32a2e2ed578750"
+                "reference": "8237e860a6acd738122a8af58e05df81475c6610"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/superbrave/coding-standards/zipball/0ecb7208be22b9ef1c463374cb32a2e2ed578750",
-                "reference": "0ecb7208be22b9ef1c463374cb32a2e2ed578750",
+                "url": "https://api.github.com/repos/superbrave/coding-standards/zipball/8237e860a6acd738122a8af58e05df81475c6610",
+                "reference": "8237e860a6acd738122a8af58e05df81475c6610",
                 "shasum": ""
             },
             "require-dev": {
@@ -3795,7 +3795,7 @@
                 "Coding Standard",
                 "phpcs"
             ],
-            "time": "2018-05-08T13:22:21+00:00"
+            "time": "2018-05-09T12:57:33+00:00"
         },
         {
             "name": "theseer/tokenizer",
