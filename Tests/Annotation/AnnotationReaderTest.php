@@ -3,11 +3,12 @@
  * This file is part of the GDPR bundle.
  *
  * @category  Bundle
- * @package   Gdpr
+ *
  * @author    SuperBrave <info@superbrave.nl>
  * @copyright 2018 SuperBrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
- * @link      https://www.superbrave.nl/
+ *
+ * @see       https://www.superbrave.nl/
  */
 
 namespace Superbrave\GdprBundle\Tests\Annotation;
@@ -66,7 +67,7 @@ class AnnotationReaderTest extends TestCase
         $this->assertIsArray($result);
         $this->assertCount(5, $result);
         $this->assertSame(
-            array('foo', 'baz', 'qux', 'quux', 'annotatedPropertyWithoutMethod'),
+            ['foo', 'baz', 'qux', 'quux', 'annotatedPropertyWithoutMethod'],
             array_keys($result)
         );
         $this->assertInstanceOf(Export::class, current($result));
@@ -88,7 +89,7 @@ class AnnotationReaderTest extends TestCase
         $this->assertIsArray($result);
         $this->assertCount(1, $result);
         $this->assertSame(
-            array('foo'),
+            ['foo'],
             array_keys($result)
         );
         $this->assertInstanceOf(Anonymize::class, current($result));
@@ -110,7 +111,7 @@ class AnnotationReaderTest extends TestCase
         $this->assertIsArray($result);
         $this->assertCount(6, $result);
         $this->assertSame(
-            array('extendedProperty', 'foo', 'baz', 'qux', 'quux', 'annotatedPropertyWithoutMethod'),
+            ['extendedProperty', 'foo', 'baz', 'qux', 'quux', 'annotatedPropertyWithoutMethod'],
             array_keys($result)
         );
         $this->assertInstanceOf(Export::class, current($result));

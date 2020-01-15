@@ -3,11 +3,12 @@
  * This file is part of the GDPR bundle.
  *
  * @category  Bundle
- * @package   Gdpr
+ *
  * @author    SuperBrave <info@superbrave.nl>
  * @copyright 2018 SuperBrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
- * @link      https://www.superbrave.nl/
+ *
+ * @see       https://www.superbrave.nl/
  */
 
 namespace Superbrave\GdprBundle\Serializer\Normalizer;
@@ -94,9 +95,9 @@ class AnnotationNormalizer implements NormalizerInterface
      *
      * @return array|string|int|float|bool
      */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize($object, $format = null, array $context = [])
     {
-        $normalizedData = array();
+        $normalizedData = [];
         $propertyAnnotations = $this->annotationReader->getPropertiesWithAnnotation(
             new ReflectionClass($object),
             $this->annotationName

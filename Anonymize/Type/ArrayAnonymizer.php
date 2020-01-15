@@ -3,19 +3,18 @@
  * This file is part of the GDPR bundle.
  *
  * @category  Bundle
- * @package   Gdpr
+ *
  * @author    SuperBrave <info@superbrave.nl>
  * @copyright 2018 SuperBrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
- * @link      https://www.superbrave.nl/
+ *
+ * @see       https://www.superbrave.nl/
  */
 
 namespace Superbrave\GdprBundle\Anonymize\Type;
 
 /**
- * Class ArrayAnonymizer
- *
- * @package Superbrave\GdprBundle\Anonymize\Type
+ * Class ArrayAnonymizer.
  */
 class ArrayAnonymizer implements AnonymizerInterface
 {
@@ -27,7 +26,7 @@ class ArrayAnonymizer implements AnonymizerInterface
     /**
      * ArrayAnonymizer constructor.
      *
-     * @param AnonymizerInterface $anonymizer The anonymizer.
+     * @param AnonymizerInterface $anonymizer the anonymizer
      */
     public function __construct(AnonymizerInterface $anonymizer)
     {
@@ -37,7 +36,7 @@ class ArrayAnonymizer implements AnonymizerInterface
     /**
      * {@inheritdoc}
      *
-     * @throws \InvalidArgumentException If property is not iterable.
+     * @throws \InvalidArgumentException if property is not iterable
      */
     public function anonymize($propertyValue, array $options = [])
     {

@@ -3,11 +3,12 @@
  * This file is part of the GDPR bundle.
  *
  * @category  Bundle
- * @package   Gdpr
+ *
  * @author    SuperBrave <info@superbrave.nl>
  * @copyright 2018 SuperBrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
- * @link      https://www.superbrave.nl/
+ *
+ * @see       https://www.superbrave.nl/
  */
 
 namespace Superbrave\GdprBundle\DependencyInjection\Compiler;
@@ -19,21 +20,19 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 
 /**
- * Compiler pass to add the tagged anonymizers to the anonymizer manager's definition
- *
- * @package Superbrave\GdprBundle\DependencyInjection\Compiler
+ * Compiler pass to add the tagged anonymizers to the anonymizer manager's definition.
  */
 class AddAnonymizersCompilerPass implements CompilerPassInterface
 {
     /**
      * Gets all the anonymizers from the services tagged with 'superbrave_gdpr.anonymizer'
-     * The adds them to the AnonymizerCollection
+     * The adds them to the AnonymizerCollection.
      *
      * @param ContainerBuilder $container The service container
      *
      * @return void
      *
-     * @throws LogicException on invalid interface usage.
+     * @throws LogicException on invalid interface usage
      */
     public function process(ContainerBuilder $container)
     {

@@ -3,11 +3,12 @@
  * This file is part of the GDPR bundle.
  *
  * @category  Bundle
- * @package   Gdpr
+ *
  * @author    SuperBrave <info@superbrave.nl>
  * @copyright 2018 SuperBrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
- * @link      https://www.superbrave.nl/
+ *
+ * @see       https://www.superbrave.nl/
  */
 
 namespace Superbrave\GdprBundle\Anonymize\Type;
@@ -16,14 +17,12 @@ use Superbrave\GdprBundle\Manipulator\PropertyManipulator;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Fixed anonymizer class
- *
- * @package Superbrave\GdprBundle\Anonymize\Type
+ * Fixed anonymizer class.
  */
 class FixedAnonymizer implements AnonymizerInterface
 {
     /**
-     * Property Manipulator service
+     * Property Manipulator service.
      *
      * @var PropertyManipulator
      */
@@ -41,7 +40,7 @@ class FixedAnonymizer implements AnonymizerInterface
 
     /**
      * Anonymize the data given according to the options provided
-     * The value is required in the annotation for this anonymizer
+     * The value is required in the annotation for this anonymizer.
      *
      * You can specify a property you want to be resolved using a wildcard manner
      *
@@ -52,9 +51,9 @@ class FixedAnonymizer implements AnonymizerInterface
      * @param mixed $propertyValue The value that has to be converted
      * @param array $options       Options to help the anonymizer do its job
      *
-     * @return string              The Anonymized string
+     * @return string The Anonymized string
      *
-     * @throws \InvalidArgumentException if annotationValue is empty.
+     * @throws \InvalidArgumentException if annotationValue is empty
      */
     public function anonymize($propertyValue, array $options = [])
     {
@@ -70,7 +69,7 @@ class FixedAnonymizer implements AnonymizerInterface
 
         $matches = [];
         if (preg_match_all('/{(.*?)}/', $options['annotationValue'], $matches)) {
-            foreach ((array)$matches[1] as $key => $property) {
+            foreach ((array) $matches[1] as $key => $property) {
                 $wildcardValue = $this->propertyManipulator->getPropertyValue($options['object'], $property);
                 $annotationValue = str_replace($matches[0][$key], $wildcardValue, $annotationValue);
             }
@@ -82,7 +81,7 @@ class FixedAnonymizer implements AnonymizerInterface
     /**
      * Configures the options for this anonymizer.
      *
-     * @param OptionsResolver $resolver The resolver for the options.
+     * @param OptionsResolver $resolver the resolver for the options
      *
      * @return void
      */

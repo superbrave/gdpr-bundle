@@ -1,28 +1,29 @@
 <?php
 /**
- * This file loads and manages the GDPR bundle
+ * This file loads and manages the GDPR bundle.
  *
  * Minimal required PHP version is 5.6
  *
  * @category  Bundle
- * @package   Gdpr
+ *
  * @author    SuperBrave <info@superbrave.nl>
  * @copyright 2018 SuperBrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
- * @link      https://www.superbrave.nl/
+ *
+ * @see       https://www.superbrave.nl/
  */
 
 namespace Superbrave\GdprBundle\DependencyInjection;
 
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
  * This is the class that loads and manages your bundle configuration.
  *
- * @link http://symfony.com/doc/current/cookbook/bundles/extension.html
+ * @see http://symfony.com/doc/current/cookbook/bundles/extension.html
  */
 class SuperbraveGdprExtension extends Extension
 {
@@ -34,7 +35,7 @@ class SuperbraveGdprExtension extends Extension
      *
      * @return void
      *
-     * @throws \InvalidArgumentException When provided tag is not defined in this extension.
+     * @throws \InvalidArgumentException when provided tag is not defined in this extension
      */
     public function load(array $configs, ContainerBuilder $container)
     {
