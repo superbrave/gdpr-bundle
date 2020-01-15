@@ -3,11 +3,12 @@
  * This file is part of the GDPR bundle.
  *
  * @category  Bundle
- * @package   Gdpr
+ *
  * @author    SuperBrave <info@superbrave.nl>
  * @copyright 2018 SuperBrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
- * @link      https://www.superbrave.nl/
+ *
+ * @see      https://www.superbrave.nl/
  */
 
 namespace Superbrave\GdprBundle\Tests\Anonymizer;
@@ -16,14 +17,12 @@ use PHPUnit\Framework\TestCase;
 use Superbrave\GdprBundle\Anonymize\Type\IpAnonymizer;
 
 /**
- * Class IpAnonymizerTest
- *
- * @package Superbrave\GdprBundle\Tests\Anonymizer
+ * Class IpAnonymizerTest.
  */
 class IpAnonymizerTest extends TestCase
 {
     /**
-     * Tests an IPv4 address with a default mask
+     * Tests an IPv4 address with a default mask.
      *
      * @return void
      */
@@ -35,7 +34,7 @@ class IpAnonymizerTest extends TestCase
     }
 
     /**
-     * Tests an IPv6 address with a default mask
+     * Tests an IPv6 address with a default mask.
      *
      * @return void
      */
@@ -50,7 +49,7 @@ class IpAnonymizerTest extends TestCase
     }
 
     /**
-     * Tests an IPv4 address with a custom mask
+     * Tests an IPv4 address with a custom mask.
      *
      * @return void
      */
@@ -62,7 +61,7 @@ class IpAnonymizerTest extends TestCase
     }
 
     /**
-     * Tests an IPv6 address with a custpm mask
+     * Tests an IPv6 address with a custpm mask.
      *
      * @return void
      */
@@ -77,7 +76,7 @@ class IpAnonymizerTest extends TestCase
     }
 
     /**
-     * Test an IPv4 as a long int using INET_ATON
+     * Test an IPv4 as a long int using INET_ATON.
      *
      * @return void
      */

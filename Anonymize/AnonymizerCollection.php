@@ -3,11 +3,12 @@
  * This file is part of the GDPR bundle.
  *
  * @category  Bundle
- * @package   Gdpr
+ *
  * @author    SuperBrave <info@superbrave.nl>
  * @copyright 2018 SuperBrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
- * @link      https://www.superbrave.nl/
+ *
+ * @see      https://www.superbrave.nl/
  */
 
 namespace Superbrave\GdprBundle\Anonymize;
@@ -16,14 +17,12 @@ use LogicException;
 use Superbrave\GdprBundle\Anonymize\Type\AnonymizerInterface;
 
 /**
- * Class AnonymizerCollection
- *
- * @package Superbrave\GdprBundle\Anonymize
+ * Class AnonymizerCollection.
  */
 class AnonymizerCollection
 {
     /**
-     * Array of anonymizers
+     * Array of anonymizers.
      *
      * @var AnonymizerInterface[]
      */
@@ -32,12 +31,12 @@ class AnonymizerCollection
     /**
      * Adds an anonymizer to the collection.
      *
-     * @param string              $type       The anonymizer type to be added.
-     * @param AnonymizerInterface $anonymizer The anonymizer class to be added.
+     * @param string              $type       the anonymizer type to be added
+     * @param AnonymizerInterface $anonymizer the anonymizer class to be added
      *
      * @return void
      *
-     * @throws LogicException On duplicate anonymizer keys.
+     * @throws LogicException on duplicate anonymizer keys
      */
     public function addAnonymizer($type, $anonymizer)
     {
@@ -51,11 +50,11 @@ class AnonymizerCollection
     /**
      * Get an anonymizer by its type from the collection.
      *
-     * @param string $type The anonymizer type to be fetched.
+     * @param string $type the anonymizer type to be fetched
      *
      * @return AnonymizerInterface
      *
-     * @throws LogicException If the anonymizer type is not registered.
+     * @throws LogicException if the anonymizer type is not registered
      */
     public function getAnonymizer($type)
     {

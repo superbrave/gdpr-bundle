@@ -3,11 +3,12 @@
  * This file is part of the GDPR bundle.
  *
  * @category  Bundle
- * @package   Gdpr
+ *
  * @author    SuperBrave <info@superbrave.nl>
  * @copyright 2018 SuperBrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
- * @link      https://www.superbrave.nl/
+ *
+ * @see      https://www.superbrave.nl/
  */
 
 namespace Superbrave\GdprBundle\Anonymize\Type;
@@ -15,21 +16,19 @@ namespace Superbrave\GdprBundle\Anonymize\Type;
 use InvalidArgumentException;
 
 /**
- * Class IpAnonymizer
- *
- * @package Superbrave\GdprBundle\Anonymize\Type
+ * Class IpAnonymizer.
  */
 class IpAnonymizer implements AnonymizerInterface
 {
     /**
-     * The mask used for IPv4
+     * The mask used for IPv4.
      *
      * @var string
      */
     private $ipv4Mask;
 
     /**
-     * The mask used for IPv6
+     * The mask used for IPv6.
      *
      * @var string
      */
@@ -62,13 +61,13 @@ class IpAnonymizer implements AnonymizerInterface
     }
 
     /**
-     * Checks if the address is a valid ipv4 or ipv6 string, and returns the appropriate mask
+     * Checks if the address is a valid ipv4 or ipv6 string, and returns the appropriate mask.
      *
      * @param string $address The IP address being checked
      *
      * @return string
      *
-     * @throws \InvalidArgumentException if the address is not a valid ipv4 or ipv6 address.
+     * @throws \InvalidArgumentException if the address is not a valid ipv4 or ipv6 address
      */
     private function getIpMask($address)
     {
@@ -83,7 +82,7 @@ class IpAnonymizer implements AnonymizerInterface
     }
 
     /**
-     * Anonymize an ip adress
+     * Anonymize an ip adress.
      *
      * @param string $address The IP being anonymized
      * @param string $mask    The Mask being used

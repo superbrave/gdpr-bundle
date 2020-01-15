@@ -3,11 +3,12 @@
  * This file is part of the GDPR bundle.
  *
  * @category  Bundle
- * @package   Gdpr
+ *
  * @author    SuperBrave <info@superbrave.nl>
  * @copyright 2018 SuperBrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
- * @link      https://www.superbrave.nl/
+ *
+ * @see      https://www.superbrave.nl/
  */
 
 namespace Superbrave\GdprBundle\Tests\Anonymizer;
@@ -16,14 +17,12 @@ use PHPUnit\Framework\TestCase;
 use Superbrave\GdprBundle\Anonymize\Type\DateTimeAnonymizer;
 
 /**
- * Class DateTimeAnonymizerTest
- *
- * @package Gdpr
+ * Class DateTimeAnonymizerTest.
  */
 class DateTimeAnonymizerTest extends TestCase
 {
     /**
-     * Tests the DateTime anonymizer
+     * Tests the DateTime anonymizer.
      *
      * @param \DateTimeInterface|int|string $testDate       The original date/time set
      * @param \DateTimeInterface|int|string $expectedResult The expected result after anonymizing the data
@@ -39,13 +38,13 @@ class DateTimeAnonymizerTest extends TestCase
     }
 
     /**
-     * Returns a list of test cases for the testDateTime test
+     * Returns a list of test cases for the testDateTime test.
      *
      * @return array
      */
     public function dateTimeDataProvider()
     {
-        return array(
+        return [
             // DateTime objects
             'datetime1' => [new \DateTime('2016-04-27'),          new \DateTime('2016-01-01')],
             'datetime2' => [new \DateTime('2018-05-25 13:37:00'), new \DateTime('2018-01-01 00:00:00')],
@@ -55,23 +54,23 @@ class DateTimeAnonymizerTest extends TestCase
             'datetime4' => [new \DateTimeImmutable('2018-05-25 13:37'), new \DateTimeImmutable('2018-01-01 00:00')],
 
             // Timestamps
-            'timestamp1' => [strtotime("2018-05-25 13:37:00"), strtotime("2018-01-01 00:00:00")],
-            'timestamp2' => [strtotime("1945-05-05 00:00:00"), strtotime("1945-01-01 00:00:00")],
-            'timestamp3' => [strtotime("2999-01-20 03:14:07"), strtotime("2999-01-01 00:00:00")],
+            'timestamp1' => [strtotime('2018-05-25 13:37:00'), strtotime('2018-01-01 00:00:00')],
+            'timestamp2' => [strtotime('1945-05-05 00:00:00'), strtotime('1945-01-01 00:00:00')],
+            'timestamp3' => [strtotime('2999-01-20 03:14:07'), strtotime('2999-01-01 00:00:00')],
 
             // Several ISO8601 string formats
-            'stringdate1' => ["2016-04-27",                        "2016-01-01"],
-            'stringdate2' => ["2018-05-25 13:37:00",               "2018-01-01 00:00:00"],
-            'stringdate3' => ["2018-05-25T13:37:00",               "2018-01-01T00:00:00"],
-            'stringdate4' => ["2018-05-25T13:37:00+0200",          "2018-01-01T00:00:00+0200"],
+            'stringdate1' => ['2016-04-27',                        '2016-01-01'],
+            'stringdate2' => ['2018-05-25 13:37:00',               '2018-01-01 00:00:00'],
+            'stringdate3' => ['2018-05-25T13:37:00',               '2018-01-01T00:00:00'],
+            'stringdate4' => ['2018-05-25T13:37:00+0200',          '2018-01-01T00:00:00+0200'],
             // RFC3339 string format
-            'stringdate5' => ["2018-05-25T13:37:00+02:00",         "2018-01-01T00:00:00+02:00"],
+            'stringdate5' => ['2018-05-25T13:37:00+02:00',         '2018-01-01T00:00:00+02:00'],
             // RFC822 string format
-            'stringdate7' => ["Thu, 11 Aug 83 13:37:00 +0200",     "Sat, 01 Jan 83 00:00:00 +0200"],
+            'stringdate7' => ['Thu, 11 Aug 83 13:37:00 +0200',     'Sat, 01 Jan 83 00:00:00 +0200'],
             // RFC850 string format
-            'stringdate8' => ["Thursday, 11-Aug-83 13:37:00 CEST", "Saturday, 01-Jan-83 00:00:00 CEST"],
+            'stringdate8' => ['Thursday, 11-Aug-83 13:37:00 CEST', 'Saturday, 01-Jan-83 00:00:00 CEST'],
             // RFC7231 string format
-            'stringdate9' => ["Thu, 11 Aug 1983 13:37:00 GMT",     "Sat, 01 Jan 1983 00:00:00 GMT"],
-        );
+            'stringdate9' => ['Thu, 11 Aug 1983 13:37:00 GMT',     'Sat, 01 Jan 1983 00:00:00 GMT'],
+        ];
     }
 }

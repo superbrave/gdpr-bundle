@@ -3,18 +3,18 @@
  * This file is part of the GDPR bundle.
  *
  * @category  Bundle
- * @package   Gdpr
+ *
  * @author    SuperBrave <info@superbrave.nl>
  * @copyright 2018 SuperBrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
- * @link      https://www.superbrave.nl/
+ *
+ * @see      https://www.superbrave.nl/
  */
 
 namespace Superbrave\GdprBundle\Tests\Anonymizer;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit_Framework_MockObject_MockObject;
 use Superbrave\GdprBundle\Anonymize\Type\FixedAnonymizer;
 use Superbrave\GdprBundle\Manipulator\PropertyManipulator;
 use Superbrave\GdprBundle\Tests\AnnotatedMock;
@@ -22,7 +22,7 @@ use Symfony\Component\OptionsResolver\Exception\MissingOptionsException;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 
 /**
- * Tests the behaviour of the EmailAnonymizer
+ * Tests the behaviour of the EmailAnonymizer.
  */
 class FixedAnonymizerTest extends TestCase
 {
@@ -84,7 +84,7 @@ class FixedAnonymizerTest extends TestCase
     }
 
     /**
-     * An exception should be thrown when the object option isn't provided
+     * An exception should be thrown when the object option isn't provided.
      *
      * @return void
      */
@@ -99,7 +99,7 @@ class FixedAnonymizerTest extends TestCase
     }
 
     /**
-     * Test wether or not getting the wildcards properties will be replaced with their values
+     * Test wether or not getting the wildcards properties will be replaced with their values.
      *
      * @return void
      */
@@ -115,7 +115,7 @@ class FixedAnonymizerTest extends TestCase
     }
 
     /**
-     * Test that an exception is thrown when the object does not have the specified property
+     * Test that an exception is thrown when the object does not have the specified property.
      *
      * @return void
      */
@@ -133,7 +133,7 @@ class FixedAnonymizerTest extends TestCase
     }
 
     /**
-     * Test that the value is returned if there aren't any wildcards
+     * Test that the value is returned if there aren't any wildcards.
      *
      * @return void
      */
@@ -147,7 +147,7 @@ class FixedAnonymizerTest extends TestCase
 
     /**
      * Tests that an exception is thrown when the value provided in the annotation is an empty string
-     * Type "fixed" is expected to receive a value
+     * Type "fixed" is expected to receive a value.
      *
      * @return void
      */

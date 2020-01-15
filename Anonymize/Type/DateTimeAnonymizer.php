@@ -3,16 +3,17 @@
  * This file is part of the GDPR bundle.
  *
  * @category  Bundle
- * @package   Gdpr
+ *
  * @author    SuperBrave <info@superbrave.nl>
  * @copyright 2018 SuperBrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
- * @link      https://www.superbrave.nl/
+ *
+ * @see      https://www.superbrave.nl/
  */
 
 namespace Superbrave\GdprBundle\Anonymize\Type;
 
-/**
+/*
  * DATE_RFC7231 is not natively supported in PHP 5.6
  *
  * @deprecated since PHP 7.0.19
@@ -20,14 +21,12 @@ namespace Superbrave\GdprBundle\Anonymize\Type;
 defined('DATE_RFC7231') or define('DATE_RFC7231', "D, d M Y H:i:s \G\M\T");
 
 /**
- * DateTime anonymizer class
- *
- * @package Superbrave\GdprBundle\Anonymize\Type
+ * DateTime anonymizer class.
  */
 class DateTimeAnonymizer implements AnonymizerInterface
 {
     /**
-     * Array with supported string formats
+     * Array with supported string formats.
      *
      * Currently supported string formats are the ATOM, W3C, RSS, COOKIE, RFC822, RFC850, RFC1036, RFC1123, RFC2822,
      * RFC3339, RFC7231 and ISO8601 formats.
@@ -38,18 +37,19 @@ class DateTimeAnonymizer implements AnonymizerInterface
      * so they're not added in this array
      *
      * @see http://php.net/manual/en/class.datetime.php#datetime.constants.types
+     *
      * @var array
      */
     private $stringFormats = [
         // PHP predefined standards
-        DATE_ISO8601   => '/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}[+-]{1}[0-9]{4}$/',
-        DATE_RFC822    => '/^[a-z]{3}, [0-9]{2} [a-z]{3} [0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2} [+-]{1}[0-9]{4}$/i',
-        DATE_RFC850    => '/^[a-z]{4,}, [0-9]{2}-[a-z]{3}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2} [a-z]{1,}$/i',
-        DATE_RFC7231   => '/^[a-z]{3}, [0-9]{2} [a-z]{3} [0-9]{4} [0-9]{2}:[0-9]{2}:[0-9]{2} GMT$/i',
-        DATE_RFC3339   => '/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}[+-]{1}[0-9]{2}:[0-9]{2}$/',
+        DATE_ISO8601 => '/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}[+-]{1}[0-9]{4}$/',
+        DATE_RFC822 => '/^[a-z]{3}, [0-9]{2} [a-z]{3} [0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2} [+-]{1}[0-9]{4}$/i',
+        DATE_RFC850 => '/^[a-z]{4,}, [0-9]{2}-[a-z]{3}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2} [a-z]{1,}$/i',
+        DATE_RFC7231 => '/^[a-z]{3}, [0-9]{2} [a-z]{3} [0-9]{4} [0-9]{2}:[0-9]{2}:[0-9]{2} GMT$/i',
+        DATE_RFC3339 => '/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}[+-]{1}[0-9]{2}:[0-9]{2}$/',
         // Variants on ISO8601 which are used by different database storage designs
-        'Y-m-d'        => '/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/',
-        'Y-m-d H:i:s'  => '/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/',
+        'Y-m-d' => '/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/',
+        'Y-m-d H:i:s' => '/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/',
         'Y-m-d\TH:i:s' => '/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}$/',
     ];
 
@@ -77,6 +77,7 @@ class DateTimeAnonymizer implements AnonymizerInterface
         // Unix timestamp
         if (is_numeric($propertyValue)) {
             $dateTime = new \DateTime(date('Y-m-d H:i:s', $propertyValue));
+
             return $this->anonymizeByDateTime($dateTime)->getTimestamp();
         }
 
@@ -88,7 +89,7 @@ class DateTimeAnonymizer implements AnonymizerInterface
             }
         }
 
-        throw new \InvalidArgumentException("Invalid format for \$propertyValue in ".__CLASS__."::".__METHOD__);
+        throw new \InvalidArgumentException('Invalid format for $propertyValue in '.__CLASS__.'::'.__METHOD__);
     }
 
     /**
@@ -109,6 +110,7 @@ class DateTimeAnonymizer implements AnonymizerInterface
             $result = clone $dateTime;
             $result->setDate($dateTime->format('Y'), 1, 1);
             $result->setTime(0, 0, 0);
+
             return $result;
         }
     }
@@ -120,7 +122,7 @@ class DateTimeAnonymizer implements AnonymizerInterface
      *
      * @param string $dateTime The date/time as string
      *
-     * @return string|boolean False on failure
+     * @return string|bool False on failure
      */
     private function anonymizeByString($dateTime)
     {
@@ -129,6 +131,7 @@ class DateTimeAnonymizer implements AnonymizerInterface
                 continue;
             }
             $value = new \DateTime($dateTime);
+
             return $this->anonymizeByDateTime($value)->format($dateFormat);
         }
 

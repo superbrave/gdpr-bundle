@@ -3,11 +3,12 @@
  * This file is part of the GDPR bundle.
  *
  * @category  Bundle
- * @package   Gdpr
+ *
  * @author    SuperBrave <info@superbrave.nl>
  * @copyright 2018 SuperBrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
- * @link      https://www.superbrave.nl/
+ *
+ * @see      https://www.superbrave.nl/
  */
 
 namespace Superbrave\GdprBundle\Tests\Serializer\Normalizer;
@@ -115,7 +116,7 @@ class AnnotationNormalizerTest extends TestCase
                 $this->isInstanceOf(ReflectionClass::class),
                 Export::class
             )
-            ->willReturn(array());
+            ->willReturn([]);
 
         $this->assertFalse($this->normalizer->supportsNormalization(new AnnotatedMock()));
     }
@@ -134,9 +135,9 @@ class AnnotationNormalizerTest extends TestCase
                 $this->isInstanceOf(ReflectionClass::class),
                 Export::class
             )
-            ->willReturn(array(
+            ->willReturn([
                 'foo' => new Export(),
-            ));
+            ]);
 
         $this->assertTrue($this->normalizer->supportsNormalization(new AnnotatedMock()));
     }
@@ -158,13 +159,13 @@ class AnnotationNormalizerTest extends TestCase
         $annotatedMock = new AnnotatedMock();
 
         $this->assertEquals(
-            array(
+            [
                 'foo' => 'bar',
                 'baz' => 1,
-                'qux' => array(),
+                'qux' => [],
                 'quuxs' => new ArrayCollection(),
                 'annotatedPropertyWithoutMethod' => 'Yes',
-            ),
+            ],
             $normalizer->normalize($annotatedMock)
         );
     }
@@ -186,8 +187,8 @@ class AnnotationNormalizerTest extends TestCase
         $encoder = new XmlEncoder('mock');
 
         $serializer = new Serializer(
-            array($normalizer),
-            array($encoder)
+            [$normalizer],
+            [$encoder]
         );
 
         $data = new AnnotatedMock(new AnnotatedMock());

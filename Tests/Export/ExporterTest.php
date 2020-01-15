@@ -3,11 +3,12 @@
  * This file is part of the GDPR bundle.
  *
  * @category  Bundle
- * @package   Gdpr
+ *
  * @author    SuperBrave <info@superbrave.nl>
  * @copyright 2018 SuperBrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
- * @link      https://www.superbrave.nl/
+ *
+ * @see      https://www.superbrave.nl/
  */
 
 namespace Superbrave\GdprBundle\Tests\Export;
@@ -78,10 +79,10 @@ class ExporterTest extends TestCase
             ->with(
                 $annotatedMock,
                 'xml',
-                array(
+                [
                     'xml_root_node_name' => 'AnnotatedMock',
-                    'xml_encoding' => 'UTF-8'
-                )
+                    'xml_encoding' => 'UTF-8',
+                ]
             )
             ->willReturn('<?xml version="1.0" encoding="UTF-8"?><AnnotatedMock/>');
 
@@ -106,10 +107,10 @@ class ExporterTest extends TestCase
             ->with(
                 $annotatedMock,
                 'xml',
-                array(
+                [
                     'xml_root_node_name' => 'custom_name',
-                    'xml_encoding' => 'UTF-8'
-                )
+                    'xml_encoding' => 'UTF-8',
+                ]
             )
             ->willReturn('<?xml version="1.0" encoding="UTF-8"?><custom_name/>');
 
@@ -134,10 +135,10 @@ class ExporterTest extends TestCase
             ->with(
                 $annotatedMock,
                 'xml',
-                array(
+                [
                     'xml_root_node_name' => 'AnnotatedMock',
-                    'xml_encoding' => 'ISO-8859-1'
-                )
+                    'xml_encoding' => 'ISO-8859-1',
+                ]
             )
             ->willReturn('<?xml version="1.0" encoding="ISO-8859-1"?><AnnotatedMock/>');
 

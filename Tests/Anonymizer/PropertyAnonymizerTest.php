@@ -3,11 +3,12 @@
  * This file is part of the GDPR bundle.
  *
  * @category  Bundle
- * @package   Gdpr
+ *
  * @author    SuperBrave <info@superbrave.nl>
  * @copyright 2018 SuperBrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
- * @link      https://www.superbrave.nl/
+ *
+ * @see      https://www.superbrave.nl/
  */
 
 namespace Superbrave\GdprBundle\Tests\Anonymizer;
@@ -17,46 +18,46 @@ use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 use Superbrave\GdprBundle\Annotation\Anonymize;
 use Superbrave\GdprBundle\Anonymize\AnonymizerCollection;
-use Superbrave\GdprBundle\Anonymize\Type\AnonymizerInterface;
 use Superbrave\GdprBundle\Anonymize\PropertyAnonymizer;
+use Superbrave\GdprBundle\Anonymize\Type\AnonymizerInterface;
 use Superbrave\GdprBundle\Manipulator\PropertyManipulator;
 use Superbrave\GdprBundle\Tests\AnnotatedMock;
 
 /**
- * Test the behaviour of the PropertyAnonymizer
+ * Test the behaviour of the PropertyAnonymizer.
  */
 class PropertyAnonymizerTest extends TestCase
 {
     /**
-     * Mock for the PropertyManipulator
+     * Mock for the PropertyManipulator.
      *
      * @var MockObject
      */
     private $propertyManipulatorMock;
 
     /**
-     * Mock for the AnonymizerCollection
+     * Mock for the AnonymizerCollection.
      *
      * @var MockObject
      */
     private $anonymizerCollection;
 
     /**
-     * The propertyAnonymizer to be tested
+     * The propertyAnonymizer to be tested.
      *
      * @var PropertyAnonymizer
      */
     private $propertyAnonymizer;
 
     /**
-     * A ReflectionClass build from AnnotatedMock class
+     * A ReflectionClass build from AnnotatedMock class.
      *
      * @var ReflectionClass
      */
     private $reflectionClass;
 
     /**
-     * Sets up the properties to be used in further tests
+     * Sets up the properties to be used in further tests.
      *
      * @return void
      */
@@ -75,7 +76,7 @@ class PropertyAnonymizerTest extends TestCase
     }
 
     /**
-     * Test that the property anonymizer correctly utilizes its dependencies to do its job
+     * Test that the property anonymizer correctly utilizes its dependencies to do its job.
      *
      * @return void
      */

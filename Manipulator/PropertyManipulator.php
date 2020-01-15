@@ -3,11 +3,12 @@
  * This file is part of the GDPR bundle.
  *
  * @category  Bundle
- * @package   Gdpr
+ *
  * @author    SuperBrave <info@superbrave.nl>
  * @copyright 2018 SuperBrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
- * @link      https://www.superbrave.nl/
+ *
+ * @see      https://www.superbrave.nl/
  */
 
 namespace Superbrave\GdprBundle\Manipulator;
@@ -17,9 +18,7 @@ use Symfony\Component\PropertyAccess\Exception\NoSuchPropertyException;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 
 /**
- * Class PropertyManipulator
- *
- * @package Superbrave\GdprBundle\Manipulator
+ * Class PropertyManipulator.
  */
 class PropertyManipulator
 {
@@ -39,14 +38,14 @@ class PropertyManipulator
     }
 
     /**
-     * Returns the value of specified property
+     * Returns the value of specified property.
      *
      * @param object $object       The object containing the property
      * @param string $propertyName The property name where the value is taken from
      *
      * @return mixed
      *
-     * @throws \InvalidArgumentException if property does not exist.
+     * @throws \InvalidArgumentException if property does not exist
      */
     public function getPropertyValue($object, $propertyName)
     {
@@ -69,7 +68,7 @@ class PropertyManipulator
     }
 
     /**
-     * Sets a new value on the specified property
+     * Sets a new value on the specified property.
      *
      * @param object $object       The object containing the property
      * @param string $propertyName The property name where the value is written to
@@ -77,7 +76,7 @@ class PropertyManipulator
      *
      * @return void
      *
-     * @throws \InvalidArgumentException if property does not exist.
+     * @throws \InvalidArgumentException if property does not exist
      */
     public function setPropertyValue($object, $propertyName, $value)
     {
