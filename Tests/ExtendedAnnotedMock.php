@@ -8,7 +8,7 @@
  * @copyright 2018 SuperBrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
  *
- * @see      https://www.superbrave.nl/
+ * @see       https://www.superbrave.nl/
  */
 
 namespace Superbrave\GdprBundle\Tests;
