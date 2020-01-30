@@ -109,7 +109,12 @@ class AnnotationNormalizer implements NormalizerInterface
                 $propertyName = $propertyAnnotation->alias;
             }
 
-            $normalizedData[$propertyName] = $this->getMappedPropertyValue($propertyAnnotation, $propertyValue);
+            $normalizedData[$propertyName] = $this->getMappedPropertyValue(
+                $propertyAnnotation,
+                $propertyValue,
+                $format,
+                $context
+            );
         }
 
         return $normalizedData;
@@ -120,13 +125,33 @@ class AnnotationNormalizer implements NormalizerInterface
      *
      * @param object $annotation    The annotation instance
      * @param mixed  $propertyValue The value of the property retrieved from the object
+     * @param string $format        Format the normalization result will be encoded as
+     * @param array  $context       Context options for the normalizer
      *
      * @return mixed
      */
-    private function getMappedPropertyValue($annotation, $propertyValue)
+    private function getMappedPropertyValue($annotation, $propertyValue, $format, $context)
     {
-        if (is_scalar($propertyValue) === false) {
-            return $propertyValue;
+        if (is_scalar($propertyValue) === false && $propertyValue !== null) {
+            // do nothing special for base PHP objects
+            if (substr_count(get_class($propertyValue), '\\') === 0) {
+                return $propertyValue;
+            }
+
+            // if we have an iterable object, normalize the contents rather than the object itself.
+            if(is_iterable($propertyValue)) {
+                $collection = [];
+                foreach($propertyValue as $iteratedValue){
+                    $normalizedValue = $this->normalize($iteratedValue, $format, $context);
+                    if($normalizedValue !== null){
+                        $collection[] = $normalizedValue;
+                    }
+                }
+
+                return $collection;
+            }
+
+            return $this->normalize($propertyValue, $format, $context);
         }
 
         if (property_exists($annotation, 'valueMap') === false || isset($annotation->valueMap) === false) {
