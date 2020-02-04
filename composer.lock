@@ -1778,16 +1778,16 @@
         },
         {
             "name": "symfony/serializer",
-            "version": "v4.4.2",
+            "version": "v4.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/serializer.git",
-                "reference": "e5bc3f6dee44dc06e7e640cce4baa741b73ecb6e"
+                "reference": "76ecc214a93b763c29b924277e85f64326f9fbb2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/serializer/zipball/e5bc3f6dee44dc06e7e640cce4baa741b73ecb6e",
-                "reference": "e5bc3f6dee44dc06e7e640cce4baa741b73ecb6e",
+                "url": "https://api.github.com/repos/symfony/serializer/zipball/76ecc214a93b763c29b924277e85f64326f9fbb2",
+                "reference": "76ecc214a93b763c29b924277e85f64326f9fbb2",
                 "shasum": ""
             },
             "require": {
@@ -1855,7 +1855,7 @@
             ],
             "description": "Symfony Serializer Component",
             "homepage": "https://symfony.com",
-            "time": "2019-12-16T11:07:37+00:00"
+            "time": "2020-01-07T22:30:39+00:00"
         },
         {
             "name": "symfony/service-contracts",
