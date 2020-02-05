@@ -16,15 +16,20 @@ use ReflectionClass;
 use Superbrave\GdprBundle\Annotation\AnnotationReader;
 use Superbrave\GdprBundle\Manipulator\PropertyManipulator;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * Normalizes object data based on the specified property annotation.
  *
  * @author Niels Nijens <nn@superbrave.nl>
+ * @author Jelle van Oosterbosch <jvo@superbrave.nl>
  */
-class AnnotationNormalizer implements NormalizerInterface
+class AnnotationNormalizer implements NormalizerInterface, NormalizerAwareInterface
 {
+    use NormalizerAwareTrait;
+
     /**
      * The AnnotationReader instance.
      *
@@ -70,6 +75,8 @@ class AnnotationNormalizer implements NormalizerInterface
      * @param string $format The format being (de-)serialized from or into
      *
      * @return bool
+     *
+     * @throws \ReflectionException
      */
     public function supportsNormalization($data, $format = null)
     {
@@ -93,10 +100,13 @@ class AnnotationNormalizer implements NormalizerInterface
      * @param array  $context Context options for the normalizer
      *
      * @return array|string|int|float|bool
+     *
+     * @throws \ReflectionException
      */
     public function normalize($object, $format = null, array $context = array())
     {
         $normalizedData = array();
+        $index = 0;
         $propertyAnnotations = $this->annotationReader->getPropertiesWithAnnotation(
             new ReflectionClass($object),
             $this->annotationName
@@ -108,10 +118,41 @@ class AnnotationNormalizer implements NormalizerInterface
                 $propertyName = $propertyAnnotation->alias;
             }
 
-            $normalizedData[$propertyName] = $this->getMappedPropertyValue($propertyAnnotation, $propertyValue);
+            if (is_iterable($propertyValue) && count($propertyValue) > 0) {
+                $normalizedData[$propertyName] = $this->normalizeArray($propertyValue, $index, $format, $context);
+            } else {
+                $normalizedData[$propertyName] = $this->getMappedPropertyValue($propertyAnnotation, $propertyValue);
+            }
         }
 
         return $normalizedData;
+    }
+
+    /**
+     * Normalizes an array recursively by calling the chain normalizer.
+     *
+     * @param iterable $propertyValue
+     * @param int $index
+     * @param string $format
+     * @param array $context
+     *
+     * @return array
+     */
+    private function normalizeArray($propertyValue, &$index, $format = null, array $context = array())
+    {
+        $data = [];
+
+        foreach ($propertyValue as $value) {
+            $data[$index][] = $this->normalizer->normalize(
+                $value,
+                $format,
+                $context
+            );
+        }
+
+        $index++;
+
+        return $data;
     }
 
     /**

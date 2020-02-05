@@ -2,6 +2,11 @@ services:
     _defaults:
         public: false
 
+    superbrave_gdpr.exporter.serializer.normalizer.datetime_normalizer:
+        class: Symfony\Component\Serializer\Normalizer\DateTimeNormalizer
+        tags:
+            - { name: "superbrave_gdpr.serializer.normalizer" }
+
     superbrave_gdpr.exporter.serializer.normalizer.export_annotation:
         class: Superbrave\GdprBundle\Serializer\Normalizer\AnnotationNormalizer
         arguments:

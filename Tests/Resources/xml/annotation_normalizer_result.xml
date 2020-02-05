@@ -1,2 +1,2 @@
 <?xml version="1.0"?>
-<mock><foo>bar</foo><baz>1</baz><qux/><quuxs><item key="0"><foo>bar</foo><baz>1</baz><qux/><quuxs/><annotatedPropertyWithoutMethod>Yes</annotatedPropertyWithoutMethod></item></quuxs><annotatedPropertyWithoutMethod>Yes</annotatedPropertyWithoutMethod></mock>
+<mock><foo>bar</foo><baz>1</baz><qux/><quuxs><item key="0"><foo>bar</foo><baz>1</baz><qux/><quuxs/><quuz>2016-01-01T00:00:00+00:00</quuz><annotatedPropertyWithoutMethod>Yes</annotatedPropertyWithoutMethod></item><item key="1"><foo>bar</foo><baz>1</baz><qux/><quuxs/><quuz>2016-01-01T00:00:00+00:00</quuz><annotatedPropertyWithoutMethod>Yes</annotatedPropertyWithoutMethod></item></quuxs><quuz>2016-01-01T00:00:00+00:00</quuz><annotatedPropertyWithoutMethod>Yes</annotatedPropertyWithoutMethod></mock>
