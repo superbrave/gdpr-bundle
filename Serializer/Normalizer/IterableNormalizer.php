@@ -30,13 +30,7 @@ class IterableNormalizer implements NormalizerInterface, NormalizerAwareInterfac
      */
     public function supportsNormalization($data, $format = null)
     {
-        if (true === is_object($data) &&
-            (is_array($data) || (is_object($data)) && ($data instanceof \Traversable))
-        ) {
-            return true;
-        }
-
-        if (true === is_array($data)) {
+        if (is_array($data) || $data instanceof \Traversable) {
             return true;
         }
 
