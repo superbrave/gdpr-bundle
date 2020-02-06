@@ -101,6 +101,8 @@ class IterableNormalizerTest extends \PHPUnit_Framework_TestCase
      * Test is @see IterableNormalizer::$normalizer returns the expected json normalized data
      * for serialization through the Serializer.
      *
+     * @return void
+     *
      * @throws \Exception
      */
     public function testNormalizeThroughJsonSerializer()
