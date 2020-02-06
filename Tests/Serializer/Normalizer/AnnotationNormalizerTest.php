@@ -12,13 +12,13 @@
 
 namespace Superbrave\GdprBundle\Tests\Serializer\Normalizer;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit_Framework_MockObject_MockObject;
 use ReflectionClass;
 use Superbrave\GdprBundle\Annotation\AnnotationReader;
 use Superbrave\GdprBundle\Annotation\Export;
 use Superbrave\GdprBundle\Manipulator\PropertyManipulator;
 use Superbrave\GdprBundle\Serializer\Normalizer\AnnotationNormalizer;
+use Superbrave\GdprBundle\Serializer\Normalizer\IterableNormalizer;
 use Superbrave\GdprBundle\Tests\AnnotatedMock;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
@@ -156,6 +156,12 @@ class AnnotationNormalizerTest extends \PHPUnit_Framework_TestCase
         );
 
         $normalizer = new AnnotationNormalizer($annotationReader, Export::class, $propertyManipulator);
+        $serializer = new Serializer([
+            new DateTimeNormalizer(),
+            new IterableNormalizer(),
+            $normalizer,
+        ]);
+        $normalizer->setNormalizer($serializer);
 
         $annotatedMock = new AnnotatedMock();
 
@@ -163,9 +169,9 @@ class AnnotationNormalizerTest extends \PHPUnit_Framework_TestCase
             array(
                 'foo' => 'bar',
                 'baz' => 1,
-                'qux' => array(),
-                'quuxs' => new ArrayCollection(),
-                'quuz' => new \DateTime('2016/01/01'),
+                'qux' => [],
+                'quuxs' => [],
+                'quuz' => '2016-01-01T00:00:00+00:00',
                 'annotatedPropertyWithoutMethod' => 'Yes',
             ),
             $normalizer->normalize($annotatedMock)
@@ -187,6 +193,7 @@ class AnnotationNormalizerTest extends \PHPUnit_Framework_TestCase
 
         $normalizers = [
             new DateTimeNormalizer(),
+            new IterableNormalizer(),
             new AnnotationNormalizer($annotationReader, Export::class, $propertyManipulator),
         ];
         $encoders = [new XmlEncoder('mock')];
@@ -217,6 +224,7 @@ class AnnotationNormalizerTest extends \PHPUnit_Framework_TestCase
 
         $normalizers = [
             new DateTimeNormalizer(),
+            new IterableNormalizer(),
             new AnnotationNormalizer($annotationReader, Export::class, $propertyManipulator),
         ];
         $encoders = [new JsonEncoder()];

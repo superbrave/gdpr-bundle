@@ -106,7 +106,6 @@ class AnnotationNormalizer implements NormalizerInterface, NormalizerAwareInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $normalizedData = array();
-        $index = 0;
         $propertyAnnotations = $this->annotationReader->getPropertiesWithAnnotation(
             new ReflectionClass($object),
             $this->annotationName
@@ -118,41 +117,14 @@ class AnnotationNormalizer implements NormalizerInterface, NormalizerAwareInterf
                 $propertyName = $propertyAnnotation->alias;
             }
 
-            if (is_iterable($propertyValue) && count($propertyValue) > 0) {
-                $normalizedData[$propertyName] = $this->normalizeArray($propertyValue, $index, $format, $context);
+            if (false === is_scalar($propertyValue)) {
+                $normalizedData[$propertyName] = $this->normalizer->normalize($propertyValue, $format, $context);
             } else {
                 $normalizedData[$propertyName] = $this->getMappedPropertyValue($propertyAnnotation, $propertyValue);
             }
         }
 
         return $normalizedData;
-    }
-
-    /**
-     * Normalizes an array recursively by calling the chain normalizer.
-     *
-     * @param iterable $propertyValue
-     * @param int $index
-     * @param string $format
-     * @param array $context
-     *
-     * @return array
-     */
-    private function normalizeArray($propertyValue, &$index, $format = null, array $context = array())
-    {
-        $data = [];
-
-        foreach ($propertyValue as $value) {
-            $data[$index][] = $this->normalizer->normalize(
-                $value,
-                $format,
-                $context
-            );
-        }
-
-        $index++;
-
-        return $data;
     }
 
     /**
@@ -165,10 +137,6 @@ class AnnotationNormalizer implements NormalizerInterface, NormalizerAwareInterf
      */
     private function getMappedPropertyValue($annotation, $propertyValue)
     {
-        if (is_scalar($propertyValue) === false) {
-            return $propertyValue;
-        }
-
         if (property_exists($annotation, 'valueMap') === false || isset($annotation->valueMap) === false) {
             return $propertyValue;
         }
