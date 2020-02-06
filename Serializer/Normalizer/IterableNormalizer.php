@@ -17,7 +17,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
- * Normalizes data if its iterable by calling the normalizer chain.
+ * Normalizes data if it's iterable by calling the normalizer chain.
  *
  * @author Jelle van Oosterbosch <jvo@superbrave.nl>
  */
