@@ -214,6 +214,8 @@ class AnnotationNormalizerTest extends \PHPUnit_Framework_TestCase
     /**
      * Test if @see AnnotationNormalizer::normalize returns the expected json normalized data
      * for serialization through the Serializer.
+     *
+     * @return void
      */
     public function testNormalizeThroughJsonSerializer()
     {
