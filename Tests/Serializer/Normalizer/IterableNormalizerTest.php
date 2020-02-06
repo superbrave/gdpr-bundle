@@ -36,7 +36,7 @@ class IterableNormalizerTest extends \PHPUnit_Framework_TestCase
     private $serializer;
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setUp()
     {

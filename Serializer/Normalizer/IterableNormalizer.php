@@ -26,7 +26,7 @@ class IterableNormalizer implements NormalizerInterface, NormalizerAwareInterfac
     use NormalizerAwareTrait;
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function supportsNormalization($data, $format = null)
     {
@@ -44,7 +44,7 @@ class IterableNormalizer implements NormalizerInterface, NormalizerAwareInterfac
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function normalize($object, $format = null, array $context = array())
     {
