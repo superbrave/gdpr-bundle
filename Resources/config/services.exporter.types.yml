@@ -16,7 +16,7 @@ services:
         class: Superbrave\GdprBundle\Serializer\Normalizer\AnnotationNormalizer
         arguments:
             - "@superbrave_gdpr.annotation.reader"
-            - '@Superbrave\GdprBundle\Annotation\Export'
+            - 'Superbrave\GdprBundle\Annotation\Export'
             - "@superbrave_gdpr.property_manipulator"
         tags:
             - { name: "superbrave_gdpr.serializer.normalizer" }
