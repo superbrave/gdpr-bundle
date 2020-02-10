@@ -1,0 +1,7 @@
+services:
+  superbrave_gdpr.annotation.reader: '@Superbrave\GdprBundle\Annotation\AnnotationReader'
+  superbrave_gdpr.exporter: '@Superbrave\GdprBundle\Export\Exporter'
+  superbrave_gdpr.anonymizer: '@Superbrave\GdprBundle\Anonymize\Anonymizer'
+  superbrave_gdpr.property_manipulator: '@Superbrave\GdprBundle\Manipulator\PropertyManipulator'
+  superbrave_gdpr.anonymizer_collection: '@Superbrave\GdprBundle\Anonymize\AnonymizerCollection'
+  superbrave_gdpr.property_anonymizer: '@Superbrave\GdprBundle\Anonymize\PropertyAnonymizer'
