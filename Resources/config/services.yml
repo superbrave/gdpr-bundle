@@ -2,6 +2,8 @@ services:
     _defaults:
         public: false
 
+    Superbrave\GdprBundle\Annotation\Anonymize:
+    Superbrave\GdprBundle\Annotation\Export:
     Superbrave\GdprBundle\Annotation\AnnotationReader:
 
     Superbrave\GdprBundle\Export\Exporter:
