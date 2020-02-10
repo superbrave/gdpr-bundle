@@ -1,5 +1,6 @@
 #common ignores
 .idea/*
+.DS_Store
 /nbproject
 /vendor
 
