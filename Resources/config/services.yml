@@ -34,5 +34,5 @@ services:
 
     Superbrave\GdprBundle\Anonymize\PropertyAnonymizer:
         arguments:
-            - '@superbrave_gdpr.property_manipulator'
-            - '@superbrave_gdpr.anonymizer_collection'
+            - '@Superbrave\GdprBundle\Manipulator\PropertyManipulator'
+            - '@Superbrave\GdprBundle\Anonymize\AnonymizerCollection'
