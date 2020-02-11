@@ -25,6 +25,7 @@ use Superbrave\GdprBundle\Tests\ExtendedAnnotedMock;
  * AnnotationReaderTest.
  *
  * @author Niels Nijens <nn@superbrave.nl>
+ * @author Jelle van Oosterbosch <jvo@superbrave.nl>
  */
 class AnnotationReaderTest extends TestCase
 {
@@ -65,9 +66,9 @@ class AnnotationReaderTest extends TestCase
         );
 
         $this->assertIsArray($result);
-        $this->assertCount(5, $result);
+        $this->assertCount(6, $result);
         $this->assertSame(
-            ['foo', 'baz', 'qux', 'quux', 'annotatedPropertyWithoutMethod'],
+            ['foo', 'baz', 'qux', 'quux', 'quuz', 'annotatedPropertyWithoutMethod'],
             array_keys($result)
         );
         $this->assertInstanceOf(Export::class, current($result));
@@ -109,11 +110,12 @@ class AnnotationReaderTest extends TestCase
         );
 
         $this->assertIsArray($result);
-        $this->assertCount(6, $result);
+        $this->assertCount(7, $result);
         $this->assertSame(
-            ['extendedProperty', 'foo', 'baz', 'qux', 'quux', 'annotatedPropertyWithoutMethod'],
+            ['extendedProperty', 'foo', 'baz', 'qux', 'quux', 'quuz', 'annotatedPropertyWithoutMethod'],
             array_keys($result)
         );
+
         $this->assertInstanceOf(Export::class, current($result));
     }
 }

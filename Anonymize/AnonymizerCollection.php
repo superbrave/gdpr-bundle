@@ -59,7 +59,7 @@ class AnonymizerCollection
     public function getAnonymizer($type)
     {
         if (!array_key_exists($type, $this->anonymizers)) {
-            throw new LogicException(sprintf('Anonymizer %s is not registered.', $type));
+            throw new LogicException(sprintf('Anonymizer "%s" is not registered.', $type));
         }
 
         return $this->anonymizers[$type];

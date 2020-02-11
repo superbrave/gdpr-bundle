@@ -14,6 +14,7 @@
 namespace Superbrave\GdprBundle\DependencyInjection\Compiler;
 
 use LogicException;
+use Superbrave\GdprBundle\Anonymize\AnonymizerCollection;
 use Superbrave\GdprBundle\Anonymize\Type\AnonymizerInterface;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -36,11 +37,11 @@ class AddAnonymizersCompilerPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        if ($container->hasDefinition('superbrave_gdpr.anonymizer_collection') === false) {
+        if ($container->hasDefinition(AnonymizerCollection::class) === false) {
             return;
         }
 
-        $anonymizerManagerDefinition = $container->getDefinition('superbrave_gdpr.anonymizer_collection');
+        $anonymizerManagerDefinition = $container->getDefinition(AnonymizerCollection::class);
 
         $anonymizers = $container->findTaggedServiceIds('superbrave_gdpr.anonymizer');
         foreach ($anonymizers as $anonymizer => $attributes) {

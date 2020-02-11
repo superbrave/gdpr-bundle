@@ -17,15 +17,20 @@ use ReflectionClass;
 use Superbrave\GdprBundle\Annotation\AnnotationReader;
 use Superbrave\GdprBundle\Manipulator\PropertyManipulator;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * Normalizes object data based on the specified property annotation.
  *
  * @author Niels Nijens <nn@superbrave.nl>
+ * @author Jelle van Oosterbosch <jvo@superbrave.nl>
  */
-class AnnotationNormalizer implements NormalizerInterface
+class AnnotationNormalizer implements NormalizerInterface, NormalizerAwareInterface
 {
+    use NormalizerAwareTrait;
+
     /**
      * The AnnotationReader instance.
      *
@@ -71,6 +76,8 @@ class AnnotationNormalizer implements NormalizerInterface
      * @param string $format The format being (de-)serialized from or into
      *
      * @return bool
+     *
+     * @throws \ReflectionException
      */
     public function supportsNormalization($data, $format = null)
     {
@@ -94,6 +101,8 @@ class AnnotationNormalizer implements NormalizerInterface
      * @param array  $context Context options for the normalizer
      *
      * @return array|string|int|float|bool
+     *
+     * @throws \ReflectionException
      */
     public function normalize($object, $format = null, array $context = [])
     {
@@ -109,7 +118,11 @@ class AnnotationNormalizer implements NormalizerInterface
                 $propertyName = $propertyAnnotation->alias;
             }
 
-            $normalizedData[$propertyName] = $this->getMappedPropertyValue($propertyAnnotation, $propertyValue);
+            if (false === is_scalar($propertyValue)) {
+                $normalizedData[$propertyName] = $this->normalizer->normalize($propertyValue, $format, $context);
+            } else {
+                $normalizedData[$propertyName] = $this->getMappedPropertyValue($propertyAnnotation, $propertyValue);
+            }
         }
 
         return $normalizedData;
@@ -125,10 +138,6 @@ class AnnotationNormalizer implements NormalizerInterface
      */
     private function getMappedPropertyValue($annotation, $propertyValue)
     {
-        if (is_scalar($propertyValue) === false) {
-            return $propertyValue;
-        }
-
         if (property_exists($annotation, 'valueMap') === false || isset($annotation->valueMap) === false) {
             return $propertyValue;
         }

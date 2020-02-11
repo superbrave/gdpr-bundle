@@ -46,5 +46,6 @@ class SuperbraveGdprExtension extends Extension
         $loader->load('services.yml');
         $loader->load('services.exporter.types.yml');
         $loader->load('services.anonymizer.types.yml');
+        $loader->load('legacy_aliases.yml');
     }
 }

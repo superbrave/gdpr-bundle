@@ -20,6 +20,7 @@ use Superbrave\GdprBundle\Annotation as GDPR;
  * Class used to test the @see GDPR\AnnotationReader.
  *
  * @author Niels Nijens <nn@superbrave.nl>
+ * @author Jelle van Oosterbosch <jvo@superbrave.nl>
  */
 class AnnotatedMock
 {
@@ -61,6 +62,15 @@ class AnnotatedMock
     private $quux;
 
     /**
+     * The quuz property.
+     *
+     * @GDPR\Export()
+     *
+     * @var \DateTime
+     */
+    private $quuz;
+
+    /**
      * The property that is annotated with the Export annotation, but without getter method.
      *
      * @GDPR\Export(
@@ -91,8 +101,10 @@ class AnnotatedMock
         $elements = [];
         if ($annotatedMock instanceof AnnotatedMock) {
             $elements[] = $annotatedMock;
+            $elements[] = clone $annotatedMock;
         }
 
+        $this->quuz = new \DateTime('2016/01/01');
         $this->quux = new ArrayCollection($elements);
     }
 
@@ -134,6 +146,14 @@ class AnnotatedMock
     public function getQuux()
     {
         return $this->quux;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getQuuz()
+    {
+        return $this->quuz;
     }
 
     /**

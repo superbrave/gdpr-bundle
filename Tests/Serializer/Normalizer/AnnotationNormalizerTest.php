@@ -13,7 +13,6 @@
 
 namespace Superbrave\GdprBundle\Tests\Serializer\Normalizer;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
@@ -21,15 +20,19 @@ use Superbrave\GdprBundle\Annotation\AnnotationReader;
 use Superbrave\GdprBundle\Annotation\Export;
 use Superbrave\GdprBundle\Manipulator\PropertyManipulator;
 use Superbrave\GdprBundle\Serializer\Normalizer\AnnotationNormalizer;
+use Superbrave\GdprBundle\Serializer\Normalizer\IterableNormalizer;
 use Superbrave\GdprBundle\Tests\AnnotatedMock;
 use Symfony\Component\PropertyAccess\PropertyAccess;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
 /**
  * AnnotationNormalizerTest.
  *
  * @author Niels Nijens <nn@superbrave.nl>
+ * @author Jelle van Oosterbosch <jvo@superbrave.nl>
  */
 class AnnotationNormalizerTest extends TestCase
 {
@@ -155,6 +158,12 @@ class AnnotationNormalizerTest extends TestCase
         );
 
         $normalizer = new AnnotationNormalizer($annotationReader, Export::class, $propertyManipulator);
+        $serializer = new Serializer([
+            new DateTimeNormalizer(),
+            new IterableNormalizer(),
+            $normalizer,
+        ]);
+        $normalizer->setNormalizer($serializer);
 
         $annotatedMock = new AnnotatedMock();
 
@@ -163,7 +172,8 @@ class AnnotationNormalizerTest extends TestCase
                 'foo' => 'bar',
                 'baz' => 1,
                 'qux' => [],
-                'quuxs' => new ArrayCollection(),
+                'quuxs' => [],
+                'quuz' => '2016-01-01T00:00:00+00:00',
                 'annotatedPropertyWithoutMethod' => 'Yes',
             ],
             $normalizer->normalize($annotatedMock)
@@ -171,24 +181,28 @@ class AnnotationNormalizerTest extends TestCase
     }
 
     /**
-     * Tests if AnnotationNormalizer::normalize returns the expected normalized data
+     * Tests if @see AnnotationNormalizer::normalize returns the expected xml normalized data
      * for serialization through the Serializer.
      *
      * @return void
      */
-    public function testNormalizeThroughSerializer(): void
+    public function testNormalizeThroughXmlSerializer(): void
     {
         $annotationReader = new AnnotationReader();
         $propertyManipulator = new PropertyManipulator(
             PropertyAccess::createPropertyAccessor()
         );
 
-        $normalizer = new AnnotationNormalizer($annotationReader, Export::class, $propertyManipulator);
-        $encoder = new XmlEncoder('mock');
+        $normalizers = [
+            new DateTimeNormalizer(),
+            new IterableNormalizer(),
+            new AnnotationNormalizer($annotationReader, Export::class, $propertyManipulator),
+        ];
+        $encoders = [new XmlEncoder('mock')];
 
         $serializer = new Serializer(
-            [$normalizer],
-            [$encoder]
+            $normalizers,
+            $encoders
         );
 
         $data = new AnnotatedMock(new AnnotatedMock());
@@ -196,6 +210,39 @@ class AnnotationNormalizerTest extends TestCase
         $this->assertStringEqualsFile(
             __DIR__.'/../../Resources/xml/annotation_normalizer_result.xml',
             $serializer->serialize($data, 'xml')
+        );
+    }
+
+    /**
+     * Test if @see AnnotationNormalizer::normalize returns the expected json normalized data
+     * for serialization through the Serializer.
+     *
+     * @return void
+     */
+    public function testNormalizeThroughJsonSerializer(): void
+    {
+        $annotationReader = new AnnotationReader();
+        $propertyManipulator = new PropertyManipulator(
+            PropertyAccess::createPropertyAccessor()
+        );
+
+        $normalizers = [
+            new DateTimeNormalizer(),
+            new IterableNormalizer(),
+            new AnnotationNormalizer($annotationReader, Export::class, $propertyManipulator),
+        ];
+        $encoders = [new JsonEncoder()];
+
+        $serializer = new Serializer(
+            $normalizers,
+            $encoders
+        );
+
+        $data = new AnnotatedMock(new AnnotatedMock());
+
+        $this->assertStringEqualsFile(
+            __DIR__.'/../../Resources/json/annotation_normalize_result.json',
+            $serializer->serialize($data, 'json')
         );
     }
 }
