@@ -13,7 +13,6 @@
 
 namespace Superbrave\GdprBundle\Tests\Serializer\Normalizer;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
@@ -209,7 +208,7 @@ class AnnotationNormalizerTest extends TestCase
         $data = new AnnotatedMock(new AnnotatedMock());
 
         $this->assertStringEqualsFile(
-            __DIR__ . '/../../Resources/xml/annotation_normalizer_result.xml',
+            __DIR__.'/../../Resources/xml/annotation_normalizer_result.xml',
             $serializer->serialize($data, 'xml')
         );
     }
@@ -242,7 +241,7 @@ class AnnotationNormalizerTest extends TestCase
         $data = new AnnotatedMock(new AnnotatedMock());
 
         $this->assertStringEqualsFile(
-            __DIR__ . '/../../Resources/json/annotation_normalize_result.json',
+            __DIR__.'/../../Resources/json/annotation_normalize_result.json',
             $serializer->serialize($data, 'json')
         );
     }

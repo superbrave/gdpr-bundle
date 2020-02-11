@@ -3,11 +3,12 @@
  * This file is part of the GDPR bundle.
  *
  * @category  Bundle
- * @package   Gdpr
+ *
  * @author    SuperBrave <info@superbrave.nl>
  * @copyright 2018 SuperBrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
- * @link      https://www.superbrave.nl/
+ *
+ * @see      https://www.superbrave.nl/
  */
 
 namespace Superbrave\GdprBundle\Tests\Serializer\Normalizer;
@@ -46,7 +47,7 @@ class IterableNormalizerTest extends TestCase
             new DateTimeNormalizer(),
             $this->normalizer,
         ], [
-            new JsonEncoder()
+            new JsonEncoder(),
         ]);
 
         $this->normalizer->setNormalizer($this->serializer);
@@ -72,7 +73,7 @@ class IterableNormalizerTest extends TestCase
      */
     public function testSupportsNormalizationReturnsTrueWhenDataIsIterable()
     {
-        $this->assertTrue($this->normalizer->supportsNormalization(array()));
+        $this->assertTrue($this->normalizer->supportsNormalization([]));
         $this->assertTrue($this->normalizer->supportsNormalization(new ArrayCollection()));
     }
 
@@ -115,12 +116,12 @@ class IterableNormalizerTest extends TestCase
                 new ArrayCollection([
                     new \DateTime('2020/01/01'),
                     new \DateTime('2020/01/01'),
-                ])
-            ]
+                ]),
+            ],
         ];
 
         $this->assertStringEqualsFile(
-            __DIR__ . '/../../Resources/json/iterable_normalize_result.json',
+            __DIR__.'/../../Resources/json/iterable_normalize_result.json',
             $this->serializer->serialize($data, 'json')
         );
     }
