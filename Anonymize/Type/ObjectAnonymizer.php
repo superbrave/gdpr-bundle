@@ -3,11 +3,12 @@
  * This file is part of the GDPR bundle.
  *
  * @category  Bundle
- * @package   Gdpr
+ *
  * @author    SuperBrave <info@superbrave.nl>
  * @copyright 2018 SuperBrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
- * @link      https://www.superbrave.nl/
+ *
+ * @see       https://www.superbrave.nl/
  */
 
 namespace Superbrave\GdprBundle\Anonymize\Type;
@@ -15,9 +16,7 @@ namespace Superbrave\GdprBundle\Anonymize\Type;
 use Superbrave\GdprBundle\Anonymize\Anonymizer;
 
 /**
- * Class ObjectAnonymizer
- *
- * @package Superbrave\GdprBundle\Anonymize\Type
+ * Class ObjectAnonymizer.
  */
 class ObjectAnonymizer implements AnonymizerInterface
 {
@@ -29,7 +28,7 @@ class ObjectAnonymizer implements AnonymizerInterface
     /**
      * ObjectAnonymizer constructor.
      *
-     * @param Anonymizer $anonymizer The anonymizer.
+     * @param Anonymizer $anonymizer the anonymizer
      */
     public function __construct(Anonymizer $anonymizer)
     {
@@ -39,8 +38,8 @@ class ObjectAnonymizer implements AnonymizerInterface
     /**
      * {@inheritdoc}
      *
-     * @throws \InvalidArgumentException if propertyValue is not an object.
-     * @throws \ReflectionException if class does't exist.
+     * @throws \InvalidArgumentException if propertyValue is not an object
+     * @throws \ReflectionException      if class does't exist
      */
     public function anonymize($propertyValue, array $options = [])
     {

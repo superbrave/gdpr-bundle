@@ -3,18 +3,19 @@
  * This file is part of the GDPR bundle.
  *
  * @category  Bundle
- * @package   Gdpr
+ *
  * @author    SuperBrave <info@superbrave.nl>
  * @copyright 2018 SuperBrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
- * @link      https://www.superbrave.nl/
+ *
+ * @see       https://www.superbrave.nl/
  */
 
 namespace Superbrave\GdprBundle\Tests\Export;
 
 use InvalidArgumentException;
-use PHPUnit_Framework_MockObject_MockObject;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Superbrave\GdprBundle\Export\Exporter;
 use Superbrave\GdprBundle\Tests\AnnotatedMock;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -24,7 +25,7 @@ use Symfony\Component\Serializer\SerializerInterface;
  *
  * @author Niels Nijens <nn@superbrave.nl>
  */
-class ExporterTest extends PHPUnit_Framework_TestCase
+class ExporterTest extends TestCase
 {
     /**
      * The Exporter instance being tested.
@@ -36,7 +37,7 @@ class ExporterTest extends PHPUnit_Framework_TestCase
     /**
      * The mock serializer instance.
      *
-     * @var PHPUnit_Framework_MockObject_MockObject
+     * @var MockObject
      */
     private $serializerMock;
 
@@ -45,7 +46,7 @@ class ExporterTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->serializerMock = $this->getMockBuilder(SerializerInterface::class)
             ->getMock();
@@ -58,7 +59,7 @@ class ExporterTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $this->assertAttributeSame($this->serializerMock, 'serializer', $this->exporter);
     }
@@ -69,7 +70,7 @@ class ExporterTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function testExportObject()
+    public function testExportObject(): void
     {
         $annotatedMock = new AnnotatedMock();
 
@@ -78,10 +79,10 @@ class ExporterTest extends PHPUnit_Framework_TestCase
             ->with(
                 $annotatedMock,
                 'xml',
-                array(
+                [
                     'xml_root_node_name' => 'AnnotatedMock',
-                    'xml_encoding' => 'UTF-8'
-                )
+                    'xml_encoding' => 'UTF-8',
+                ]
             )
             ->willReturn('<?xml version="1.0" encoding="UTF-8"?><AnnotatedMock/>');
 
@@ -97,7 +98,7 @@ class ExporterTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function testExportObjectWithObjectName()
+    public function testExportObjectWithObjectName(): void
     {
         $annotatedMock = new AnnotatedMock();
 
@@ -106,10 +107,10 @@ class ExporterTest extends PHPUnit_Framework_TestCase
             ->with(
                 $annotatedMock,
                 'xml',
-                array(
+                [
                     'xml_root_node_name' => 'custom_name',
-                    'xml_encoding' => 'UTF-8'
-                )
+                    'xml_encoding' => 'UTF-8',
+                ]
             )
             ->willReturn('<?xml version="1.0" encoding="UTF-8"?><custom_name/>');
 
@@ -125,7 +126,7 @@ class ExporterTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function testExportObjectWithCustomTargetEncoding()
+    public function testExportObjectWithCustomTargetEncoding(): void
     {
         $annotatedMock = new AnnotatedMock();
 
@@ -134,10 +135,10 @@ class ExporterTest extends PHPUnit_Framework_TestCase
             ->with(
                 $annotatedMock,
                 'xml',
-                array(
+                [
                     'xml_root_node_name' => 'AnnotatedMock',
-                    'xml_encoding' => 'ISO-8859-1'
-                )
+                    'xml_encoding' => 'ISO-8859-1',
+                ]
             )
             ->willReturn('<?xml version="1.0" encoding="ISO-8859-1"?><AnnotatedMock/>');
 
@@ -152,7 +153,7 @@ class ExporterTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function testExportObjectThrowsInvalidArgumentExceptionWhenObjectIsNotObject()
+    public function testExportObjectThrowsInvalidArgumentExceptionWhenObjectIsNotObject(): void
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('$object must be of type object. string given.');

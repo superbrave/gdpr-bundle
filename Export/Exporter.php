@@ -3,18 +3,19 @@
  * This file is part of the GDPR bundle.
  *
  * @category  Bundle
- * @package   Gdpr
+ *
  * @author    SuperBrave <info@superbrave.nl>
  * @copyright 2018 SuperBrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
- * @link      https://www.superbrave.nl/
+ *
+ * @see       https://www.superbrave.nl/
  */
 
 namespace Superbrave\GdprBundle\Export;
 
 use InvalidArgumentException;
-use ReflectionException;
 use ReflectionClass;
+use ReflectionException;
 use Symfony\Component\Serializer\SerializerInterface;
 
 /**
@@ -62,10 +63,10 @@ class Exporter
             );
         }
 
-        $context = array(
+        $context = [
             'xml_root_node_name' => $objectName,
-            'xml_encoding' => $targetEncoding
-        );
+            'xml_encoding' => $targetEncoding,
+        ];
 
         if (is_string($context['xml_root_node_name']) === false) {
             $context['xml_root_node_name'] = (new ReflectionClass($object))->getShortName();

@@ -3,64 +3,65 @@
  * This file is part of the GDPR bundle.
  *
  * @category  Bundle
- * @package   Gdpr
+ *
  * @author    SuperBrave <info@superbrave.nl>
  * @copyright 2018 SuperBrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
- * @link      https://www.superbrave.nl/
+ *
+ * @see       https://www.superbrave.nl/
  */
 
 namespace Superbrave\GdprBundle\Tests\Anonymizer;
 
-use PHPUnit_Framework_TestCase;
-use PHPUnit_Framework_MockObject_MockObject;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 use Superbrave\GdprBundle\Annotation\Anonymize;
 use Superbrave\GdprBundle\Anonymize\AnonymizerCollection;
-use Superbrave\GdprBundle\Anonymize\Type\AnonymizerInterface;
 use Superbrave\GdprBundle\Anonymize\PropertyAnonymizer;
+use Superbrave\GdprBundle\Anonymize\Type\AnonymizerInterface;
 use Superbrave\GdprBundle\Manipulator\PropertyManipulator;
 use Superbrave\GdprBundle\Tests\AnnotatedMock;
 
 /**
- * Test the behaviour of the PropertyAnonymizer
+ * Test the behaviour of the PropertyAnonymizer.
  */
-class PropertyAnonymizerTest extends PHPUnit_Framework_TestCase
+class PropertyAnonymizerTest extends TestCase
 {
     /**
-     * Mock for the PropertyManipulator
+     * Mock for the PropertyManipulator.
      *
-     * @var PHPUnit_Framework_MockObject_MockObject
+     * @var MockObject
      */
     private $propertyManipulatorMock;
 
     /**
-     * Mock for the AnonymizerCollection
+     * Mock for the AnonymizerCollection.
      *
-     * @var PHPUnit_Framework_MockObject_MockObject
+     * @var MockObject
      */
     private $anonymizerCollection;
 
     /**
-     * The propertyAnonymizer to be tested
+     * The propertyAnonymizer to be tested.
      *
      * @var PropertyAnonymizer
      */
     private $propertyAnonymizer;
 
     /**
-     * A ReflectionClass build from AnnotatedMock class
+     * A ReflectionClass build from AnnotatedMock class.
      *
      * @var ReflectionClass
      */
     private $reflectionClass;
 
     /**
-     * Sets up the properties to be used in further tests
+     * Sets up the properties to be used in further tests.
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->anonymizerCollection = $this->getMockBuilder(AnonymizerCollection::class)
             ->getMock();
@@ -75,11 +76,11 @@ class PropertyAnonymizerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test that the property anonymizer correctly utilizes its dependencies to do its job
+     * Test that the property anonymizer correctly utilizes its dependencies to do its job.
      *
      * @return void
      */
-    public function testPropertyAnonymizerUsesDependencies()
+    public function testPropertyAnonymizerUsesDependencies(): void
     {
         $annotation = new Anonymize();
         $annotation->type = 'testType';

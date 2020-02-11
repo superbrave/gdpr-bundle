@@ -3,16 +3,17 @@
  * This file is part of the GDPR bundle.
  *
  * @category  Bundle
- * @package   Gdpr
+ *
  * @author    SuperBrave <info@superbrave.nl>
  * @copyright 2018 SuperBrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
- * @link      https://www.superbrave.nl/
+ *
+ * @see       https://www.superbrave.nl/
  */
 
 namespace Superbrave\GdprBundle\Tests\Annotation;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 use Superbrave\GdprBundle\Annotation\AnnotationReader;
 use Superbrave\GdprBundle\Annotation\Anonymize;
@@ -26,7 +27,7 @@ use Superbrave\GdprBundle\Tests\ExtendedAnnotedMock;
  * @author Niels Nijens <nn@superbrave.nl>
  * @author Jelle van Oosterbosch <jvo@superbrave.nl>
  */
-class AnnotationReaderTest extends PHPUnit_Framework_TestCase
+class AnnotationReaderTest extends TestCase
 {
     /**
      * The AnnotationReader instance being tested.
@@ -40,7 +41,7 @@ class AnnotationReaderTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->annotationReader = new AnnotationReader();
 
@@ -57,17 +58,17 @@ class AnnotationReaderTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function testGetPropertiesWithAnnotationExport()
+    public function testGetPropertiesWithAnnotationExport(): void
     {
         $result = $this->annotationReader->getPropertiesWithAnnotation(
             new ReflectionClass(AnnotatedMock::class),
             Export::class
         );
 
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray($result);
         $this->assertCount(6, $result);
         $this->assertSame(
-            array('foo', 'baz', 'qux', 'quux', 'quuz', 'annotatedPropertyWithoutMethod'),
+            ['foo', 'baz', 'qux', 'quux', 'quuz', 'annotatedPropertyWithoutMethod'],
             array_keys($result)
         );
         $this->assertInstanceOf(Export::class, current($result));
@@ -79,17 +80,17 @@ class AnnotationReaderTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function testGetPropertiesWithAnnotationAnonymize()
+    public function testGetPropertiesWithAnnotationAnonymize(): void
     {
         $result = $this->annotationReader->getPropertiesWithAnnotation(
             new ReflectionClass(AnnotatedMock::class),
             Anonymize::class
         );
 
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray($result);
         $this->assertCount(1, $result);
         $this->assertSame(
-            array('foo'),
+            ['foo'],
             array_keys($result)
         );
         $this->assertInstanceOf(Anonymize::class, current($result));
@@ -101,17 +102,17 @@ class AnnotationReaderTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function testGetPropertiesWithAnnotationForExtendedClass()
+    public function testGetPropertiesWithAnnotationForExtendedClass(): void
     {
         $result = $this->annotationReader->getPropertiesWithAnnotation(
             new ReflectionClass(ExtendedAnnotedMock::class),
             Export::class
         );
 
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray($result);
         $this->assertCount(7, $result);
         $this->assertSame(
-            array('extendedProperty', 'foo', 'baz', 'qux', 'quux', 'quuz', 'annotatedPropertyWithoutMethod'),
+            ['extendedProperty', 'foo', 'baz', 'qux', 'quux', 'quuz', 'annotatedPropertyWithoutMethod'],
             array_keys($result)
         );
 

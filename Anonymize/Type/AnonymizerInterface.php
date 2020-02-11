@@ -3,27 +3,26 @@
  * This file is part of the GDPR bundle.
  *
  * @category  Bundle
- * @package   Gdpr
+ *
  * @author    SuperBrave <info@superbrave.nl>
  * @copyright 2018 SuperBrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
- * @link      https://www.superbrave.nl/
+ *
+ * @see       https://www.superbrave.nl/
  */
 
 namespace Superbrave\GdprBundle\Anonymize\Type;
 
 /**
- * Interface AnonymizerInterface
- *
- * @package Superbrave\GdprBundle\Anonymize\Type
+ * Interface AnonymizerInterface.
  */
 interface AnonymizerInterface
 {
     /**
      * Anonymizes the given property value.
      *
-     * @param mixed $propertyValue The value of the property.
-     * @param array $options       The options for the anonymizer.
+     * @param mixed $propertyValue the value of the property
+     * @param array $options       the options for the anonymizer
      *
      * @return mixed
      */

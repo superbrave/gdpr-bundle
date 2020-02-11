@@ -3,17 +3,18 @@
  * This file is part of the GDPR bundle.
  *
  * @category  Bundle
- * @package   Gdpr
+ *
  * @author    SuperBrave <info@superbrave.nl>
  * @copyright 2018 SuperBrave <info@superbrave.nl>
  * @license   https://github.com/superbrave/gdpr-bundle/blob/master/LICENSE MIT
- * @link      https://www.superbrave.nl/
+ *
+ * @see       https://www.superbrave.nl/
  */
 
 namespace Superbrave\GdprBundle\Tests\Anonymizer;
 
-use PHPUnit_Framework_MockObject_MockObject;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Superbrave\GdprBundle\Annotation\AnnotationReader;
 use Superbrave\GdprBundle\Annotation\Anonymize;
 use Superbrave\GdprBundle\Anonymize\Anonymizer;
@@ -21,11 +22,9 @@ use Superbrave\GdprBundle\Anonymize\PropertyAnonymizer;
 use Superbrave\GdprBundle\Tests\AnnotatedMock;
 
 /**
- * Class AnonymizerTest
- *
- * @package Superbrave\GdprBundle\Tests\Anonymizer
+ * Class AnonymizerTest.
  */
-class AnonymizerTest extends PHPUnit_Framework_TestCase
+class AnonymizerTest extends TestCase
 {
     /**
      * @var Anonymizer
@@ -33,19 +32,19 @@ class AnonymizerTest extends PHPUnit_Framework_TestCase
     private $anonymizer;
 
     /**
-     * @var PHPUnit_Framework_MockObject_MockObject
+     * @var MockObject
      */
     private $annotationReaderMock;
 
     /**
-     * @var PHPUnit_Framework_MockObject_MockObject
+     * @var MockObject
      */
     private $propertyAnonymizer;
 
     /**
      * {@inheritdoc}
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->annotationReaderMock = $this->getMockBuilder(AnnotationReader::class)
             ->getMock();
@@ -76,7 +75,7 @@ class AnonymizerTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function testAnonymizeObject()
+    public function testAnonymizeObject(): void
     {
         $annotatedMock = new AnnotatedMock();
         $anonymize = new Anonymize();
@@ -109,7 +108,7 @@ class AnonymizerTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function testAnonymizerShouldReceiveExceptionWhenArgumentIsNoObject()
+    public function testAnonymizerShouldReceiveExceptionWhenArgumentIsNoObject(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid argument given "string" should be of type object.');
