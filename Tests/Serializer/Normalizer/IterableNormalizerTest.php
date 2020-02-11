@@ -13,6 +13,7 @@
 namespace Superbrave\GdprBundle\Tests\Serializer\Normalizer;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use PHPUnit\Framework\TestCase;
 use Superbrave\GdprBundle\Serializer\Normalizer\IterableNormalizer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
@@ -23,7 +24,7 @@ use Symfony\Component\Serializer\Serializer;
  *
  * @author Jelle van Oosterbosch <jvo@superbrave.nl>
  */
-class IterableNormalizerTest extends \PHPUnit_Framework_TestCase
+class IterableNormalizerTest extends TestCase
 {
     /**
      * @var IterableNormalizer
@@ -38,7 +39,7 @@ class IterableNormalizerTest extends \PHPUnit_Framework_TestCase
     /**
      * {@inheritdoc}
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->normalizer = new IterableNormalizer();
         $this->serializer = new Serializer([
