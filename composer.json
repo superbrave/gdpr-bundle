@@ -20,7 +20,7 @@
   },
   "require-dev": {
     "doctrine/collections": "^1.5",
-    "friendsofphp/php-cs-fixer": "^2.16",
+    "friendsofphp/php-cs-fixer": "^3.0",
     "phpunit/phpunit": "^8.0",
     "roave/security-advisories": "dev-master"
   },
